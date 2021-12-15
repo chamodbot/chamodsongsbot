@@ -31,7 +31,6 @@ async def song(client, message):
         await message.reply("Enter a song name. Check /help")
         return ""
     status = await message.reply("Connecting to the google 📡")
-    await status.edit ("Connecting to the youtub 📡")
     await status.edit ("🚀uploding song nikonrDevelopers🍀🍀")
     video_link = yt_search(args)
     if not video_link:
