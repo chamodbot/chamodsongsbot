@@ -25,7 +25,7 @@ send you song name EG. ```/song manike mage hithe```
 ☘️  DᕮᐯᕮᒪOᑭᕮR : @chamod_deshan
 
 
-🚀 poword by : @nikone_Developers
+🚀poword by : @nikone_Developers
 
 🔗 @nikoneDevelopers Corporation ©️ """
 
@@ -43,7 +43,7 @@ async def start(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
-    if message.chat.type == "private":
+    if message.chat.type == "public":
         btn = InlineKeyboardMarkup(
            [[InlineKeyboardButton(text="✅ UPDATE ✅", url="http://t.me/nikoneDevelopers"),
              InlineKeyboardButton(
@@ -68,5 +68,5 @@ async def help(client, message):
 
 OWNER_ID.append(1901997764)
 app.start()
-LOGGER.info("nikonemusicfinder Is Now Working🤗🤗🤗")
+LOGGER.info("nikonemusicfinder Is Now Working🚀🔥🚀")
 idle()
