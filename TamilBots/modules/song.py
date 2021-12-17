@@ -46,7 +46,8 @@ async def song(client, message):
         return ""
     rename = os.rename(download, f"{str(user_id)}.mp3")
     await app.send_chat_action(message.chat.id, "upload_audio")
-    await app.send_audio(@nikoneDevelopers
+    await app.send_audio(
+        hi friend
         chat_id=message.chat.id,
         audio=f"{str(user_id)}.mp3",
         duration=int(yt.length),
