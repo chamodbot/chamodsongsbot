@@ -10,7 +10,8 @@ from TamilBots.sql.chat_sql import add_chat_to_db
 
 start_text = """
 👋 hello [{}](tg://user?id={}),
-    🎧 NIKONE MUSIC FFINDER 🎧 
+    
+f"🎶🎵 Welcome to {BOT_NAME} 🎵🎶\n\n"
 
  ◇───────────────◇
 
@@ -43,7 +44,6 @@ async def start(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
-    if message.chat.type == "public":
         btn = InlineKeyboardMarkup(
            [[InlineKeyboardButton(text="✅ UPDATE ✅", url="http://t.me/nikoneDevelopers"),
              InlineKeyboardButton(
