@@ -18,40 +18,6 @@ import base64
 from progress_bar import progress, TimeFormatter, humanbytes
 from dotenv import load_dotenv
 
-load_dotenv()
-bot_token = os.environ.get('BOT_TOKEN')
-workers = int(os.environ.get('WORKERS'))
-api = int(os.environ.get('API_KEY'))
-hash = os.environ.get('API_HASH')
-chnnl = os.environ.get('CHANNEL_URL')
-BOT_URL = os.environ.get('BOT_URL')
-app = Client("JayBee", bot_token=bot_token, api_id=api, api_hash=hash, workers=workers)
-
-
-
-@app.on_message(filters.command('start'))
-def start(client, message):
-    kb = [[InlineKeyboardButton('Channel 🛡', url=chnnl),InlineKeyboardButton('Repo 🔰', url="https://github.com/TerminalWarlord/TikTok-Downloader-Bot/")]]
-    reply_markup = InlineKeyboardMarkup(kb)
-    app.send_message(chat_id=message.from_user.id, text=f"Hello there, I am **TikTok Downloader Bot**.\nI can download TikTok video without Watermark.\n\n"
-                          "__**Developer :**__ __@JayBeeDev__\n"
-                          "__**Language :**__ __Python__\n"
-                          "__**Framework :**__ __🔥 Pyrogram__",
-                     parse_mode='md',
-                     reply_markup=reply_markup)
-
-
-
-
-@app.on_message(filters.command('help'))
-def help(client, message):
-    kb = [[InlineKeyboardButton('Channel 🛡', url=chnnl),InlineKeyboardButton('Repo 🔰', url="https://github.com/TerminalWarlord/TikTok-Downloader-Bot/")]]
-    reply_markup = InlineKeyboardMarkup(kb)
-    app.send_message(chat_id=message.from_user.id, text=f"Hello there, I am **TikTok Downloader Bot**.\nI can download any TikTok video from a given link.\n\n"
-                                            "__Send me a TikTok video link__",
-                     parse_mode='md',
-                     reply_markup=reply_markup)
-
 
 @app.on_message((filters.regex("http://")|filters.regex("https://")) & (filters.regex('tiktok')|filters.regex('douyin')))
 def tiktok_dl(client, message):
@@ -96,8 +62,8 @@ def tiktok_dl(client, message):
                     if percent == 100:
                         show = 0
 
-        a.edit(f'__Downloaded to the server!\n'
-               f'Uploading to Telegram Now ⏳__')
+        a.edit(f'__Connecting to the google 📡\n'
+               f'🍀🍀Uploading to nikonedevelopers 🚀🚀 __')
         start = time.time()
         title = filename
         app.send_document(chat_id=message.chat.id,
