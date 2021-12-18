@@ -26,7 +26,7 @@ send you song name EG. ```/song manike mage hithe```
 ☘️  DᕮᐯᕮᒪOᑭᕮR : @chamod_deshan
 
 
-🚀poword by : @nikone_Developers & @zoneunlimitedchat
+🚀poword by : @nikone_Developers
 
 🔗 @nikoneDevelopers Corporation ©️ """
 
@@ -49,8 +49,6 @@ async def start(client, message):
            [[InlineKeyboardButton(text="✅ UPDATE ✅", url="http://t.me/nikoneDevelopers"),
              InlineKeyboardButton(
                         text="➕ ADD TO GROUP ➕ ", url="http://t.me/NIKONMUSICEFINDERbot?startgroup=true"
-             InlineKeyboardButton(text="🚀 sport 🚀 ", url="https://t.me/zoneunlimitedchat"),
-             InlineKeyboardButton(text="⛔ YOUTUB ⛔ ", url="https://youtube.com/channel/UCw_Nr4QqV4C5If0jPZ1F_xg"),
                     )
                 ]
             ]
