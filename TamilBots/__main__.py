@@ -15,7 +15,7 @@ start_text = """
 
  ◇───────────────◇
 
-I'M Music Bot By @nikoneDevelopers
+ 🔥 NIKONE DEVELOPERS 🔥
 
 
 send you song name EG. ```/song manike mage hithe```
@@ -23,10 +23,9 @@ send you song name EG. ```/song manike mage hithe```
 
  ◇───────────────◇
 
-☘️  DᕮᐯᕮᒪOᑭᕮR : @chamod_deshan
+☘️  DᕮᐯᕮᒪOᑭᕮR : [chamod deshan ](https://t.me/chamod_deshan) Corporation ©️ 
 
-
-🚀poword by : @nikone_Developers
+🚀poword by : [Developers ✪](https://t.me/nikone_Developers) Corporation ©️ 
 
 🔗 [nikoneDevelopers ✪](https://t.me/nikoneDevelopers) Corporation ©️ """
 
