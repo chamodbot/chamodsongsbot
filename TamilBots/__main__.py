@@ -23,9 +23,8 @@ send you song name EG. ```/song manike mage hithe```
 
  ◇───────────────◇
 
-☘️  DᕮᐯᕮᒪOᑭᕮR : [chamod deshan ](https://t.me/chamod_deshan)  
+☘️  DᕮᐯᕮᒪOᑭᕮR : [chamod deshan ](https://t.me/chamod_deshan) & [bimsara malinga ](https://t.me/bimsaramalinga)  
 
-🔥 help DᕮᐯᕮᒪOᑭᕮR : [bimsara malinga ](https://t.me/bimsaramalinga)  
 
 🚀poword by : [Developers ✪](https://t.me/nikone_Developers)  
 
@@ -45,7 +44,7 @@ async def start(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
-    if message.chat.type == "public":
+    if message.chat.type == "private":
         btn = InlineKeyboardMarkup(
            [[InlineKeyboardButton(text="✅ UPDATE ✅", url="http://t.me/nikoneDevelopers"),
              InlineKeyboardButton(
