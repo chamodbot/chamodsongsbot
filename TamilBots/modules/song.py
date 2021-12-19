@@ -46,7 +46,6 @@ async def song(client, message):
         return ""
     rename = os.rename(download, f"{str(user_id)}.mp3")
     await app.send_chat_action(message.chat.id, "upload_audio")
-    rep =  f'🎧 𝗧𝗶𝘁𝘁𝗹𝗲 : [{title[:35]}]({link})\n⏳ 𝐃𝐮𝐫𝐚𝐭𝐢𝐨𝐧 : `{duration}`\n👀 𝐕𝐢𝐞𝐰𝐬 : `{views}`\n\n📮 𝗕𝘆: {message.from_user.mention()}\n📤 𝗕𝘆 : @AnnieElizaSongDT_Bot'
     await app.send_audio(
         chat_id=message.chat.id,
         audio=f"{str(user_id)}.mp3",
