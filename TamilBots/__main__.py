@@ -28,7 +28,7 @@ send you song name EG. ```/song manike mage hithe```
 
 🚀poword by : @nikone_Developers
 
-🔗 @nikoneDevelopers Corporation ©️ """
+🔗 [nikoneDevelopers ✪](https://t.me/nikoneDevelopers) Corporation ©️ """
 
 owner_help = """
 /blacklist user_id
