@@ -23,7 +23,7 @@ send you song name EG. ```/song manike mage hithe```
 
  ◇───────────────◇
 
-☘️  DᕮᐯᕮᒪOᑭᕮR : [chamod deshan ](https://t.me/chamod_deshan) & [bimsara malinga ](https://t.me/bimsaramalinga)  
+☘️  DᕮᐯᕮᒪOᑭᕮR : @chamod_deshan 
 
 
 🚀poword by : [Developers ✪](https://t.me/nikone_Developers)  
