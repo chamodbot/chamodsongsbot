@@ -51,11 +51,20 @@ async def start(client, message):
     name = message.from_user["first_name"]
     if message.chat.type == "private":
         btn = InlineKeyboardMarkup(
-           [[InlineKeyboardButton(text="🔥 nikoneDevelopers 🔥", url="http://t.me/nikoneDevelopers"),
-             InlineKeyboardButton(
-                        text="➕ ADD TO GROUP ➕ ", url="http://t.me/NIKONMUSICEFINDERbot?startgroup=true")
+           [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/NIKONMUSICEFINDERbot?startgroup=true"),
+            
             ],
-            [InlineKeyboardButton(text="🌺 nikoneDevelopers help 🌺", url="http://t.me/nikone_Developers"
+            [
+             InlineKeyboardButton(
+                        text="🔥 nikoneDevelopers 🔥 ", url="http://t.me/nikoneDevelopers")
+            ],
+            [InlineKeyboardButton(text="🌺     nikoneDevelopers help     🌺", url="http://t.me/nikone_Developers")
+            
+            ],
+            [InlineKeyboardButton(text="🎓     nikoneDevelopers help     🎓", url="http://t.me/nikonesshhub")
+        
+            ],
+            [InlineKeyboardButton(text="🍀      Zoneunlimited             🍀", url="http://t.me/zoneunlimited"
                
                     )
                 ]
