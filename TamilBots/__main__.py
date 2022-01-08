@@ -53,7 +53,10 @@ async def start(client, message):
         btn = InlineKeyboardMarkup(
            [[InlineKeyboardButton(text="🔥 nikoneDevelopers 🔥", url="http://t.me/nikoneDevelopers"),
              InlineKeyboardButton(
-                        text="➕ ADD TO GROUP ➕ ", url="http://t.me/NIKONMUSICEFINDERbot?startgroup=true"
+                        text="➕ ADD TO GROUP ➕ ", url="http://t.me/NIKONMUSICEFINDERbot?startgroup=true")
+            ],
+            [InlineKeyboardButton(text="🌺 nikoneDevelopers help 🌺", url="http://t.me/nikone_Developers"
+               
                     )
                 ]
             ]
