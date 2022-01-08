@@ -9,10 +9,6 @@ from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 
-
-ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$"
-
-
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
     result = videosSearch.result()
@@ -24,7 +20,7 @@ def yt_search(song):
         return url
 
 
-@Client.on_message(Filters.regex(ytregex))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
