@@ -8,27 +8,32 @@ from TamilBots import app, LOGGER
 from TamilBots.TamilBots import ignore_blacklisted_users
 from TamilBots.sql.chat_sql import add_chat_to_db
 
-start_text = """
-👋 hello [{}](tg://user?id={}),
-    
-  🎧 NIKON MUSIC FINDER BOT 🎧
+start_text = """**
+👋 hello There, [{}](tg://user?id={}),
+     
+                 🎧NIKONE MUSIC FINDER BOT 🎧
 
- ◇───────────────◇
+🔥 This bot most advanced nikone music finder bot,keyword search & also voice search sport 🔥
 
- 🔥 NIKONE DEVELOPERS 🔥
+🍀 FRO MUSIC LOVERS ⚡️
+
+◇───────────────◇
+
+✅ Voice music search supported 🎤
+🏵 keyword music search 🎸
+🏆 Automatically lyrics Finder (all lang.)
+🚀 inbox supported
+📡 sported fro group 
+🧿 more Fast download
+📥 stock Every Download Music
+🔗 24 Hour activet 
+
+◇───────────────◇
+
+🍀 Developer @chamod_deshan
 
 
-send you song name EG. ```/song manike mage hithe```
-
-
- ◇───────────────◇
-
-☘️  DᕮᐯᕮᒪOᑭᕮR : @chamod_deshan 
-
-
-🚀poword by : [Developers ✪](https://t.me/nikone_Developers)  
-
-🔗 [nikoneDevelopers ✪](https://t.me/nikoneDevelopers) Corporation ©️ """
+🔥 [nikoneDevelopers ✪](https://t.me/nikoneDevelopers) Corporation ©️ **"""
 
 owner_help = """
 /blacklist user_id
@@ -46,7 +51,7 @@ async def start(client, message):
     name = message.from_user["first_name"]
     if message.chat.type == "private":
         btn = InlineKeyboardMarkup(
-           [[InlineKeyboardButton(text="✅ UPDATE ✅", url="http://t.me/nikoneDevelopers"),
+           [[InlineKeyboardButton(text="🔥 nikoneDevelopers 🔥", url="http://t.me/nikoneDevelopers"),
              InlineKeyboardButton(
                         text="➕ ADD TO GROUP ➕ ", url="http://t.me/NIKONMUSICEFINDERbot?startgroup=true"
                     )
