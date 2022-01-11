@@ -18,6 +18,11 @@
         "OWNER_ID": {
             "description": "Your telegram user id.",
             "required": true
+       },
+    "MUST_JOIN": {
+      "description": "Add username/id of a channel/group",
+      "required": false,
+      "value": ""
         }
     },
     "buildpacks": [
