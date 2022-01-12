@@ -1,4 +1,8 @@
 from pyrogram import Client, filters
+from bot import bot, max_file
+
+
+from pyrogram import filters, types
 import asyncio
 import os
 from pytube import YouTube
