@@ -20,38 +20,56 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
-async def song(client, message):
-    chat_id = message.chat.id
-    user_id = message.from_user["id"]
-    add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "song"
-    if args.startswith(" "):
-        await message.reply("🤗 send you song name Ex : `/song andakare man´ Ex : `/song https://youtube.com´")
-        return ""
-    status = await message.reply("🚀 ᗪOᗯᑎᒪOᗩᗪIᑎᘜ ՏᗴᐯᗴᖇՏ .....")
-    await status.edit("🍀 ᑌᑭᒪOᗩᗪIᑎᘜ .....")
-    video_link = yt_search(args)
-    if not video_link:
-        await status.edit("✖️ 𝐅𝐨𝐮𝐧𝐝 𝐍𝐨𝐭𝐡𝐢𝐧𝐠. 𝐒𝐨𝐫𝐫𝐲.\n\n𝐓𝐫𝐲 𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐊𝐞𝐲𝐰𝐨𝐫𝐤 𝐎𝐫 𝐌𝐚𝐲𝐛𝐞 𝐒𝐩𝐞𝐥𝐥 𝐈𝐭 𝐏𝐫𝐨𝐩𝐞𝐫𝐥𝐲.\n\nEg.`/song Faded`")
-        return ""
-    yt = YouTube(video_link)
-    audio = yt.streams.filter(only_audio=True).first()
-    try:
-        download = audio.download(filename=f"{str(user_id)}")
-    except Exception as ex:
-        await status.edit("Failed to download song 😶")
-        LOGGER.error(ex)
-        return ""
-    rename = os.rename(download, f"{str(user_id)}.mp3")
-    await app.send_chat_action(message.chat.id, "upload_audio")
-    await app.send_audio(
-        chat_id=message.chat.id,
-        audio=f"{str(user_id)}.mp3",
-        duration=int(yt.length),
-        title=str(yt.title),
-        performer=str(yt.author),
-        reply_to_message_id=message.message_id,
+@app.on_message(filters.audio | filters.video | filters.voice)
+async def voice_handler(_, message):
+    file_size = message.audio or message.video or message.voice
+    if max_file < file_size.file_size :
+        await message.reply_text(
+            "**⚠️ Max file size has been reached.**"
+        )
+        return
+    file = await message.download(f'{bot.rnd_id()}.mp3')
+    r = (await bot.recognize(file)).get('track', None)
+    os.remove(file)
+    if r is None:
+        await message.reply_text(
+            '**⚠️ Cannot recognize the audio**'
+        )
+        return
+    out = f'**Title**: `{r["title"]}`\n'
+    out += f'**Artist**: `{r["subtitle"]}`\n'
+    buttons = [
+            [
+                types.InlineKeyboardButton(
+                    '🎼 Related Songs',
+                    switch_inline_query_current_chat=f'related {r["key"]}',
+                ),
+                types.InlineKeyboardButton(
+                    '🔗 Share',
+                    url=f'{r["share"]["html"]}'
+                )
+            ],
+            [
+                types.InlineKeyboardButton(
+                    '🎵 Listen',
+                    url=f'{r["url"]}'
+                )
+            ],        
+        ]
+    response = r.get('artists', None)
+    if response:
+        buttons.append(
+            [
+                types.InlineKeyboardButton(
+                    f'💿 More Tracks from {r["subtitle"]}',
+                    switch_inline_query_current_chat=f'tracks {r["artists"][0]["id"]}',
+                )
+            ]
+        )
+    await message.reply_photo(
+        r['images']['coverarthq'],
+        caption=out,
+        reply_markup=types.InlineKeyboardMarkup(buttons)
     )
     await status.delete()
     os.remove(f"{str(user_id)}.mp3")
