@@ -19,6 +19,7 @@ future
 googletrans
 hurry.filesize
 sqlalchemy==1.3.20
+psycopg2
 motor
 psutil
 pykeyboard
