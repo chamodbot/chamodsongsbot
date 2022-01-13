@@ -23,8 +23,8 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-@app.on_message(filters.command(['s']))
-def a(client, message):
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
+async def song(client, message):
     query = ''
     for i in message.command[1:]:
         query += ' ' + str(i)
