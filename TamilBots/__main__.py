@@ -74,6 +74,9 @@ async def start(client, message):
             
             ],
             [InlineKeyboardButton(text="🧿YOU  Tech🧿", url="https://t.me/YouTech_VPN_HUB")
+            
+            ],
+            [InlineKeyboardButton(text="🌺 Subzero Ehi Team 🌺", url="https://t.me/subzeroehiteam")
         
             ],
             [InlineKeyboardButton(text="🌷 Developer 🌷", url="http://t.me/chamod_deshan"
