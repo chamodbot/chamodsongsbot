@@ -44,9 +44,8 @@ start_text = """**
 
 🍀 Developer @chamod_deshan
 
-🍀 Poword By : [🍀 zoneunlimited chat 🍀](https://t.me/zoneunlimitedchat)
 
-🔥 [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited) Corporation ©️ **"""
+🔥 🍀 @zoneunlimited 🍀 Corporation ©️ **"""
 
 owner_help = """
 /blacklist user_id
