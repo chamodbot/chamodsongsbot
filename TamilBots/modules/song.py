@@ -29,9 +29,10 @@ async def song(client, message):
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("Enter a song name. Check /help")
+        await message.reply("😶 Oops Not Found ..")
         return ""
-    status = await message.reply("🚀 Downloadomg Savers .....")
+    status = await message.reply("⚙️ Creating Your ssh Account....")
+    await status.edit("Conected")
     video_link = yt_search(args)
     if not video_link:
         await status.edit("✖️ 𝐅𝐨𝐮𝐧𝐝 𝐍𝐨𝐭𝐡𝐢𝐧𝐠. 𝐒𝐨𝐫𝐫𝐲.\n\n𝐓𝐫𝐲 𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐊𝐞𝐲𝐰𝐨𝐫𝐤 𝐎𝐫 𝐌𝐚𝐲𝐛𝐞 𝐒𝐩𝐞𝐥𝐥 𝐈𝐭 𝐏𝐫𝐨𝐩𝐞𝐫𝐥𝐲.\n\nEg.`/song Faded`")
