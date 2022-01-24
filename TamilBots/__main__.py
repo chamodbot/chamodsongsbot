@@ -9,31 +9,43 @@ from TamilBots.TamilBots import ignore_blacklisted_users
 from TamilBots.sql.chat_sql import add_chat_to_db
 
 start_text = """**
-👋 hello There, [{}](tg://user?id={}),
+👋 hello There, [{}](tg://user?id={})
      
-                 🎧NIKONE MUSIC FINDER BOT 🎧
+                 SSH CRETOR BOT 
 
-🔥 This bot most advanced nikone music finder bot,keyword search & also voice search sport 🔥
+🔥 This bot most advanced SSH CRETOR BOT
 
-🍀 FRO MUSIC LOVERS ⚡️
+🍀 FRO SSH LOVERS ⚡️
 
 ◇───────────────◇
 
-✅ Voice music search supported 🎤
-🏵 keyword music search 🎸
-🏆 Automatically lyrics Finder (all lang.)
+🏆 Automatically lyrics create (all lang.)
+
+◇───────────────◇ 
+
 🚀 inbox supported
+
+◇───────────────◇ 
+
 📡 sported fro group 
-🧿 more Fast download
-📥 stock Every Download Music
+
+◇───────────────◇ 
+
+🧿 more Fast creating
+
+◇───────────────◇ 
+
 🔗 24 Hour activet 
+
+◇───────────────◇ 
+
 
 ◇───────────────◇
 
 🍀 Developer @chamod_deshan
 
 
-🔥 [nikoneDevelopers ✪](https://t.me/nikoneDevelopers) Corporation ©️ **"""
+🔥 [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited) Corporation ©️ **"""
 
 owner_help = """
 /blacklist user_id
@@ -51,20 +63,20 @@ async def start(client, message):
     name = message.from_user["first_name"]
     if message.chat.type == "private":
         btn = InlineKeyboardMarkup(
-           [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/NIKONMUSICEFINDERbot?startgroup=true"),
+           [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/chamod_deshanbot?startgroup=true"),
             
             ],
             [
-             InlineKeyboardButton(
-                        text="🔥 nikoneDevelopers 🔥 ", url="http://t.me/nikoneDevelopers")
+             InlineKeyboardButton(text="🍀 zoneunlimited 🍀", url="http://t.me/zoneunlimited")
+
             ],
-            [InlineKeyboardButton(text="🌺     nikoneDevelopers help     🌺", url="http://t.me/nikone_Developers")
+            [InlineKeyboardButton(text="🍀 zoneunlimited chat 🍀", url="http://t.me/zoneunlimitedchat")
             
             ],
-            [InlineKeyboardButton(text="🎓     nikoneDevelopers help     🎓", url="http://t.me/nikonesshhub")
+            [InlineKeyboardButton(text="🧿YOU  Tech🧿", url="https://t.me/YouTech_VPN_HUB")
         
             ],
-            [InlineKeyboardButton(text="🍀      Zoneunlimited             🍀", url="http://t.me/zoneunlimited"
+            [InlineKeyboardButton(text="🌷 Developer 🌷", url="http://t.me/chamod_deshan"
                
                     )
                 ]
