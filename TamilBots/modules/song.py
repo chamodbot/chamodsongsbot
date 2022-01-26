@@ -21,7 +21,9 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.all)
+ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$"
+
+@app.on_message(filters.regex(ytregex))
 async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
