@@ -88,8 +88,9 @@ async def song(client, message):
         chat_id=message.chat.id,
         audio=f"{str(user_id)}.mp3",
         duration=int(yt.length),
-        title=str(yt.title)◇───────────────◇,
+        title=str(yt.title),
         performer=str(yt.author),
+        text=f"hi",
         reply_to_message_id=message.message_id,
     )
     await status.delete()
