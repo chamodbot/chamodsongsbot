@@ -22,7 +22,7 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.text))
+@app.on_message(filters.text)
 async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
