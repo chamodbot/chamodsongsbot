@@ -90,7 +90,7 @@ async def song(client, message):
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
-        reply_to_message_id=str(f"◇───────────────◇ \n\n**✅ Successfully Downloaded to MP3 🎵** \n\n◇ Source: YouTube \n\n◇───────────────◇ \n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot) \n🔥 [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n)"
+        reply_to_message_id=strf"◇───────────────◇ \n\n**✅ Successfully Downloaded to MP3 🎵** \n\n◇ Source: YouTube \n\n◇───────────────◇ \n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot) \n🔥 [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n"
         
     )
     await status.delete()
