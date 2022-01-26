@@ -91,7 +91,7 @@ async def song(client, message):
         title=str(yt.title),
         performer=str(yt.author),
         rep = f'[{title[:35]}]({link})\n\n ◇───────────────◇ \n\n**✅ Successfully Downloaded to MP3 🎵** \n\n◇ Source: YouTube \n\n◇ song Duration: {duration} \n\n◇ Song Views: {views} \n\n ◇───────────────◇ \n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot) \n🔥 [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n'
-        reply_to_message_id=message.message_id,
+        
     )
     await status.delete()
     os.remove(f"{str(user_id)}.mp3")
