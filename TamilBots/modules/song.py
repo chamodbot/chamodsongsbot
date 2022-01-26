@@ -3,7 +3,6 @@ from pyrogram import filters, types
 import asyncio
 import os
 from pytube import YouTube
-from youtube_search import YoutubeSearch
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
