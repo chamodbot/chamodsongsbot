@@ -59,7 +59,7 @@ async def song(client, message):
     await status.delete()
     os.remove(f"{str(user_id)}.mp3")
 
-@app.on_message(filters.command(song))
+@app.on_message(filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
@@ -86,7 +86,7 @@ async def song(client, message):
     await app.send_chat_action(message.chat.id, "upload_audio")
     await app.send_audio(
         chat_id=message.chat.id,
-        audio=f"{str(user_id)}.mp3",
+        audio=f"{str(user_id)}.mp3\n\n◇───────────────◇",
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
