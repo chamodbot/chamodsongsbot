@@ -8,44 +8,35 @@ from TamilBots import app, LOGGER
 from TamilBots.TamilBots import ignore_blacklisted_users
 from TamilBots.sql.chat_sql import add_chat_to_db
 
-start_text = """**
-👋 hello There, [{}](tg://user?id={})
+
+start_photo = f"https://telegra.ph/file/e8bf37370b03bc9f3118f.jpg"
+
+start_text = """
+**👋 hello There,** [{}](tg://user?id={})
      
-                 SSH CRETOR BOT 
+                 **Music Finder Bot**  
 
-🔥 This bot most advanced SSH CRETOR BOT
+🔥 This bot most advanced nikone music finder bot,keyword search & also voice search sport 🔥
 
-🍀 FRO SSH LOVERS ⚡️
+**🍀 FRO MUSIC LOVERS ⚡️**
 
 ◇───────────────◇
 
-🏆 Automatically lyrics create (all lang.)
-
-◇───────────────◇ 
-
+✅ Voice music search supported 🎤
+🏵 keyword music search 🎸
+🏆 Automatically lyrics Finder (all lang.)
 🚀 inbox supported
-
-◇───────────────◇ 
-
 📡 sported fro group 
-
-◇───────────────◇ 
-
-🧿 more Fast creating
-
-◇───────────────◇ 
-
+**🧿 more Fast download**
+📥 stock Every Download Music
 🔗 24 Hour activet 
 
-◇───────────────◇ 
-
-
 ◇───────────────◇
 
-🍀 Developer @chamod_deshan
+**🍀 Developer :** @chamod_deshan
 
 
-🔥 🍀 @zoneunlimited 🍀 Corporation ©️ **"""
+🔥 **🍀 zoneunlimited 🍀 Corporation ©️**"""
 
 owner_help = """
 /blacklist user_id
@@ -87,7 +78,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    await message.reply(start_text.start_photo.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 
