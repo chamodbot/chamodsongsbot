@@ -54,7 +54,7 @@ async def start(client, message):
     name = message.from_user["first_name"]
     if message.chat.type == "private":
         btn = InlineKeyboardMarkup(
-           [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/chamod_deshanbot?startgroup=true"),
+           [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/The_song_finder_bot?startgroup=true"),
             
             ],
             [
@@ -67,10 +67,14 @@ async def start(client, message):
             [InlineKeyboardButton(text="🧿YOU  Tech🧿", url="https://t.me/YouTech_VPN_HUB")
             
             ],
-            [InlineKeyboardButton(text="🌺 Subzero Ehi Team 🌺", url="https://t.me/subzeroehiteam")
+            [InlineKeyboardButton(text="🎃 Subzero Ehi Team 🎃", url="https://t.me/subzeroehiteam")
         
             ],
-            [InlineKeyboardButton(text="🌷 Developer 🌷", url="http://t.me/chamod_deshan"
+            [InlineKeyboardButton(text="🌷 Developer 🌷", url="http://t.me/chamod_deshan")
+            
+            ],
+            [InlineKeyboardButton(text=
+                       "◇────────🔍 Search Again 🔎───────◇", switch_inline_query_current_chat=""
                
                     )
                 ]
@@ -78,7 +82,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply(start_text, start_photo.format(name, user_id), reply_markup=btn)
+    await message.reply(start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 
