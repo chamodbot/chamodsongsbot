@@ -56,6 +56,7 @@ async def song(client, message):
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
+        caption=f"hi",
         reply_to_message_id=message.message_id,
     )
     await status.delete()
