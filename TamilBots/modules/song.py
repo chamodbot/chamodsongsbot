@@ -1,5 +1,4 @@
 from pyrogram import Client, filters
-from pyrogram import filters, types
 import asyncio
 import os
 from pytube import YouTube
@@ -9,6 +8,7 @@ from youtubesearchpython import VideosSearch
 from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
+
 
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
@@ -21,14 +21,14 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.command("song"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
-    args = get_arg(message) + "" + "song"
+    args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("**😶 Oops Not Found ...**")
+        await message.reply("Enter a song name. Check /help")
         return ""
     status = await message.reply("**🚀 Downloading Savers ....**")
     await status.edit_reply_markup(
