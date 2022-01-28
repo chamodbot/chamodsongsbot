@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 import asyncio
 import os
 from pytube import YouTube
-from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardMarkup, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent
 from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
 from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
@@ -28,17 +28,20 @@ async def song(client, message):
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("Enter a song name. Check /help")
+        await message.reply("**😶 Oops Not Found ...**")
         return ""
-    status = await message.reply("**🚀 Downloading Savers ....**")
+    status = await message.reply("** Searching music Savers ...**")
     await status.edit_reply_markup(
         InlineKeyboardMarkup([[InlineKeyboardButton("🔍 Searching Music ... 🔎", callback_data="down")]]))
+    await status.edit("**🌷 Downloading music savers ...**")
+    await status.edit_reply_markup(
+        InlineKeyboardMarkup([[InlineKeyboardButton("🌺 Downloading music ... ", callback_data="down")]]))
     await status.edit("**🍀 Uploading To Telegram ...**")
     await status.edit_reply_markup(
         InlineKeyboardMarkup([[InlineKeyboardButton("🍀 Uploading To Telegram ...", callback_data="down")]]))
     video_link = yt_search(args)
     if not video_link:
-        await status.edit("✖️ 𝐅𝐨𝐮𝐧𝐝 𝐍𝐨𝐭𝐡𝐢𝐧𝐠. 𝐒𝐨𝐫𝐫𝐲.\n\n𝐓𝐫𝐲 𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐊𝐞𝐲𝐰𝐨𝐫𝐤 𝐎𝐫 𝐌𝐚𝐲𝐛𝐞 𝐒𝐩𝐞𝐥𝐥 𝐈𝐭 𝐏𝐫𝐨𝐩𝐞𝐫𝐥𝐲.\n\nEg.`/song Faded`")
+        await status.edit("**😶 Oops Not Found ...**")
         return ""
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
@@ -61,3 +64,50 @@ async def song(client, message):
     )
     await status.delete()
     os.remove(f"{str(user_id)}.mp3")
+
+
+@app.on_inline_query()
+async def inline(client: Client, query: InlineQuery):
+    answers = []
+    search_query = query.query.lower().strip().rstrip()
+
+    if search_query == "":
+        await client.answer_inline_query(
+            query.id,
+            results=answers,
+            switch_pm_text="🔍 Search YouTube 🔎",
+            switch_pm_parameter="help",
+            cache_time=0
+        )
+    else:
+        search = VideosSearch(search_query, limit=50)
+
+        for result in search.result()["result"]:
+            answers.append(
+                InlineQueryResultArticle(
+                    title=result["title"],
+                    description="{}, {} views.".format(
+                        result["duration"],
+                        result["viewCount"]["short"]
+                    ),
+                    input_message_content=InputTextMessageContent(
+                        "https://www.youtube.com/watch?v={}".format(
+                            result["id"]
+                        )
+                    ),
+                    thumb_url=result["thumbnails"][0]["url"]
+                )
+            )
+
+        try:
+            await query.answer(
+                results=answers,
+                cache_time=0
+            )
+        except errors.QueryIdInvalid:
+            await query.answer(
+                results=answers,
+                cache_time=0,
+                switch_pm_text="😶 Oops Not Found ...",
+                switch_pm_parameter="",
+            )
