@@ -59,7 +59,7 @@ async def song(client, message):
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
-        caption=f"\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n◇───────────────◇\n\n",
+        caption=f"\n\n[{title[:35]}]({link})\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n◇───────────────◇\n\n",
         reply_to_message_id=message.message_id,
     )
     await status.delete()
