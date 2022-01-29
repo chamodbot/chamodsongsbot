@@ -36,7 +36,7 @@ start_text = """
 **🍀 Developer :** @chamod_deshan
 
 
-🔥 **🍀 zoneunlimited 🍀 Corporation ©️**"""
+🔥 **🍀 @zoneunlimited 🍀 Corporation ©️**"""
 
 owner_help = """
 /blacklist user_id
