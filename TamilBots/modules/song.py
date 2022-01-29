@@ -30,7 +30,7 @@ async def song(client, message):
     if args.startswith(" "):
         await message.reply("**😶 Oops Not Found ...**")
         return ""
-    await message.reply_chat_action("record_voice_message")
+    await message.reply_chat_action("record_video_note")
     status = await message.reply("** Searching music Savers ...**")
     await status.edit_reply_markup(
         InlineKeyboardMarkup([[InlineKeyboardButton("🔍 Searching Music ... 🔎", callback_data="down")]]))
