@@ -27,6 +27,9 @@ async def song(client, message):
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
     message = message.text
+    if message.startswith(" "):
+        await message.reply("Enter a song name. Check /help")
+        return ""
         
     await message.reply_chat_action("typing")
     status = await message.reply("** Searching music Savers ...**")
