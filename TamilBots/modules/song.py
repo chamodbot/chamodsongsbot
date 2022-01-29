@@ -41,11 +41,7 @@ async def song(client, message):
     await status.edit("**🍀 Uploading To Telegram ...**")
     await status.edit_reply_markup(
         InlineKeyboardMarkup([[InlineKeyboardButton("🍀 Uploading To Telegram ...", callback_data="down")]]))
-    await status.edit(
-        text="**Uploading extracted stream...**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="🍀 Uploading ...", callback_data="progress_msg")]])
-    video_link = yt_search(args)
+    video_link = yt_search(text)
     if not video_link:
         await status.edit("**😶 Oops Not Found ...**")
         return ""
