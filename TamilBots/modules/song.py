@@ -28,7 +28,7 @@ async def song(client, message):
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("Enter a song name. Check /help")
+        await message.reply("**😶 Oops Not Found ...**")
         return ""
     await message.reply_chat_action("typing")
     status = await message.reply("** Searching music Savers ...**")
@@ -37,7 +37,7 @@ async def song(client, message):
     await status.edit("**🌷 Downloading music savers ...**")
     await status.edit_reply_markup(
         InlineKeyboardMarkup([[InlineKeyboardButton("🌺 Downloading music ... ", callback_data="down")]]))
-    await message.reply_chat_action("record_video_note")
+    await message.reply_chat_action("record_audio")
     await status.edit("**🍀 Uploading To Telegram ...**")
     await status.edit_reply_markup(
         InlineKeyboardMarkup([[InlineKeyboardButton("🍀 Uploading To Telegram ...", callback_data="down")]]))
