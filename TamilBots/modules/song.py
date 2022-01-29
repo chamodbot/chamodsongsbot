@@ -26,8 +26,7 @@ async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "video" + "song"
-    if args.startswith("text"):
+    query=message.text
         await message.reply("**😶 Oops Not Found ...**")
         return ""
     await message.reply_chat_action("typing")
