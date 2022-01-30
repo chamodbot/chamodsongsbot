@@ -61,11 +61,69 @@ async def song(client, message):
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
-        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n◇───────────────◇\n\n",
+        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
         reply_to_message_id=message.message_id,
     )
     await status.delete()
     os.remove(f"{str(user_id)}.mp3")
+
+
+def yt_search(song):
+    videosSearch = VideosSearch(song, limit=1)
+    result = videosSearch.result()
+    if not result:
+        return False
+    else:
+        video_id = result["result"][0]["id"]
+        url = f"https://youtu.be/{video_id}"
+        return url
+
+
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
+async def a(client, message):
+    chat_id = message.chat.id
+    user_id = message.from_user["id"]
+    add_chat_to_db(str(chat_id))
+    args = get_arg(message) + " " + "song"
+    if args.startswith(" "):
+        await message.reply("**😶 Oops Not Found ...**")
+        return ""
+    await message.reply_chat_action("typing")
+    status = await message.reply("** Searching music Savers ...**")
+    await status.edit_reply_markup(
+        InlineKeyboardMarkup([[InlineKeyboardButton("🔍 Searching Music ... 🔎", callback_data="down")]]))
+    await status.edit("**🌷 Downloading music savers ...**")
+    await status.edit_reply_markup(
+        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
+    await message.reply_chat_action("record_audio")
+    await status.edit("**🍀 Uploading To Telegram ...**")
+    await status.edit_reply_markup(
+        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
+    video_link = yt_search(args)
+    if not video_link:
+        await status.edit("**😶 Oops Not Found ...**")
+        return ""
+    yt = YouTube(video_link)
+    video = yt.streams.filter(only_audio=True).first()
+    try:
+        download = video.download(filename=f"{str(user_id)}")
+    except Exception as ex:
+        await status.edit("Failed to download song 😶")
+        LOGGER.error(ex)
+        return ""
+    rename = os.rename(download, f"{str(user_id)}.mp4")
+    await app.send_chat_action(message.chat.id, "upload_audio")
+    await app.send_audio(
+        chat_id=message.chat.id,
+        video=f"{str(user_id)}.mp3",
+        duration=int(yt.length),
+        title=str(yt.title),
+        performer=str(yt.author),
+        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
+        reply_to_message_id=message.message_id,
+    )
+    await status.delete()
+    os.remove(f"{str(user_id)}.mp4")
 
 
 @app.on_inline_query()
