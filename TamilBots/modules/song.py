@@ -115,9 +115,8 @@ async def video(client, message):
     await app.send_chat_action(message.chat.id, "upload_video_note")
     await app.send_video(
         chat_id=message.chat.id,
-        video=f"{str(user_id)}.mp3",
+        video=f"{str(user_id)}.mp4",
         duration=int(yt.length),
-        performer=str(yt.author),
         caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
         reply_to_message_id=message.message_id,
     )
