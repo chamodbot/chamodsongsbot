@@ -84,7 +84,7 @@ async def video(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "song"
+    args = get_arg(message) + " " + "video"
     if args.startswith(" "):
         await message.reply("**😶 Oops Not Found ...**")
         return ""
