@@ -21,8 +21,8 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.text)
-async def a(client, message):
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song")
+async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
@@ -68,7 +68,7 @@ async def a(client, message):
     os.remove(f"{str(user_id)}.mp3")
 
 
-def yt_search(song):
+def yt_search(video):
     videosSearch = VideosSearch(song, limit=1)
     result = videosSearch.result()
     if not result:
@@ -79,8 +79,8 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
-async def song(client, message):
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("video"))
+async def video(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
@@ -95,7 +95,7 @@ async def song(client, message):
     await status.edit("**🌷 Downloading music savers ...**")
     await status.edit_reply_markup(
         InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
-    await message.reply_chat_action("record_audio")
+    await message.reply_chat_action("record_video_note")
     await status.edit("**🍀 Uploading To Telegram ...**")
     await status.edit_reply_markup(
         InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
@@ -104,7 +104,7 @@ async def song(client, message):
         await status.edit("**😶 Oops Not Found ...**")
         return ""
     yt = YouTube(video_link)
-    video = yt.streams.filter(only_audio=True).first()
+    video = yt.streams.filter(only_video=True).first()
     try:
         download = video.download(filename=f"{str(user_id)}")
     except Exception as ex:
@@ -112,8 +112,8 @@ async def song(client, message):
         LOGGER.error(ex)
         return ""
     rename = os.rename(download, f"{str(user_id)}.mp4")
-    await app.send_chat_action(message.chat.id, "upload_audio")
-    await app.send_audio(
+    await app.send_chat_action(message.chat.id, "upload_video_note")
+    await app.send_video(
         chat_id=message.chat.id,
         video=f"{str(user_id)}.mp3",
         duration=int(yt.length),
