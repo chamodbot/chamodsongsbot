@@ -21,7 +21,7 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song")
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
@@ -69,7 +69,7 @@ async def song(client, message):
 
 
 def yt_search(video):
-    videosSearch = VideosSearch(song, limit=1)
+    videosSearch = VideosSearch(video, limit=1)
     result = videosSearch.result()
     if not result:
         return False
