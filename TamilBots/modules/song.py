@@ -36,11 +36,11 @@ async def song(client, message):
         InlineKeyboardMarkup([[InlineKeyboardButton("🔍 Searching Music ... 🔎", callback_data="down")]]))
     await status.edit("**🌷 Downloading music savers ...**")
     await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》╣", callback_data="down")]]))
+        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
     await message.reply_chat_action("record_audio")
     await status.edit("**🍀 Uploading To Telegram ...**")
     await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》╣", callback_data="down")]]))
+        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
     video_link = yt_search(args)
     if not video_link:
         await status.edit("**😶 Oops Not Found ...**")
@@ -61,7 +61,7 @@ async def song(client, message):
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
-        caption=f"\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n◇───────────────◇\n\n",
+        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n◇───────────────◇\n\n",
         reply_to_message_id=message.message_id,
     )
     await status.delete()
