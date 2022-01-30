@@ -36,11 +36,11 @@ async def song(client, message):
         InlineKeyboardMarkup([[InlineKeyboardButton("🔍 Searching Music ... 🔎", callback_data="down")]]))
     await status.edit("**🌷 Downloading music savers ...**")
     await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("🌺 Downloading music ... ", callback_data="down")]]))
+        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》╣", callback_data="down")]]))
     await message.reply_chat_action("record_audio")
     await status.edit("**🍀 Uploading To Telegram ...**")
     await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("🍀 Uploading To Telegram ...", callback_data="down")]]))
+        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》╣", callback_data="down")]]))
     video_link = yt_search(args)
     if not video_link:
         await status.edit("**😶 Oops Not Found ...**")
