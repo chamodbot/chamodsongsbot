@@ -12,6 +12,11 @@ from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 
 
+API_HASH = os.environ['API_HASH']
+APP_ID = int(os.environ['APP_ID'])
+BOT_TOKEN = os.environ['BOT_TOKEN']
+downloads = './downloads/{}/'
+
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
     result = videosSearch.result()
