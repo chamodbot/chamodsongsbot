@@ -17,6 +17,19 @@ API_ID = int(os.environ['API_ID'])
 BOT_TOKEN = os.environ['BOT_TOKEN']
 downloads = './downloads/{}/'
 
+async def run_cmd(cmd: str) -> Tuple[str, str, int, int]:
+  args = shlex.split(cmd)
+  process = await asyncio.create_subprocess_exec(
+      *args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+  )
+  stdout, stderr = await process.communicate()
+  return (
+      stdout.decode("utf-8", "replace").strip(),
+      stderr.decode("utf-8", "replace").strip(),
+      process.returncode,
+      process.pid,
+  )
+
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
     result = videosSearch.result()
@@ -69,7 +82,7 @@ async def song(client, message):
         title=str(yt.title),
         performer=str(yt.author),
         caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
-        reply_to_message_id=message.message_id,
+        reply_to_message_id=message.message_id,A
     )
     await status.delete()
     os.remove(f"{str(user_id)}.mp3")
@@ -172,6 +185,7 @@ async def _callbacks(bot, cb: CallbackQuery):
     r = requests.get(resp.url, allow_redirects=True)
     open(f'{ttid}.mp4', 'wb').write(r.content)
     await bot.send_video(update.chat.id, f'{ttid}.mp4',)
+    caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to Tik Tok video 🌸**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
     shutil.rmtree(dirs)
   elif cb.data == 'wm':
     dirs = downloads.format(uuid.uuid4().hex)
@@ -194,7 +208,8 @@ async def _callbacks(bot, cb: CallbackQuery):
     resp = session.head(link, allow_redirects=True)
     r = requests.get(resp.url, allow_redirects=True)
     open(f'{ttid}.mp4', 'wb').write(r.content)
-    await bot.send_video(update.chat.id, f'{ttid}.mp4\n\n╣《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to Tik Tok video 🌸**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n',)
+    await bot.send_video(update.chat.id, f'{ttid}.mp4',)
+    caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to Tik Tok video 🌸**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
     shutil.rmtree(dirs)
   elif cb.data == 'audio':
     dirs = downloads.format(uuid.uuid4().hex)
@@ -219,7 +234,8 @@ async def _callbacks(bot, cb: CallbackQuery):
     open(f'{ttid}.mp4', 'wb').write(r.content)
     cmd = f'ffmpeg -i "{ttid}.mp4" -vn -ar 44100 -ac 2 -ab 192 -f mp3 "{ttid}.mp3"'
     await run_cmd(cmd)
-    await bot.send_audio(update.chat.id, f'{ttid}.mp3\n\n╣《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to Tik Tok mp3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n',)
+    await bot.send_audio(update.chat.id, f'{ttid}.mp3',)
+    caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
     shutil.rmtree(dirs)
 
 
