@@ -125,6 +125,14 @@ async def video(client, message):
     await status.delete()
     os.remove(f"{str(user_id)}.mp4")
 
+DL_BUTTONS=[
+    [
+        InlineKeyboardButton('🌷 No Watermark 🌷', callback_data='nowm'),
+        InlineKeyboardButton('🌺 Watermark 🌺', callback_data='wm'),
+    ],
+    [InlineKeyboardButton('🎵 Audio 🎵', callback_data='audio')],
+]
+
 @app.on_message(filters.regex(pattern='.*http.*') & filters.private)
 async def _tiktok(bot, update):
   url = update.text
@@ -132,7 +140,7 @@ async def _tiktok(bot, update):
   resp = session.head(url, allow_redirects=True)
   if not 'tiktok.com' in resp.url:
     return
-  await update.reply('Select the options below', True, reply_markup=InlineKeyboardMarkup(DL_BUTTONS))
+  await update.reply('Select the buttons below..🌷', True, reply_markup=InlineKeyboardMarkup(DL_BUTTONS))
 
 # Callbacks
 @app.on_callback_query()
