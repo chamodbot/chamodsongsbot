@@ -13,7 +13,7 @@ from TamilBots.sql.chat_sql import add_chat_to_db
 
 
 API_HASH = os.environ['API_HASH']
-API_ID = int(os.environ['APP_ID'])
+API_ID = int(os.environ['API_ID'])
 BOT_TOKEN = os.environ['BOT_TOKEN']
 downloads = './downloads/{}/'
 
