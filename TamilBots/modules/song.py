@@ -145,8 +145,8 @@ async def song(client, message):
     if args.startswith(" "):
         await message.reply("Enter a song name. Check /help")
         return ""
-    status = await message.reply("
-        text="**Uploading extracted stream...**",
+    status = await message.reply("text=
+        "**Uploading extracted stream...**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="🍀 Uploading ...", callback_data="progress_msg")]])")
     video_link = yt_search(args)
