@@ -138,13 +138,13 @@ async def song(client, message):
     status = await message.reply("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("🌷 Restarting Music Savers ....",
+    await status.edit("**🌷 Restarting Music Savers ....*-",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("🌷 Restarting Music Savers ....",
+    await status.edit("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("🌷 Restarting Music Savers ....",
+    await status.edit("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Restarting Music Savers ....**",
@@ -156,6 +156,10 @@ async def song(client, message):
     await status.edit("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
+    await status.edit("**✅ Music Savers Update Done ...**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("♻️ Update now Music savers", callback_data="tools")]])
+            [[InlineKeyboardButton("🚫   close   🚫", callback_data="close")]]))
     
 
 @app.on_inline_query()
