@@ -126,7 +126,7 @@ async def video(client, message):
     os.remove(f"{str(user_id)}.mp4")
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("tools"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.message("tools"))
 async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
@@ -138,7 +138,7 @@ async def song(client, message):
     status = await message.reply("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Restarting Music Savers ....*-",
+    await status.edit("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Restarting Music Savers ....**",
@@ -158,7 +158,7 @@ async def song(client, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     await status.edit("**✅ Music Savers Update Done ...**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("♻️ Update now Music savers", callback_data="tools")]]))
+            [[InlineKeyboardButton("♻️ Update now Music savers", callback_data_cmd="tools")]]))
     
 
 @app.on_inline_query()
