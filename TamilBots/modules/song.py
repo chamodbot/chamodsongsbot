@@ -124,43 +124,13 @@ async def video(client, message):
     await status.delete()
     os.remove(f"{str(user_id)}.mp4")
 
-
-@app.on_message(text=r"deploy"))
-async def _(event):
-
-    if event.fwd_from:
-
-        return
-
-    animation_interval = 10
-
-    animation_ttl = range(0, 12)
-
-    # input_str = event.pattern_match.group(1)
-
-    await event.edit("Deploying...")
-
-    animation_chars = [
-        "**Heroku Connecting To Latest Github Build (chamoddeshanbot/tguserbot)**",
-        "**Build started by user** **{DEFAULTUSER}**",
-        "**Deploy** `535a74f0` **by user** **{MY BOSS}**",
-        "**Restarting Heroku Server...**",
-        "**State changed from up to starting**",
-        "**Stopping all processes with SIGTERM**",
-        "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m stdborg`",
-        "**State changed from starting to up**",
-        "__INFO:Black Lightning:Logged in as 557667062__",
-        "__INFO:Black Lightning:Successfully loaded all plugins__",
-        "**Build Succeeded**",
-    ]
-
-    for i in animation_ttl:
-
-        await asyncio.sleep(animation_interval)
-
-        await event.edit(animation_chars[i % 12])
-
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
+async def help(client, message):
+    if message.from_user["id"] == OWNER_ID:
+        await message.reply(owner_help)
+        return ""
+    text = "🌷 Restarting Savers ...."
+    await message.reply(text)
 
 @app.on_inline_query()
 async def inline(client: Client, query: InlineQuery):
