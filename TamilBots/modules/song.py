@@ -134,8 +134,8 @@ async def help(client, message):
     btn = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="✪❖◈◈◈❖◈◈◈❖◈◈◈❖✪", callback_data="progress_msg")]])
     await message.edit("**🌷 Restarting Music Savers ....**"
-    await message.edit_reply_markup InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="☯☬◈◈◈☬◈◈◈☬◈◈◈☬☯", callback_data="progress_msg")]])
+    await status.edit_reply_markup(
+        InlineKeyboardMarkup([[InlineKeyboardButton("☯◈◈◈☬◈◈◈☬◈◈◈☯, callback_data="down")]]))
 
     await message.reply(text, reply_markup=btn)
 
