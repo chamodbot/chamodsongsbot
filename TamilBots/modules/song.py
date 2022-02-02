@@ -131,6 +131,7 @@ async def video(client, message):
 async def song(client, message):
     chat_id = message.chat.id
     if message.from_user.id not in AUTH_USERS:
+        await message.reply("⛔️ Access Denied ⛔️")
         return ""
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
