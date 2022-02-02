@@ -1,7 +1,6 @@
 from pyrogram import Client, filters
 import asyncio
 import os
-import json, requests, os, shlex, asyncio, uuid, shutil
 from typing import Tuple
 from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
@@ -11,24 +10,6 @@ from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 
-
-API_HASH = os.environ['API_HASH']
-API_ID = int(os.environ['API_ID'])
-BOT_TOKEN = os.environ['BOT_TOKEN']
-downloads = './downloads/{}/'
-
-async def run_cmd(cmd: str) -> Tuple[str, str, int, int]:
-  args = shlex.split(cmd)
-  process = await asyncio.create_subprocess_exec(
-      *args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-  )
-  stdout, stderr = await process.communicate()
-  return (
-      stdout.decode("utf-8", "replace").strip(),
-      stderr.decode("utf-8", "replace").strip(),
-      process.returncode,
-      process.pid,
-  )
 
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
@@ -143,13 +124,6 @@ async def video(client, message):
     await status.delete()
     os.remove(f"{str(user_id)}.mp4")
 
-DL_BUTTONS=[
-    [
-        InlineKeyboardButton('🌷 No Watermark 🌷', callback_data='nowm'),
-        InlineKeyboardButton('🌺 Watermark 🌺', callback_data='wm'),
-    ],
-    [InlineKeyboardButton('🎵 Audio 🎵', callback_data='audio')],
-]
 
 @app.on_inline_query()
 async def inline(client: Client, query: InlineQuery):
