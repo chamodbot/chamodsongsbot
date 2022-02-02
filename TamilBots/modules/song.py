@@ -160,7 +160,7 @@ async def song(client, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     await status.edit("**✅ Music Savers Update Done ...**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("♻️ Update now Music savers", callback_data_cmd="tools")]]))
+            [[InlineKeyboardButton("♻️ Update now Music savers", callback_data="command_tools")]]))
     
 
 @app.on_inline_query()
