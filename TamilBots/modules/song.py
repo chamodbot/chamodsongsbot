@@ -134,7 +134,7 @@ async def help(client, message):
     reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="✪❖◈◈◈❖◈◈◈❖◈◈◈❖✪", callback_data="progress_msg")]])
 
-    await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    await message.reply(text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 @app.on_inline_query()
