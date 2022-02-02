@@ -10,6 +10,7 @@ from youtubesearchpython import VideosSearch
 from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
+AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764").split())
 
 
 def yt_search(song):
@@ -128,7 +129,8 @@ async def video(client, message):
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.message("tools"))
 async def song(client, message):
-    chat_id = message.chat.id
+    chat_id = message.chat.id not in AUTH_USERS:
+        return
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
