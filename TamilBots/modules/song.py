@@ -133,7 +133,6 @@ async def help(client, message):
     text="**🌷 Restarting Music Savers ....**",
     reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="✪❖◈◈◈❖◈◈◈❖◈◈◈❖✪", callback_data="progress_msg")]])
-   )
 
     await message.reply(start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
