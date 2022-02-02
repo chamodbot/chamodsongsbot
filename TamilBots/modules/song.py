@@ -130,7 +130,7 @@ async def video(client, message):
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.message("tools"))
 async def song(client, message):
     chat_id = message.chat.id not in AUTH_USERS:
-        return
+        return ""
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
