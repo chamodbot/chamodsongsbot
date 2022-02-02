@@ -125,16 +125,6 @@ async def video(client, message):
     await status.delete()
     os.remove(f"{str(user_id)}.mp4")
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("tool"))
-async def help(client, message):
-    if message.from_user["id"] == OWNER_ID:
-        await message.reply(owner_help)
-        return ""
-    text="**🌷 Restarting Music Savers ....**"
-    btn = InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="✪❖◈◈◈❖◈◈◈❖◈◈◈❖✪", callback_data="progress_msg")]])
-    
-    await message.reply(text, reply_markup=btn)
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("tools"))
 async def song(client, message):
@@ -145,12 +135,39 @@ async def song(client, message):
     if args.startswith(" "):
         await message.reply("Enter a song name. Check /help")
         return ""
-    status = await message.reply("**Uploading extracted stream...**",
+    status = await message.reply("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🍀 Uploading ...", callback_data="progress_msg")]]))
-    await status.edit("**Uploading extracted stream...**",
+            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("✪❖◈◈◈❖◈◈◈❖◈◈◈❖✪", callback_data="progress_msg")]]))
+            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     
 
 @app.on_inline_query()
