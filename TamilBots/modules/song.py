@@ -149,31 +149,6 @@ async def song(client, message):
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("🍀 Uploading ...", callback_data="progress_msg")]])
     
-   video_link = yt_search(args)
-    if not video_link:
-        await status.edit("✖️ 𝐅𝐨𝐮𝐧𝐝 𝐍𝐨𝐭𝐡𝐢𝐧𝐠. 𝐒𝐨𝐫𝐫𝐲.\n\n𝐓𝐫𝐲 𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐊𝐞𝐲𝐰𝐨𝐫𝐤 𝐎𝐫 𝐌𝐚𝐲𝐛𝐞 𝐒𝐩𝐞𝐥𝐥 𝐈𝐭 𝐏𝐫𝐨𝐩𝐞𝐫𝐥𝐲.\n\nEg.`/song Faded`")
-        return ""
-    yt = YouTube(video_link)
-    audio = yt.streams.filter(only_audio=True).first()
-    try:
-        download = audio.download(filename=f"{str(user_id)}")
-    except Exception as ex:
-        await status.edit("Failed to download song 😶")
-        LOGGER.error(ex)
-        return ""
-    rename = os.rename(download, f"{str(user_id)}.mp3")
-    await app.send_chat_action(message.chat.id, "upload_audio")
-    await app.send_audio(
-        chat_id=message.chat.id,
-        audio=f"{str(user_id)}.mp3",
-        duration=int(yt.length),
-        title=str(yt.title),
-        performer=str(yt.author),
-        reply_to_message_id=message.message_id,
-    )
-    await status.delete()
-    os.remove(f"{str(user_id)}.mp3")
-
 
 @app.on_inline_query()
 async def inline(client: Client, query: InlineQuery):
