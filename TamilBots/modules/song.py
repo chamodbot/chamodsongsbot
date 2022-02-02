@@ -130,9 +130,12 @@ async def help(client, message):
     if message.from_user["id"] == OWNER_ID:
         await message.reply(owner_help)
         return ""
-    text=("**🌷 Restarting Music Savers ....**",)
+    text="**🌷 Restarting Music Savers ....**"
     btn = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="✪❖◈◈◈❖◈◈◈❖◈◈◈❖✪", callback_data="progress_msg")]])
+    await message.edit(text="**🌷 Restarting Music Savers ....**"
+    btn = InlineKeyboardMarkup(
+            [[InlineKeyboardButton(text="☯☬◈◈◈☬◈◈◈☬◈◈◈☬☯", callback_data="progress_msg")]])
 
     await message.reply(text, reply_markup=btn)
 
