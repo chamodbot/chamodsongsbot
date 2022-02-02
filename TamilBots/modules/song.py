@@ -147,7 +147,7 @@ async def song(client, message):
         return ""
     status = await message.reply("**Uploading extracted stream...**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="🍀 Uploading ...", callback_data="progress_msg")]])")
+            [[InlineKeyboardButton("🍀 Uploading ...", callback_data="progress_msg")]])
     video_link = yt_search(args)
     if not video_link:
         await status.edit("✖️ 𝐅𝐨𝐮𝐧𝐝 𝐍𝐨𝐭𝐡𝐢𝐧𝐠. 𝐒𝐨𝐫𝐫𝐲.\n\n𝐓𝐫𝐲 𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐊𝐞𝐲𝐰𝐨𝐫𝐤 𝐎𝐫 𝐌𝐚𝐲𝐛𝐞 𝐒𝐩𝐞𝐥𝐥 𝐈𝐭 𝐏𝐫𝐨𝐩𝐞𝐫𝐥𝐲.\n\nEg.`/song Faded`")
