@@ -127,11 +127,11 @@ async def video(client, message):
     os.remove(f"{str(user_id)}.mp4")
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.message("tools"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("tools"))
 async def song(client, message):
-    chat_id = message.chat.id not in AUTH_USERS:
+    chat_id = message.chat.id
+    user_id = message.from_user["id"] not in AUTH_USERS:
         return ""
-    user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
