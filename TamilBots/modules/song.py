@@ -150,6 +150,11 @@ async def song(client, message):
             [[InlineKeyboardButton("🍀 Uploading ...", callback_data="progress_msg")]])
 
    )
+   await status.edit("**Uploading extracted stream...**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("✪❖◈◈◈❖◈◈◈❖◈◈◈❖✪", callback_data="progress_msg")]])
+
+  )
     
 
 @app.on_inline_query()
