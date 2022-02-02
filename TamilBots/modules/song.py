@@ -159,12 +159,12 @@ async def video(client, message):
 async def song(client, message):
     chat_id = message.chat.id
     if message.from_user.id not in AUTH_USERS:
-        await message.reply("⛔️ Access Denied ⛔️\n\nPlease Contact @chamod_deshan to Get Access or Join [zoneunlimited](https://t.me/zoneunlimited) to Access This Service 🌷")
+        await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join [zoneunlimited](https://t.me/zoneunlimited) to Access **This Service** 🌷")
         return ""
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("Enter a song name. Check /help")
+        await message.reply("**🧐 My owner to not admin this group or chanle !! ..**")
         return ""
     status = await message.reply("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
