@@ -125,7 +125,7 @@ async def video(client, message):
     os.remove(f"{str(user_id)}.mp4")
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("tool"))
+@app.on_message(pattern=r"deploy"))
 async def _(event):
 
     if event.fwd_from:
