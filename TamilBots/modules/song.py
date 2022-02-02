@@ -130,8 +130,13 @@ async def help(client, message):
     if message.from_user["id"] == OWNER_ID:
         await message.reply(owner_help)
         return ""
-    text = "🌷 Restarting Savers ...."
-    await message.reply(text)
+    text="**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton(text="✪❖◈◈◈❖◈◈◈❖◈◈◈❖✪", callback_data="progress_msg")]])
+    )
+
+    await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    add_chat_to_db(str(chat_id))
 
 @app.on_inline_query()
 async def inline(client: Client, query: InlineQuery):
