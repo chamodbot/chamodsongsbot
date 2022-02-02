@@ -34,16 +34,28 @@ async def song(client, message):
         await message.reply("**😶 Oops Not Found ...**")
         return ""
     await message.reply_chat_action("typing")
-    status = await message.reply("** Searching music Savers ...**")
-    await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("🔍 Searching Music ... 🔎", callback_data="down")]]))
-    await status.edit("**🌷 Downloading music savers ...**")
-    await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
+    status = await message.reply("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
     await message.reply_chat_action("record_audio")
-    await status.edit("**🍀 Uploading To Telegram ...**")
-    await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     video_link = yt_search(args)
     if not video_link:
         await status.edit("**😶 Oops Not Found ...**")
@@ -92,16 +104,28 @@ async def video(client, message):
         await message.reply("**😶 Oops Not Found ...**")
         return ""
     await message.reply_chat_action("typing")
-    status = await message.reply("** Searching music Savers ...**")
-    await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("🔍 Searching Music ... 🔎", callback_data="down")]]))
-    await status.edit("**🌷 Downloading music savers ...**")
-    await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
+    status = await message.reply("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
     await message.reply_chat_action("record_video_note")
-    await status.edit("**🍀 Uploading To Telegram ...**")
-    await status.edit_reply_markup(
-        InlineKeyboardMarkup([[InlineKeyboardButton("╠《》《》《》《》《》《》《》《》《》╣", callback_data="down")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Restarting Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     video_link = yt_search(args)
     if not video_link:
         await status.edit("**😶 Oops Not Found ...**")
