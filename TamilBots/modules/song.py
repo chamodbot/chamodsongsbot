@@ -1,4 +1,5 @@
 from pyrogram import Client, filters
+from config import OWNER_ID
 import asyncio
 import os
 from typing import Tuple
@@ -124,7 +125,7 @@ async def video(client, message):
     await status.delete()
     os.remove(f"{str(user_id)}.mp4")
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("tool"))
 async def help(client, message):
     if message.from_user["id"] == OWNER_ID:
         await message.reply(owner_help)
