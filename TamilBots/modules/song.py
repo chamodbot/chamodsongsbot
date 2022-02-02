@@ -133,7 +133,7 @@ async def help(client, message):
     text="**🌷 Restarting Music Savers ....**"
     btn = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="✪❖◈◈◈❖◈◈◈❖◈◈◈❖✪", callback_data="progress_msg")]])
-    await message.edit("**🌺 Restarting complicated ....**"
+    
     await message.reply(text, reply_markup=btn)
 
 @app.on_inline_query()
