@@ -31,7 +31,9 @@ async def song(client, message):
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("**😶 Oops Not Found ...**")
+        await message.reply("**😶 Oops Not Found !! ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("☸◉◑◒◓◔◕◉◑◒◓◔◕◉☸", callback_data="progress_msg")]]))
         return ""
     await message.reply_chat_action("typing")
     status = await message.reply("**🌷 Downloading Music Savers ....**",
@@ -50,7 +52,7 @@ async def song(client, message):
     await status.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌺 Uploading To Text ....**",
+    await status.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
     await status.edit("**🌺 Uploading To Telegram ....**",
@@ -101,7 +103,9 @@ async def video(client, message):
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "video"
     if args.startswith(" "):
-        await message.reply("**😶 Oops Not Found ...**")
+        await message.reply("**😶 Oops Not Found !! ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("☸◉◑◒◓◔◕◉◑◒◓◔◕◉☸", callback_data="progress_msg")]]))
         return ""
     await message.reply_chat_action("typing")
     status = await message.reply("**🌷 Downloading Music Savers ....**",
