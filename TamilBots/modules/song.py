@@ -173,9 +173,6 @@ async def song(client, message):
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await message.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await message.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
-        reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
         reply_markup=InlineKeyboardMarkup(
