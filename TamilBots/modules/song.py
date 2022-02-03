@@ -168,7 +168,7 @@ async def song(client, message):
     if args.startswith(" "):
         await message.reply("**🧐 My owner is not admin this group or chanle !! ..**")
         return ""
-    status = await message.reply("**🌷 Updating Music Savers ....*",
+    status = await message.reply("**🌷 Updating Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
@@ -194,13 +194,16 @@ async def song(client, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com \n Update Successfully 🌷..**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Updating Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n www.shazam.com**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers .... www.shazam.com \n Update Successfully 🌷..**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     await status.edit("**✅ Music Savers Update Successfully ...**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("♻️ Update Now Music Savers", callback_data="command_tools")]]))
