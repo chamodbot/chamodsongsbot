@@ -13,7 +13,7 @@ from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForb
 
 start_photo = f"https://telegra.ph/file/e8bf37370b03bc9f3118f.jpg"
 
-start_text = """
+START_TEXT = """
 **👋 hello There,** [{}](tg://user?id={})
      
                  **Music Finder Bot**  
@@ -55,7 +55,7 @@ async def start(client, message):
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
     if message.chat.type == "private":
-        btn = InlineKeyboardMarkup(
+        START_BUTTONS = InlineKeyboardMarkup(
            [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/The_song_finder_bot?startgroup=true"),
             
             ],
@@ -123,8 +123,12 @@ async def start(b, m):
                     parse_mode="HTML",
                     disable_web_page_preview=True)
                 return
-        await m.reply(start_text.format(m.from_user.mention), reply_markup=btn)
-    add_chat_to_db(str(chat_id))
+        await m.reply_text(
+            text=START_TEXT.format(m.from_user.mention),
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=START_BUTTONS
+              )
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
