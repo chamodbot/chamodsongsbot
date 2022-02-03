@@ -11,9 +11,9 @@ from TamilBots.sql.chat_sql import add_chat_to_db
 from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForbidden
 
 
-start_photo = f"https://telegra.ph/file/e8bf37370b03bc9f3118f.jpg"
+start_photo = "https://telegra.ph/file/e8bf37370b03bc9f3118f.jpg"
 
-START_TEXT = """
+start_text = """
 **👋 hello There,** [{}](tg://user?id={})
      
                  **Music Finder Bot**  
@@ -49,13 +49,12 @@ owner_help = """
 """
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("startjdjd"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
-    if message.chat.type == "private":
-        START_BUTTONS = InlineKeyboardMarkup(
+        btn = InlineKeyboardMarkup(
            [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/The_song_finder_bot?startgroup=true"),
             
             ],
@@ -86,44 +85,6 @@ async def start(client, message):
         btn = None
     await message.reply(start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
-
-
-@app.on_message(filters.command("start"))
-async def start(b, m):
-    
-    usr_cmd = m.text.split("_")[-1]
-    if usr_cmd == "/start":
-        if MUST_JOIN != "None":
-            try:
-                user = await b.get_chat_member(MUST_JOIN, m.chat.id)
-                if user.status == "kicked":
-                    await b.send_message(
-                        chat_id=m.chat.id,
-                        text="__Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Cᴏɴᴛᴀᴄᴛ ᴛʜᴇ Dᴇᴠᴇʟᴏᴘᴇʀ__\n\n @AvishkarPatil **Tʜᴇʏ Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
-                        parse_mode="markdown",
-                        disable_web_page_preview=True
-                    )
-                    return
-            except UserNotParticipant:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="⛔️ Access Denied ⛔️\n\n🙋‍♂️ Hey There , You Must Join @zoneunlimited Telegram Channel To Use This BOT. So, Please Join it & Try Again 🤗. Thank You 🤝",
-                    reply_markup=InlineKeyboardMarkup(
-                        [[
-                            InlineKeyboardButton("🍀 zoneunlimited 🍀", url=f"https://t.me/{MUST_JOIN}")
-                            ]]
-                    ),
-                    parse_mode="HTML"
-                )
-                return
-            except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="<i>Sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ</i> <b><a href='http://t.me/chamod_deshan'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>",
-                    parse_mode="HTML",
-                    disable_web_page_preview=True)
-                return
-        await m.reply(START_TEXT.format(m.chat.id), reply_markup=START_BUTTONS)
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
