@@ -207,6 +207,8 @@ async def song(client, message):
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("♻️ Update Now Music Savers", callback_data="command_tools")]]))
 
+descargar = Descargar('downloads/')
+
 @app.on_message(
     filters.command(['song'],prefixes=['/', '!'])
     & (filters.group | filters.private)
