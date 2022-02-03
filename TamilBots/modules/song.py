@@ -2,6 +2,8 @@ from pyrogram import Client, filters
 from config import OWNER_ID
 import asyncio
 import os
+from funcs.download import Descargar
+from pyrogram.errors.exceptions import MessageNotModified
 from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
 from pyrogram.types import InlineKeyboardButton
@@ -23,7 +25,7 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("songjsj"))
 async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
@@ -204,6 +206,46 @@ async def song(client, message):
     await status.edit("**✅ Music Savers Update Successfully ...**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("♻️ Update Now Music Savers", callback_data="command_tools")]]))
+
+@app.on_message(
+    filters.command(['song'],prefixes=['/', '!'])
+    & (filters.group | filters.private)
+    & ~ filters.edited)
+async def song_dl(_, msg: Message):
+
+    if len(msg.command) == 1:
+        return await msg.reply(text=text, parse_mode='md')
+
+    r_text = await msg.reply('Processing...')
+    url = msg.text.split(None, 1)[1]
+    url = extract_the_url(url=url)
+    
+    if url == 0:return await r_text.edit('I could not find that song. Try with another keywords...')
+
+    await r_text.edit('Downloading...')
+
+    ytinfo = descargar.mp3_viaPytube(url)
+
+    if ytinfo == 0:
+        await r_text.edit(f'Something Wrong\n\n☕️Take a Coffee and come again... :(')
+        return
+
+    try:
+        await r_text.edit_text('Uploading...')
+    except MessageNotModified:
+        pass
+
+    await msg.reply_audio(
+            audio=f'downloads/{ytinfo.title.replace("/","|")}-{ytinfo.video_id}.mp3', 
+            thumb='src/Medusa320px.png',
+            duration=int(ytinfo.length),
+            performer=str(ytinfo.author),
+            title=f'{str(ytinfo.title)}',
+            caption=f"<a href='{url}'>__{ytinfo.title}__</a>\n\n__Downloaded by @MedusaMousikibot__"
+        )
+
+    await r_text.delete()
+    os.remove(f'downloads/{ytinfo.title.replace("/","|")}-{ytinfo.video_id}.mp3')
     
 
 @app.on_inline_query()
