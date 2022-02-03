@@ -41,6 +41,9 @@ async def song(client, message):
     status = await message.reply("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await message.edit("**🌷 Downloading Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
@@ -171,6 +174,12 @@ async def song(client, message):
     status = await message.reply("**🌷 Updating Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await message.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    await message.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
@@ -180,9 +189,21 @@ async def song(client, message):
     await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com \n Update Successfully 🌷..**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Updating Music Savers ....\n www.shazam.com**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
+    await status.edit("**🌷 Updating Music Savers ....\n www.shazam.com**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n www.shazam.com**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
