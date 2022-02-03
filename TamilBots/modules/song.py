@@ -238,7 +238,7 @@ async def song_dl(_, msg: Message):
     await msg.reply_audio(
             audio=f"{str(user_id)}.mp3",
             caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to mp3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
-            reply_to_msg_id=msg.msg_id,
+            reply_to_message_id=msg.message_id,
     )
     await r_text.delete()
     os.remove(f"{str(user_id)}.mp3")
