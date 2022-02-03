@@ -123,7 +123,7 @@ async def start(b, m):
                     parse_mode="HTML",
                     disable_web_page_preview=True)
                 return
-        await m.reply(start_text.format(user_id), reply_markup=btn)
+        await m.reply(start_text.format(m.from_user.mention), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 
