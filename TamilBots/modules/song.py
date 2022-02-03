@@ -10,7 +10,7 @@ from youtubesearchpython import VideosSearch
 from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
-AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 -1001615594988").split())
+AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
 
 
 def yt_search(song):
@@ -166,7 +166,7 @@ async def song(client, message):
     if args.startswith(" "):
         await message.reply("**🧐 My owner is not admin this group or chanle !! ..**")
         return ""
-    status = await message.reply("**🌷 Restarting Music Savers ....**",
+    status = await message.reply("**🌷 Updating Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
