@@ -123,10 +123,7 @@ async def start(b, m):
                     parse_mode="HTML",
                     disable_web_page_preview=True)
                 return
-        await m.reply(
-            START_TEXT.format(m.from_user.mention),
-            reply_markup=START_BUTTONS
-              )
+        await m.reply(START_TEXT.format(m.chat.id), reply_markup=START_BUTTONS)
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
