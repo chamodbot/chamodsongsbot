@@ -168,12 +168,9 @@ async def song(client, message):
     if args.startswith(" "):
         await message.reply("**🧐 My owner is not admin this group or chanle !! ..**")
         return ""
-    status = await message.reply("**🌷 Updating Music Savers ....**",
+    status = await message.reply("**🌷 Updating Music Savers ....\n m.youtube.com**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await message.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
