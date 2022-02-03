@@ -92,9 +92,9 @@ async def start(b, m):
     
     usr_cmd = m.text.split("_")[-1]
     if usr_cmd == "/start":
-        if Var.MUST_JOIN != "None":
+        if MUST_JOIN != "None":
             try:
-                user = await b.get_chat_member(Var.MUST_JOIN, m.chat.id)
+                user = await b.get_chat_member(MUST_JOIN, m.chat.id)
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
@@ -109,7 +109,7 @@ async def start(b, m):
                     text="⛔️ Access Denied ⛔️\n\n🙋‍♂️ **Hey There** , You Must **Join** @zoneunlimited Telegram Channel To Use **This BOT**. So, Please **Join** it & Try Again 🤗. **Thank You** 🤝",
                     reply_markup=InlineKeyboardMarkup(
                         [[
-                            InlineKeyboardButton("🍀 zoneunlimited 🍀", url=f"https://t.me/{Var.MUST_JOIN}")
+                            InlineKeyboardButton("🍀 zoneunlimited 🍀", url=f"https://t.me/{MUST_JOIN}")
                             ]]
                     ),
                     parse_mode="HTML"
