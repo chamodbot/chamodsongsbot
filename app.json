@@ -23,10 +23,9 @@
             "description":
             "required": true
        },
-    "MUST_JOIN": {
-      "description": "Add username/id of a channel/group",
-      "required": true,
-      "value": ""
+      "MUST_JOIN": {
+            "description": "Add username/id of a channel/group",
+            "required": true
         }
     },
     "buildpacks": [
