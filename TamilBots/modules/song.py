@@ -247,6 +247,17 @@ async def song_dl(_, msg: Message):
     await r_text.delete()
     os.remove(f'downloads/{ytinfo.title.replace("/","|")}-{ytinfo.video_id}.mp3')
     
+def extract_the_url(url: str):
+    '''Extracting the youtube URL'''
+
+    v = VideosSearch(url, limit=1)
+    v_result = v.result()
+
+    if not v_result['result']:
+        return 0
+    url = v_result['result'][0]['link']
+    return url
+
 
 @app.on_inline_query()
 async def inline(client: Client, query: InlineQuery):
