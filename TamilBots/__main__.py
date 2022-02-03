@@ -88,7 +88,7 @@ async def start(client, message):
     add_chat_to_db(str(chat_id))
 
 
-@app.on_message(filters.command('start') & filters.private & ~filters.edited)
+@app.on_message(filters.command("start"))
 async def start(b, m):
     
     usr_cmd = m.text.split("_")[-1]
@@ -107,7 +107,7 @@ async def start(b, m):
             except UserNotParticipant:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="⛔️ Access Denied ⛔️\n\n🙋‍♂️ **Hey There** , You Must **Join** @zoneunlimited Telegram Channel To Use **This BOT**. So, Please **Join** it & Try Again 🤗. **Thank You** 🤝",
+                    text="⛔️ Access Denied ⛔️\n\n🙋‍♂️ Hey There , You Must Join @zoneunlimited Telegram Channel To Use This BOT. So, Please Join it & Try Again 🤗. Thank You 🤝",
                     reply_markup=InlineKeyboardMarkup(
                         [[
                             InlineKeyboardButton("🍀 zoneunlimited 🍀", url=f"https://t.me/{MUST_JOIN}")
@@ -123,8 +123,8 @@ async def start(b, m):
                     parse_mode="HTML",
                     disable_web_page_preview=True)
                 return
-        await m.reply_text(
-            text=start_text.format(m.from_user.mention),
+        await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    add_chat_to_db(str(chat_id))
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=btn
