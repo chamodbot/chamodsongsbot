@@ -43,7 +43,7 @@ async def must_join_channel(bot: Client, msg: Message):
                     f"**⛔️ Access Denied ⛔️**\n\n**Hello there,You must join @zoneunlimited Telegram Channel To Use This BOT. So, Please Join it & Try Again🤗. Thank You 🤝**",
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup([
-                        [InlineKeyboardButton("🍀 zoneunlimited 🍀", url=https://t.me/zoneunlimited)]
+                        [InlineKeyboardButton("🍀 zoneunlimited 🍀", url="https://t.me/zoneunlimited")]
                     ])
                 )
                 await msg.stop_propagation()
