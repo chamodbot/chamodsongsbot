@@ -235,7 +235,7 @@ async def song_dl(_, msg: Message):
     except MessageNotModified:
         pass
 
-    await msg.send_audio(
+    await msg.reply_audio(
         chat_id=msg.chat.id,
         audio=f'downloads/{ytinfo.title.replace("/","|")}-{ytinfo.video_id}.mp3',
         duration=int(ytinfo.length),
