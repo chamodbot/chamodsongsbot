@@ -172,19 +172,19 @@ async def song(client, message):
     await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com\n Update Successfully 🌷.**",
+    await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com\n Update Successfully 🌷..**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Updating Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com/en/**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Updating Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com/en/ \n Update Successfully 🌷..**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Updating Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers ....\n www.shazam.com/**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Updating Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers .... www.shazam.com/ \n Update Successfully 🌷..**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     await status.edit("**✅ Music Savers Update Successfully ...**",
