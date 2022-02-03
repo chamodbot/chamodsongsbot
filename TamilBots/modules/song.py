@@ -33,7 +33,7 @@ async def song(client, message):
     if args.startswith(" "):
         await message.reply("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☸◉◑◒◓◔◕◉◑◒◓◔◕◉☸", callback_data="progress_msg")]]))
+            [[InlineKeyboardButton("◉◑◒◓◔◕◉◑◒◓◔◕◉", callback_data="progress_msg")]]))
         return ""
     await message.reply_chat_action("typing")
     status = await message.reply("**🌷 Downloading Music Savers ....**",
@@ -78,7 +78,7 @@ async def song(client, message):
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
-        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
+        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
         reply_to_message_id=message.message_id,
     )
     await status.delete()
@@ -148,7 +148,7 @@ async def video(client, message):
         chat_id=message.chat.id,
         video=f"{str(user_id)}.mp4",
         duration=int(yt.length),
-        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to mp4 🎥**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [Music Finder Bot](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
+        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to mp4 🎥**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
         reply_to_message_id=message.message_id,
     )
     await status.delete()
@@ -164,32 +164,32 @@ async def song(client, message):
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("**🧐 My owner to not admin this group or chanle !! ..**")
+        await message.reply("**🧐 My owner is not admin this group or chanle !! ..**")
         return ""
     status = await message.reply("**🌷 Restarting Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Restarting Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Restarting Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com\n Update Successfully 🌷.**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Restarting Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Restarting Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Restarting Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Restarting Music Savers ....**",
+    await status.edit("**🌷 Updating Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
-    await status.edit("**✅ Music Savers Update Done ...**",
+    await status.edit("**✅ Music Savers Update Successfully ...**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("♻️ Update now Music savers", callback_data="command_tools")]]))
+            [[InlineKeyboardButton("♻️ Update Now Music Savers", callback_data="command_tools")]]))
     
 
 @app.on_inline_query()
