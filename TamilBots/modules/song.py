@@ -214,8 +214,8 @@ descargar = Descargar('downloads/')
     & (filters.group | filters.private)
     & ~ filters.edited)
 async def song_dl(_, msg: Message):
-    chat_id = message.chat.id
-    user_id = message.from_user["id"]
+    chat_id = msg.chat.id
+    user_id = msg.from_user["id"]
 
     if len(msg.command) == 1:
         return await msg.reply(text=text, parse_mode='md')
