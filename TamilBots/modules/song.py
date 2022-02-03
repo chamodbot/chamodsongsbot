@@ -237,7 +237,6 @@ async def song_dl(_, msg: Message):
 
     await msg.reply_audio(
             audio=f"{str(user_id)}.mp3",
-            performer=str(ytinfo.author),
             title=f'{str(ytinfo.title)}',
             caption=f"<a href='{url}'>__{ytinfo.title}__</a>\n\n__Downloaded by @MedusaMousikibot__"
         )
