@@ -38,43 +38,7 @@ start_text = """
 **🍀 Developer :** @chamod_deshan
 
 
-🔥 **🍀 @zoneunlimited 🍀 Corporation ©️
-**""",
-    reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "➕ ❰ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ❱ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🔥   zoneunlimited  🔥", url=f"https://t.me/zoneunlimited"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🍀  zoneunlimited chat 🍀", url="https://t.me/zoneunlimitedchat"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🌷  Bot Developer  🌷", url=f"https://t.me/chamod_deshan"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🧿  You Tech  🧿", url=f"https://t.me/YouTech_VPN_HUB"
-                    )
-                ],
-                [  InlineKeyboardButton(text=
-                       "◇────────🔍 Search Again 🔎───────◇", switch_inline_query_current_chat="")
-                   
-                ]
-                
-           ]
-        ),
-    )
+🔥 **🍀 @zoneunlimited 🍀 Corporation ©️**"""
 
 owner_help = """
 /blacklist user_id
@@ -87,9 +51,10 @@ owner_help = """
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
-    if message.from_user["id"] == OWNER_ID:
-        await message.reply(owner_help)
-        return ""
+    chat_id = message.chat.id
+    user_id = message.from_user["id"]
+    name = message.from_user["first_name"]
+    if message.chat.type == "private":
         btn = InlineKeyboardMarkup(
            [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/The_song_finder_bot?startgroup=true"),
             
@@ -119,7 +84,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply(start_text, reply_markup=btn)
+    await message.reply(start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 
