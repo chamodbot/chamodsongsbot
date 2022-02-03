@@ -8,6 +8,7 @@ from pyrogram.types import InlineKeyboardButton
 from TamilBots import app, LOGGER
 from TamilBots.TamilBots import ignore_blacklisted_users
 from TamilBots.sql.chat_sql import add_chat_to_db
+from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForbidden
 
 
 start_photo = f"https://telegra.ph/file/e8bf37370b03bc9f3118f.jpg"
