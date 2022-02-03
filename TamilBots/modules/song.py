@@ -41,9 +41,6 @@ async def song(client, message):
     status = await message.reply("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await message.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
