@@ -47,7 +47,7 @@ owner_help = """
 """
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("startjdjd"))
 async def start(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
@@ -85,6 +85,53 @@ async def start(client, message):
     await message.reply(start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
+
+@app.on_message(filters.command('start') & filters.private & ~filters.edited)
+async def start(b, m):
+    if not await db.is_user_exist(m.from_user.id):
+        await db.add_user(m.from_user.id)
+        await b.send_message(
+            Var.BIN_CHANNEL,
+            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ:** \n\n__Mʏ Nᴇᴡ Fʀɪᴇɴᴅ__ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) __Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!__"
+        )
+    usr_cmd = m.text.split("_")[-1]
+    if usr_cmd == "/start":
+        if Var.MUST_JOIN != "None":
+            try:
+                user = await b.get_chat_member(Var.MUST_JOIN, m.chat.id)
+                if user.status == "kicked":
+                    await b.send_message(
+                        chat_id=m.chat.id,
+                        text="__Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Cᴏɴᴛᴀᴄᴛ ᴛʜᴇ Dᴇᴠᴇʟᴏᴘᴇʀ__\n\n @AvishkarPatil **Tʜᴇʏ Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
+                        parse_mode="markdown",
+                        disable_web_page_preview=True
+                    )
+                    return
+            except UserNotParticipant:
+                await b.send_message(
+                    chat_id=m.chat.id,
+                    text="⛔️ Access Denied ⛔️\n\n🙋‍♂️ **Hey There** , You Must **Join** @zoneunlimited Telegram Channel To Use **This BOT**. So, Please **Join** it & Try Again 🤗. **Thank You** 🤝",
+                    reply_markup=InlineKeyboardMarkup(
+                        [[
+                            InlineKeyboardButton("🍀 zoneunlimited 🍀", url=f"https://t.me/{Var.MUST_JOIN}")
+                            ]]
+                    ),
+                    parse_mode="HTML"
+                )
+                return
+            except Exception:
+                await b.send_message(
+                    chat_id=m.chat.id,
+                    text="<i>Sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ</i> <b><a href='http://t.me/chamod_deshan'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>",
+                    parse_mode="HTML",
+                    disable_web_page_preview=True)
+                return
+        await m.reply_text(
+            text=START_TEXT.format(m.from_user.mention),
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=btn
+              )
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def help(client, message):
