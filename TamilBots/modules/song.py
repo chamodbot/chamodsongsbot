@@ -237,11 +237,10 @@ async def song_dl(_, msg: Message):
 
     await msg.reply_audio(
             audio=f"{str(user_id)}.mp3",
-            title=f'{str(ytinfo.title)}',
             caption=f"<a href='{url}'>__{ytinfo.title}__</a>\n\n__Downloaded by @MedusaMousikibot__"
     )
     await r_text.delete()
-    os.remove(f'downloads/{ytinfo.title.replace("/","|")}-{ytinfo.video_id}.mp3')
+    os.remove(f"{str(user_id)}.mp3")
     
 def extract_the_url(url: str):
     '''Extracting the youtube URL'''
