@@ -89,12 +89,7 @@ async def start(client, message):
 
 @app.on_message(filters.command('start') & filters.private & ~filters.edited)
 async def start(b, m):
-    if not await db.is_user_exist(m.from_user.id):
-        await db.add_user(m.from_user.id)
-        await b.send_message(
-            Var.BIN_CHANNEL,
-            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ:** \n\n__Mʏ Nᴇᴡ Fʀɪᴇɴᴅ__ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) __Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!__"
-        )
+    
     usr_cmd = m.text.split("_")[-1]
     if usr_cmd == "/start":
         if Var.MUST_JOIN != "None":
