@@ -9,6 +9,8 @@ from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
 from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
+from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForbidden
+from Config import MUST_JOIN
 from TamilBots.sql.chat_sql import add_chat_to_db
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
 
@@ -22,6 +24,33 @@ def yt_search(song):
         video_id = result["result"][0]["id"]
         url = f"https://youtu.be/{video_id}"
         return url
+
+@app.on_message(~filters.edited & filters.incoming & filters.private, group=-1)
+async def must_join_channel(bot: Client, msg: Message):
+    if not MUST_JOIN:  # Not compulsory
+        return
+    try:
+        try:
+            await bot.get_chat_member(MUST_JOIN, msg.from_user.id)
+        except UserNotParticipant:
+            if MUST_JOIN.isalpha():
+                link = "https://t.me/" + MUST_JOIN
+            else:
+                chat_info = await bot.get_chat(MUST_JOIN)
+                link = chat_info.invite_link
+            try:
+                await msg.reply(
+                    f"**⛔️ Access Denied ⛔️**\n\n**Hello there,You must join @zoneunlimited Telegram Channel To Use This BOT. So, Please Join it & Try Again🤗. Thank You 🤝**",
+                    disable_web_page_preview=True,
+                    reply_markup=InlineKeyboardMarkup([
+                        [InlineKeyboardButton("🍀 zoneunlimited 🍀", url=https://t.me/zoneunlimited)]
+                    ])
+                )
+                await msg.stop_propagation()
+            except ChatWriteForbidden:
+                pass
+    except ChatAdminRequired:
+        print(f"I'm not admin in the MUST_JOIN chat : {MUST_JOIN} !")
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
