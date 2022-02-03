@@ -38,7 +38,43 @@ start_text = """
 **🍀 Developer :** @chamod_deshan
 
 
-🔥 **🍀 @zoneunlimited 🍀 Corporation ©️**"""
+🔥 **🍀 @zoneunlimited 🍀 Corporation ©️
+**""",
+    reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "➕ ❰ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ❱ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔥   zoneunlimited  🔥", url=f"https://t.me/zoneunlimited"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🍀  zoneunlimited chat 🍀", url="https://t.me/zoneunlimitedchat"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🌷  Bot Developer  🌷", url=f"https://t.me/chamod_deshan"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🧿  You Tech  🧿", url=f"https://t.me/YouTech_VPN_HUB"
+                    )
+                ],
+                [  InlineKeyboardButton(text=
+                       "◇────────🔍 Search Again 🔎───────◇", switch_inline_query_current_chat="")
+                   
+                ]
+                
+           ]
+        ),
+    )
 
 owner_help = """
 /blacklist user_id
