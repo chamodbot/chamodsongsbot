@@ -65,7 +65,7 @@ async def song(client, message):
     if not video_link:
         await status.edit("**😶 Oops Not Found ...**")
         return ""
-    ydl = YouTube(video_link)
+    ydl = YoutubeSearch(video_link)
     audio = ydl.streams.filter(only_audio=True).first()
     try:
         download = audio.download(filename=f"{str(user_id)}")
