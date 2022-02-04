@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from config import OWNER_ID
 import asyncio
+import requests
 import os
 import youtube_dl
 from funcs.download import Descargar
