@@ -72,7 +72,7 @@ async def song(client, message):
 
 @app.on_message(filters.text)
 def song(_, message):
-    query = " ".join(message.command[1:])
+    query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
     m = message.reply("**🎵 Searching Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
