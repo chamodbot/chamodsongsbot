@@ -143,7 +143,8 @@ def song(_, message):
     except Exception as e:
         print(e)
 
-@app.on_message(filters.command(["vsong", "video"]))
+
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def ytmusic(client, message: Message):
     global is_downloading
     if is_downloading:
