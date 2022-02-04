@@ -71,10 +71,10 @@ async def song(client, message):
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
-async def song(client, message):
+def song(_, message):
     query = " ".join(message.command[1:])
     await message.reply_chat_action("typing")
-    status = await message.reply("**🎵 Searching Music Savers ....**",
+    m = message.reply("**🎵 Searching Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
@@ -89,22 +89,19 @@ async def song(client, message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        await message.reply("**😶 Oops Not Found !! ....**",
+        m.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(str(e))
         return
     await message.reply_chat_action("record_audio")
-    await status.edit("**🎵 Searching Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Downloading Music Savers ....**",
+    m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Downloading Music Savers ....**",
+    m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Downloading Music Savers ....**",
+    m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
     try:
@@ -118,16 +115,16 @@ async def song(client, message):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         await message.reply_chat_action("upload_audio")
-        await status.edit("**🌺 Uploading To Telegram ....**",
+        m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
-        await status.edit("**🌺 Uploading To Telegram ....**",
+        m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
-        await status.edit("**🌺 Uploading To Telegram ....**",
+        m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
-        await status.edit("**🌺 Uploading To Telegram ....**",
+        m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         message.reply_audio(
@@ -140,7 +137,7 @@ async def song(client, message):
         )
         m.delete()
     except Exception as e:
-        await message.reply("**😶 Oops Not Found !! ....**",
+        m.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(e)
