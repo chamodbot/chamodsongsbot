@@ -118,9 +118,6 @@ def song(_, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
         m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
-        m.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
         m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
