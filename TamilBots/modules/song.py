@@ -213,7 +213,7 @@ async def song(client, message):
 descargar = Descargar('downloads/')
 
 @app.on_message(
-    filters.command(['song'],prefixes=['/', '!'])
+    filters.command(['songgjj'],prefixes=['/', '!'])
     & (filters.group | filters.private)
     & ~ filters.edited)
 async def song_dl(_, msg: Message):
