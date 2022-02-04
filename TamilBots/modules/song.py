@@ -144,7 +144,7 @@ def song(_, message):
     except Exception as e:
         print(e)
 
-@app.on_message(filters.command("song"))
+@app.on_message(filters.command("audio"))
 def audio_dl(client, message):
     chat_id = message.chat.id
     link = message.text.split('audio', maxsplit=1)[1]
