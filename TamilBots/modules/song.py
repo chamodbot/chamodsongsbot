@@ -147,8 +147,14 @@ def song(_, message):
 @app.on_message(filters.command("audio"))
 def song(_, message):
     chat_id = message.chat.id
-    link = message.text.split('audio', maxsplit=1)[1]
-    try:
+    user_id = message.from_user["id"]
+    add_chat_to_db(str(chat_id))
+    args = get_arg(message) + " " + "song"
+    if args.startswith(" "):
+        return ""
+    video_link = yt_search(args)
+    if not video_link:
+        return ""
         yt = YouTube(link)
         audio = yt.streams.get_audio_only().download('res')
         title = yt.title
