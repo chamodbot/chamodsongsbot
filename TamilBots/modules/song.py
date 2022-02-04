@@ -140,7 +140,7 @@ async def song(client, message):
         )
         m.delete()
     except Exception as e:
-        await status.edit("**😶 Oops Not Found !! ....**",
+        await message.reply("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(e)
