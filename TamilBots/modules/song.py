@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from config import OWNER_ID
 import asyncio
 import os
+import wget
 import requests
 import yt_dlp
 from funcs.download import Descargar
