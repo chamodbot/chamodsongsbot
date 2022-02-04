@@ -1,10 +1,9 @@
 from pyrogram import Client, filters
 from config import OWNER_ID
 import asyncio
-import requests
 import os
-import youtube_dl
 from funcs.download import Descargar
+from yt_dlp import YoutubeDL
 from youtube_search import YoutubeSearch
 from pyrogram.errors.exceptions import MessageNotModified
 from pytube import YouTube
