@@ -23,15 +23,16 @@ start_text = """
 **🍀 FRO MUSIC LOVERS ⚡️**
 
 ◇───────────────◇
-
-✅ Voice music search supported 🎤
-🏵 keyword music search 🎸
-🏆 Automatically lyrics Finder (all lang.)
-🚀 inbox supported
-📡 sported fro group 
-**🧿 more Fast download**
-📥 stock Every Download Music
-🔗 24 Hour activet 
+┏━━━━━━━━━━━━━━━━━┓
+┣★ ✅ Voice music search supported 🎤
+┣★ 🌺 keyword music search 🎸
+┣★ 🔥 sported fro group 
+┣★ **🎵 more Fast download**
+┣★ 📥 stock Every Download Music
+┣★ 🚀 inbox supported 
+┣★ 🌷 Automatically lyrics Finder (all lang.)
+┣★ 🔗 24 Hour activet 
+┗━━━━━━━━━━━━━━━━━┛
 
 ◇───────────────◇
 
