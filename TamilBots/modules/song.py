@@ -161,7 +161,7 @@ async def song(client, message):
         if os.path.exists(audio):
             os.remove(audio)
         if os.path.exists('a.jpg'):
-            os.remove('a.jpg'
+            os.remove('a.jpg')
 
 @app.on_inline_query()
 async def inline(client: Client, query: InlineQuery):
