@@ -3,6 +3,7 @@ from config import OWNER_ID
 import asyncio
 import os
 import wget
+import time
 import requests
 import yt_dlp
 from funcs.download import Descargar
