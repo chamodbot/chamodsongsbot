@@ -71,7 +71,7 @@ async def song(client, message):
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
-def song(_, message):
+async def song(client, message):
     query = " ".join(message.command[1:])
     await message.reply_chat_action("typing")
     m = message.reply("**🎵 Searching Music Savers ....**",
