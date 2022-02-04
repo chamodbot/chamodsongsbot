@@ -2,7 +2,9 @@ from pyrogram import Client, filters
 from config import OWNER_ID
 import asyncio
 import os
+import youtube_dl
 from funcs.download import Descargar
+from youtube_search import YoutubeSearch
 from pyrogram.errors.exceptions import MessageNotModified
 from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
@@ -59,12 +61,12 @@ async def song(client, message):
     await status.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
-    video_link = yt_search(args)
+    video_link = ydl_search(args)
     if not video_link:
         await status.edit("**😶 Oops Not Found ...**")
         return ""
-    yt = pytube(video_link)
-    audio = yt.streams.filter(only_audio=True).first()
+    ydl = YoutubeDL(video_link)
+    audio = ydl.streams.filter(only_audio=True).first()
     try:
         download = audio.download(filename=f"{str(user_id)}")
     except Exception as ex:
