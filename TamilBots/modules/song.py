@@ -8,7 +8,7 @@ from funcs.download import Descargar
 from yt_dlp import YoutubeDL
 from youtube_search import YoutubeSearch
 from pyrogram.errors.exceptions import MessageNotModified
-from pytube import YouTube
+from pytube import YouTube, exceptions
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
 from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
@@ -145,7 +145,7 @@ def song(_, message):
         print(e)
 
 @app.on_message(filters.command("audio"))
-def audio_dl(client, message):
+def song(_, message):
     chat_id = message.chat.id
     link = message.text.split('audio', maxsplit=1)[1]
     try:
