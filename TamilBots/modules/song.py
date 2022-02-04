@@ -147,6 +147,7 @@ def song(_, message):
 @app.on_message(filters.command("audio"))
 async def song(client, message):
     chat_id = message.chat.id
+    status = await message.reply("🚀 🔎 🔎 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐭𝐡𝐞 𝐬𝐨𝐧𝐠.")
     link = message.text.split('audio', maxsplit=1)[1]
     try:
         yt = YouTube(link)
@@ -161,4 +162,5 @@ async def song(client, message):
         performer=str(yt.author),
         reply_to_message_id=message.message_id,
     )
+    await status.delete()
     os.remove(f"{str(user_id)}.mp3")
