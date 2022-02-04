@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from config import OWNER_ID
 import asyncio
 import os
+import requests
 from funcs.download import Descargar
 from yt_dlp import YoutubeDL
 from youtube_search import YoutubeSearch
