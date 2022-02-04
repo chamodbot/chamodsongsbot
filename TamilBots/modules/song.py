@@ -75,9 +75,9 @@ async def song(client, message):
     await status.edit("**🌷 Updating Music Savers .... www.shazam.com \n Update Successfully 🌷..**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
-    await status.edit("**✅ Music Savers Update Successfully ...**",
+    await status.edit("**⭕️ Music Savers Update Successfully ...**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("♻️ Update Now Music Savers", callback_data="close")]]))
+            [[InlineKeyboardButton("🚫  close  🚫", callback_data="close")]]))
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
