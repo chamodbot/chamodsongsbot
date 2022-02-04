@@ -160,4 +160,3 @@ async def song(client, message):
                           thumb=thumb, performer=yt.author, duration=yt.length)
         try:
             os.remove(audio)
-            os.remove('a.jpg')
