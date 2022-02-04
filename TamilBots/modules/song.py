@@ -143,6 +143,8 @@ def song(_, message):
     except Exception as e:
         print(e)
 
+is_downloading = False
+
 @app.on_message(filters.command(["ytvid", f"video"]))
 async def ytmusic(client, message: Message):
     global is_downloading
