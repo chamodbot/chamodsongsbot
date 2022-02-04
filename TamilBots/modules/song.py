@@ -71,10 +71,10 @@ async def song(client, message):
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
-async def song(client, message):
+def song(_, message):
     query = " ".join(message.command[1:])
-    await message.reply_chat_action("typing")
-    m = message.reply("**🎵 Searching Music Savers ....**",
+    m = message.reply_chat_action("typing")
+    m.edit("**🎵 Searching Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
@@ -94,7 +94,7 @@ async def song(client, message):
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(str(e))
         return
-    await message.reply_chat_action("record_audio")
+    m.edit.reply_chat_action("record_audio")
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
