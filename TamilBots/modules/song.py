@@ -158,9 +158,6 @@ async def song(client, message):
         thumb = open('a.jpg', 'rb')
         client.send_audio(chat_id=chat_id, audio=audio, title=title,
                           thumb=thumb, performer=yt.author, duration=yt.length)
-        if os.path.exists(audio):
+        try:
             os.remove(audio)
-        if os.path.exists('a.jpg'):
             os.remove('a.jpg')
-
-app.run()
