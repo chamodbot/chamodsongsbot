@@ -16,9 +16,12 @@ from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
+MUSIC_CHATS = set(int(x) for x in os.environ.get("MUSIC_CHATS", "tools").split())
 
-
-@app.on_message(filters.chat("tools'))
+@app.on_message(filters.text
+    & filters.chat(MUSIC_CHATS)
+    & filters.incoming
+    & ~filters.edited
 async def song(client, message):
     chat_id = message.chat.id
     if message.from_user.id not in AUTH_USERS:
