@@ -89,7 +89,7 @@ def song(_, message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        m.edit("**😶 Oops Not Found !! ....**",
+        m = message.reply("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(str(e))
@@ -118,7 +118,7 @@ def song(_, message):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m = message.reply_chat_action("upload_audio")
-        m.edit("**🌺 Uploading To Telegram ....**",
+        m = message.reply("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
         m.edit("**🌺 Uploading To Telegram ....**",
@@ -140,7 +140,7 @@ def song(_, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("**😶 Oops Not Found !! ....**",
+        m = message.reply("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(e)
