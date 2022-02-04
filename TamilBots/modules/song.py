@@ -265,7 +265,7 @@ def extract_the_url(url: str):
 @app.on_message(filters.command("song"))
 def song(_, message):
     query = " ".join(message.command[1:])
-    await message.reply_chat_action("typing")
+    m = message.reply_chat_action("typing")
     m = message.reply("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
