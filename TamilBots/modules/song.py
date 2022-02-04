@@ -152,8 +152,8 @@ async def song(client, message):
         yt = YouTube(link)
         audio = yt.streams.get_audio_only().download('res')
         title = yt.title
-        app.send_chat_action(message.chat.id, "upload_audio")
-        app.send_audio(
+             app.send_chat_action(message.chat.id, "upload_audio")
+             app.send_audio(
         chat_id=message.chat.id,
         audio=f"{str(user_id)}.mp3",
         duration=int(yt.length),
@@ -161,5 +161,4 @@ async def song(client, message):
         performer=str(yt.author),
         reply_to_message_id=message.message_id,
     )
-    await status.delete()
     os.remove(f"{str(user_id)}.mp3")
