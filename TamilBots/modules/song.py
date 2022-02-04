@@ -70,8 +70,8 @@ async def song(client, message):
             [[InlineKeyboardButton("♻️ Update Now Music Savers", callback_data="command_tools")]]))
 
 
-@app.on_message(filters.text)
-def a(_, message):
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
+def song(_, message):
     query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
     m = message.reply("**🎵 Searching Music Savers ....**",
