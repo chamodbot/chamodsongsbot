@@ -261,7 +261,7 @@ def extract_the_url(url: str):
     url = v_result['result'][0]['link']
     return url
 
-app.on_message(filters.command(["song"]) & ~filters.edited)
+app.on_message(filters.command("song"))
 def song(_, message):
     query = " ".join(message.command[1:])
     m = message.reply("🔎 Sᴇᴀʀᴄʜɪɴɢ Sᴏɴɢ ᴏɴ Yᴏᴜᴛᴜʙᴇ..! ./n **Upload Getting Slowed due to Heavy Traffic** [Learn More](https://en.m.wikipedia.org/wiki/Network_traffic)")
