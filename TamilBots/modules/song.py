@@ -18,6 +18,16 @@ from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
 
+def yt_search(song):
+    videosSearch = VideosSearch(song, limit=1)
+    result = videosSearch.result()
+    if not result:
+        return False
+    else:
+        video_id = result["result"][0]["id"]
+        url = f"https://youtu.be/{video_id}"
+        return url
+
 @app.on_message(filters.command("tools"))
 async def song(client, message):
     chat_id = message.chat.id
