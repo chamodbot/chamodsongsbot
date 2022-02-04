@@ -150,7 +150,7 @@ def video(_, message):
     m = message.reply("**🎵 Searching Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    ydl_ops = {"format": "bestvideo[ext=m4a]"}
+    ydl_ops = {"format": "bestmp4[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
@@ -180,7 +180,7 @@ def video(_, message):
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
-            video_file = ydl.prepare_filename(info_dict)
+            mp4 = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
         rep = f"[{title[:35]}]({link})\n\n➽ Duration: `{duration}`\n\n➽ Views: {views}\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : \n🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
@@ -197,7 +197,7 @@ def video(_, message):
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         message.reply_video(
-            video_file,
+            mp4,
             caption=rep,
             thumb=thumb_name,
             parse_mode="md",
@@ -212,7 +212,7 @@ def video(_, message):
         print(e)
 
     try:
-        os.remove(audio_file)
+        os.remove(mp4)
         os.remove(thumb_name)
     except Exception as e:
         print(e)
