@@ -168,12 +168,3 @@ def song(_, message):
             os.remove(audio)
         if os.path.exists('a.jpg'):
             os.remove('a.jpg')
-
-    except exceptions.RegexMatchError:
-        message.reply_text("Invalid URL.")
-    except exceptions.LiveStreamError:
-        message.reply_text("Live Stream links not supported.")
-    except exceptions.VideoUnavailable:
-        message.reply_text("Video is unavailable.")
-    except exceptions.HTMLParseError:
-        message.reply_text("Given URL couldn't be parsed.")
