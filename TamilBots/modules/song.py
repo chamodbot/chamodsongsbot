@@ -18,148 +18,6 @@ from TamilBots.sql.chat_sql import add_chat_to_db
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
 
 
-def yt_search(song):
-    videosSearch = VideosSearch(song, limit=1)
-    result = videosSearch.result()
-    if not result:
-        return False
-    else:
-        video_id = result["result"][0]["id"]
-        url = f"https://youtu.be/{video_id}"
-        return url
-
-
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("songjsj"))
-async def song(client, message):
-    chat_id = message.chat.id
-    user_id = message.from_user["id"]
-    add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "song"
-    if args.startswith(" "):
-        await message.reply("**😶 Oops Not Found !! ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("◉◑◒◓◔◕◉◑◒◓◔◕◉", callback_data="progress_msg")]]))
-        return ""
-    await message.reply_chat_action("typing")
-    status = await message.reply("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
-    await message.reply_chat_action("record_audio")
-    await status.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
-    video_link = YoutubeSearch(args)
-    if not video_link:
-        await status.edit("**😶 Oops Not Found ...**")
-        return ""
-    ydl = YoutubeSearch(video_link)
-    audio = ydl.streams.filter(only_audio=True).first()
-    try:
-        download = audio.download(filename=f"{str(user_id)}")
-    except Exception as ex:
-        await status.edit("Failed to download song 😶")
-        LOGGER.error(ex)
-        return ""
-    rename = os.rename(download, f"{str(user_id)}.mp3")
-    await app.send_chat_action(message.chat.id, "upload_audio")
-    await app.send_audio(
-        chat_id=message.chat.id,
-        audio=f"{str(user_id)}.mp3",
-        duration=int(yt.length),
-        title=str(yt.title),
-        performer=str(yt.author),
-        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
-        reply_to_message_id=message.message_id,
-    )
-    await status.delete()
-    os.remove(f"{str(user_id)}.mp3")
-
-
-def yt_search(video):
-    videosSearch = VideosSearch(video, limit=1)
-    result = videosSearch.result()
-    if not result:
-        return False
-    else:
-        video_id = result["result"][0]["id"]
-        url = f"https://youtu.be/{video_id}"
-        return url
-
-
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("video"))
-async def video(client, message):
-    chat_id = message.chat.id
-    user_id = message.from_user["id"]
-    add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "video"
-    if args.startswith(" "):
-        await message.reply("**😶 Oops Not Found !! ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☸◉◑◒◓◔◕◉◑◒◓◔◕◉☸", callback_data="progress_msg")]]))
-        return ""
-    await message.reply_chat_action("typing")
-    status = await message.reply("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
-    await message.reply_chat_action("record_video_note")
-    await status.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
-    await status.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
-    video_link = yt_search(args)
-    if not video_link:
-        await status.edit("**😶 Oops Not Found ...**")
-        return ""
-    yt = YouTube(video_link)
-    video = yt.streams.filter(only_video=True).first()
-    try:
-        download = video.download(filename=f"{str(user_id)}")
-    except Exception as ex:
-        await status.edit("Failed to download song 😶")
-        LOGGER.error(ex)
-        return ""
-    rename = os.rename(download, f"{str(user_id)}.mp4")
-    await app.send_chat_action(message.chat.id, "upload_video_note")
-    await app.send_video(
-        chat_id=message.chat.id,
-        video=f"{str(user_id)}.mp4",
-        duration=int(yt.length),
-        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to mp4 🎥**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
-        reply_to_message_id=message.message_id,
-    )
-    await status.delete()
-    os.remove(f"{str(user_id)}.mp4")
-
-
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("tools"))
 async def song(client, message):
     chat_id = message.chat.id
@@ -211,64 +69,17 @@ async def song(client, message):
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("♻️ Update Now Music Savers", callback_data="command_tools")]]))
 
-descargar = Descargar('downloads/')
-
-@app.on_message(
-    filters.command(['songgjj'],prefixes=['/', '!'])
-    & (filters.group | filters.private)
-    & ~ filters.edited)
-async def song_dl(_, msg: Message):
-    chat_id = msg.chat.id
-    user_id = msg.from_user["id"]
-
-    if len(msg.command) == 1:
-        return await msg.reply(text=text, parse_mode='md')
-
-    r_text = await msg.reply('Processing...')
-    url = msg.text.split(None, 1)[1]
-    url = extract_the_url(url=url)
-    
-    if url == 0:return await r_text.edit('I could not find that song. Try with another keywords...')
-
-    await r_text.edit('Downloading...')
-
-    ytinfo = descargar.mp3_viaPytube(url)
-
-    try:
-        await r_text.edit_text('Uploading...')
-    except MessageNotModified:
-        pass
-
-    await msg.reply_audio(
-        chat_id=msg.chat.id,
-        audio=f'downloads/{ytinfo.title.replace("/","|")}-{ytinfo.video_id}.mp3',
-        duration=int(ytinfo.length),
-        title=str(ytinfo.title),
-        performer=str(ytinfo.author),
-        caption=f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n",
-        reply_to_messages_id=msg.message_id,
-    )
-    await r_text.delete()
-    os.remove(f"{str(user_id)}.mp3")
-    
-def extract_the_url(url: str):
-    '''Extracting the youtube URL'''
-
-    v = VideosSearch(url, limit=1)
-    v_result = v.result()
-
-    if not v_result['result']:
-        return 0
-    url = v_result['result'][0]['link']
-    return url
 
 @app.on_message(filters.command("song"))
 def song(_, message):
     query = " ".join(message.command[1:])
     m = message.reply_chat_action("typing")
-    m = message.reply("**🌷 Downloading Music Savers ....**",
+    m = message.reply("**🎵 Searching Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    m.edit("**🎵 Searching Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -281,9 +92,12 @@ def song(_, message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        m.edit("❌ Sᴏʀʀʏ I ᴄᴀɴ'ᴛ Fɪɴᴅ ʏᴏᴜʀ Rᴇǫᴜᴇsᴛᴇᴅ Sᴏɴɢ 🙁.\n\nTʀʏ Aɴᴏᴛʜᴇʀ Sᴏɴɢ Nᴀᴍᴇ ᴏʀ Cʜᴇᴄᴋ Sᴘᴇʟʟɪɴɢ..!\n\nIғ ʏᴏᴜ Fᴀᴄɪɴɢ sᴀᴍᴇ ɪssᴜᴇs ғᴏʀ sᴇᴄᴏɴᴅ Tɪᴍᴇ Rᴇᴘᴏʀᴛ ɪᴛ ᴏɴ support Group")
+        m.edit("**😶 Oops Not Found !! ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(str(e))
         return
+    m = message.reply_chat_action("record_audio")
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
@@ -298,11 +112,15 @@ def song(_, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"🎵 Sᴏɴɢ Uᴘʟᴏᴀᴅᴇᴅ ғʀᴏᴍ YᴏᴜTᴜʙᴇ Mᴜsɪᴄ..!.\n\nPᴏᴡᴇʀᴇᴅ ʙʏ [zoneunlimited](https://t.me/zoneunlimited)"
+        rep = f"\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n🌺 Requestor : [Requestor](tg://settings)\n🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n[🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n╠《》《》《》《》《》《》《》《》《》╣\n\n◇───────────────◇\n\n"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
+        m = message.reply_chat_action("upload_audio")
+        m.edit("**🌺 Uploading To Telegram ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
         m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
@@ -322,7 +140,9 @@ def song(_, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ Error Contact support Group") 
+        m.edit("**😶 Oops Not Found !! ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(e)
 
     try:
