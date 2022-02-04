@@ -80,7 +80,7 @@ async def song(client, message):
             [[InlineKeyboardButton("♻️ Update Now Music Savers", callback_data="command_tools")]]))
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("songJsks"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 def song(_, message):
     query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
@@ -119,7 +119,7 @@ def song(_, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"[{title[:35]}]({link})\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration: `{duration}`\n\n┣★ Views: {views}\n\n┣★ **✅ Successfully Downloaded to MP3 🎵**\n\n┣★ 🌺 Requestor : \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n"
+        rep = f"[{title[:35]}]({link})\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration: `{duration}`\n\n┣★ Views: {views}\n\n┣★ **✅ Successfully Downloaded to MP3 🎵**\n\n┣★ 🌺 Requestor : {user_id} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
@@ -154,27 +154,48 @@ def song(_, message):
     except Exception as e:
         print(e)
 
-@app.on_message(filters.command("audio"))
-def song(_, message):
-    chat_id = message.chat.id
-    user_id = message.from_user["id"]
-    add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "song"
-    if args.startswith(" "):
-        return ""
-    video_link = yt_search(args)
-    if not video_link:
-        return ""
-        yt = YouTube(link)
-        audio = yt.streams.get_audio_only().download('res')
-        title = yt.title
-        app.send_chat_action(chat_id, "upload_audio")
-        with open('a.jpg', 'wb') as t:
-            t.write(requests.get(yt.thumbnail_url).content)
-        thumb = open('a.jpg', 'rb')
-        client.send_audio(chat_id=chat_id, audio=audio, title=title,
-                          thumb=thumb, performer=yt.author, duration=yt.length)
-        if os.path.exists(audio):
-            os.remove(audio)
-        if os.path.exists('a.jpg'):
-            os.remove('a.jpg')
+@app.on_inline_query()
+async def inline(client: Client, query: InlineQuery):
+    answers = []
+    search_query = query.query.lower().strip().rstrip()
+
+    if search_query == "":
+        await client.answer_inline_query(
+            query.id,
+            results=answers,
+            switch_pm_text="🔍 Search YouTube 🔎",
+            switch_pm_parameter="help",
+            cache_time=0
+        )
+    else:
+        search = VideosSearch(search_query, limit=50)
+
+        for result in search.result()["result"]:
+            answers.append(
+                InlineQueryResultArticle(
+                    title=result["title"],
+                    description="{}, {} views.".format(
+                        result["duration"],
+                        result["viewCount"]["short"]
+                    ),
+                    input_message_content=InputTextMessageContent(
+                        "https://www.youtube.com/watch?v={}".format(
+                            result["id"]
+                        )
+                    ),
+                    thumb_url=result["thumbnails"][0]["url"]
+                )
+            )
+
+        try:
+            await query.answer(
+                results=answers,
+                cache_time=0
+            )
+        except errors.QueryIdInvalid:
+            await query.answer(
+                results=answers,
+                cache_time=0,
+                switch_pm_text="😶 Oops Not Found ...",
+                switch_pm_parameter="",
+            )
