@@ -12,6 +12,7 @@ from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
 from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
+from youtubesearchpython import SearchVideos
 from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
