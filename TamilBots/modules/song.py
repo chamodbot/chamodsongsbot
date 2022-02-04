@@ -265,7 +265,10 @@ def extract_the_url(url: str):
 @app.on_message(filters.command("song"))
 def song(_, message):
     query = " ".join(message.command[1:])
-    m = message.reply("🔎 Sᴇᴀʀᴄʜɪɴɢ Sᴏɴɢ ᴏɴ Yᴏᴜᴛᴜʙᴇ..! ./n **Upload Getting Slowed due to Heavy Traffic** [Learn More](https://en.m.wikipedia.org/wiki/Network_traffic)")
+    await message.reply_chat_action("typing")
+    m = message.reply("**🌷 Downloading Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -300,7 +303,15 @@ def song(_, message):
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit("📤 υρℓσα∂ιиg fιℓє тσ тєℓєgяαм...")
+        m.edit("**🌺 Uploading To Telegram ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
+        m.edit("**🌺 Uploading To Telegram ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
+        m.edit("**🌺 Uploading To Telegram ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         message.reply_audio(
             audio_file,
             caption=rep,
