@@ -145,7 +145,7 @@ def song(_, message):
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
-async def ytmusic(client, message: Message):
+async def video(client, message):
     global is_downloading
     if is_downloading:
         await message.reply_text(
