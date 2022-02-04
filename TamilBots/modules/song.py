@@ -95,7 +95,7 @@ def song(_, message):
         print(str(e))
         return
     m = message.reply_chat_action("record_audio")
-    m.edit("**🎵 Searching Music Savers ....**",
+    m = message.reply("**🎵 Searching Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     m.edit("**🌷 Downloading Music Savers ....**",
