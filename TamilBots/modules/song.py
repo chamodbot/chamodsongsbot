@@ -30,6 +30,10 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
+def send_message(self, content):
+        return bot.sendMessage(self.chat_id, content, reply_to_message_id=self.message_id, parse_mode='Markdown')
+
+
 @app.on_message(filters.command("tools"))
 async def song(client, message):
     chat_id = message.chat.id
@@ -82,12 +86,16 @@ async def song(client, message):
             [[InlineKeyboardButton("🚫  close  🚫", callback_data="close")]]))
 
 
+def send_message(self, content):
+        return bot.sendMessage(self.chat_id, content, reply_to_message_id=self.message_id, parse_mode='Markdown')
+
+
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 def song(_, message):
     chat_id = message.chat.id
     query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
-    m = message.send("**🎵 Searching Music Savers ....**",
+    m = self.send_message("**🎵 Searching Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
