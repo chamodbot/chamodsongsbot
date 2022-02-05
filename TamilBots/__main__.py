@@ -87,7 +87,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply_photo(photo=START_IMG, caption=start_text, reply_markup=btn.format(message.from_user.mention)
+    await message.reply_photo(photo=START_IMG, caption=start_text, reply_markup=btn.format(name, user_id)
     add_chat_to_db(str(chat_id))
 
 
