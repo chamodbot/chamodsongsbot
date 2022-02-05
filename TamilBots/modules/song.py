@@ -84,7 +84,7 @@ async def song(client, message):
                     InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")
                  ],[
                     InlineKeyboardButton("▓▓▓▓▓▓▓▓░░░░░░░░", callback_data="progress_msg"),
-                    InlineKeyboardButton("  close  , callback_data="progress_msg")
+                    InlineKeyboardButton("▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")
             ]
           ]
         ),
