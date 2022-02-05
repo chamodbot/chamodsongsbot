@@ -85,7 +85,8 @@ async def song(client, message):
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
-    if message.from_user.id not in GROUP_ID:
+    if message.from_user.id not in AUTH_USERS:
+        for chat in GROUP_ID:
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join [zoneunlimited](https://t.me/zoneunlimited) to Access **This Service** 🌷")
         return ""
     query = " ".join(message.text[1:])
