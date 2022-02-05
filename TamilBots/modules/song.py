@@ -18,6 +18,7 @@ from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
+GROUP_ID = set(int(x) for x in os.environ.get("GROUP_ID", "-1001615594988").split())
 
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
@@ -84,7 +85,7 @@ async def song(client, message):
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
-    if message.from_user.id not in config.GROUP_ID:
+    if message.from_user.id not in GROUP_ID:
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join [zoneunlimited](https://t.me/zoneunlimited) to Access **This Service** 🌷")
         return ""
     query = " ".join(message.text[1:])
