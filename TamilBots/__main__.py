@@ -50,6 +50,8 @@ owner_help = """
 """
 
 
+START_IMG = "https://telegra.ph/file/2e2ebb76cd753600b5bef.jpg"
+
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
     chat_id = message.chat.id
@@ -85,7 +87,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    await message.reply_photo(photo=START_IMG, caption=start_text, reply_markup=btn.format(message.from_user.mention)
     add_chat_to_db(str(chat_id))
 
 
