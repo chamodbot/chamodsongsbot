@@ -30,10 +30,6 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-def send_message(self, content):
-        return bot.sendMessage(self.chat_id, content, reply_to_message_id=self.message_id, parse_mode='Markdown')
-
-
 @app.on_message(filters.command("tools"))
 async def song(client, message):
     chat_id = message.chat.id
