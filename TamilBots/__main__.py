@@ -13,7 +13,7 @@ from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForb
 
 start_photo = "https://telegra.ph/file/e8bf37370b03bc9f3118f.jpg"
 
-start_text = """
+START_TEXT = """
 **👋 hello There,** [{}](tg://user?id={})
      
                  **Music Finder Bot**  
@@ -87,7 +87,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply_photo(photo=START_IMG, caption=start_text, reply_markup=btn.format(name, user_id)
+    await message.reply(photo=START_IMG, caption=START_TEXT, reply_markup=btn.format(name, user_id)
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
