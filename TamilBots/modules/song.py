@@ -240,7 +240,7 @@ REGEX_EXCLUDE_URL = (
 
 main_filter = (
     filters.text
-    & filters.chat(MUSIC_CHATS)
+    & filters.command("audio")
     & filters.incoming
     & ~filters.edited
 )
