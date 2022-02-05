@@ -139,7 +139,7 @@ def song(_, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                    InlineKeyboardButton("▓▓▓▓░░░░░░░░░░░░", callback_data="tools")
                  ],[
                     InlineKeyboardButton("░░░░░░░░░░░tion ©️", callback_data="close")
             ]
@@ -150,7 +150,7 @@ def song(_, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                    InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="tools")
                  ],[
                     InlineKeyboardButton("░░░░░░░░ Coration ©️", callback_data="close")
             ]
@@ -171,7 +171,7 @@ def song(_, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                    InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="tools")
                  ],[
                     InlineKeyboardButton("░░░░░mited 🍀 Corporation ©️", callback_data="close")
             ]
@@ -182,7 +182,7 @@ def song(_, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                    InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░", callback_data="tools")
                  ],[
                     InlineKeyboardButton("░░unlimited 🍀 Corporation ©️", callback_data="close")
             ]
@@ -193,7 +193,7 @@ def song(_, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                    InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="tools")
                  ],[
                     InlineKeyboardButton("🍀 zoneunlimited 🍀 Corporation ©️", callback_data="close")
             ]
