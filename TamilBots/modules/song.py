@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from config import OWNER_ID
+from config import GROUP_ID
 import asyncio
 import os
 import requests
