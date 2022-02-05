@@ -34,7 +34,7 @@ def yt_search(song):
 async def song(client, message):
     chat_id = message.chat.id
     if message.from_user.id not in AUTH_USERS:
-        await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join [zoneunlimited](https://t.me/zoneunlimited) to Access **This Service** 🌷")
+        await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷")
         return ""
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
