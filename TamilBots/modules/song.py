@@ -31,6 +31,7 @@ def yt_search(song):
         return url
 
 @app.on_message(filters.command("tools"))
+@adminsOnly("can_change_info")
 async def song(client, message):
     chat_id = message.chat.id
     if message.from_user.id not in AUTH_USERS:
