@@ -30,7 +30,7 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-@app.on_message(filters.command("tools"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 async def song(client, message):
     chat_id = message.chat.id
     if message.from_user.id not in AUTH_USERS:
@@ -144,7 +144,7 @@ def song(_, message):
         m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
-        message.send_audio(
+        message.reply_audio(
             audio_file,
             caption=rep,
             thumb=thumb_name,
