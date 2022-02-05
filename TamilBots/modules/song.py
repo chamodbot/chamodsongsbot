@@ -229,7 +229,7 @@ MAX_DURATION = 60
 MAX_SIZE = 8389000
 
 
-@app.message_handler(content_types=['video', 'document', 'animation'])
+@app.on_message(filters.private & (filters.document | filters.video))
 def converting(message):
     if message.content_type is 'video':
         if check_size(message) and check_dimensions(message) and check_duration(message):
