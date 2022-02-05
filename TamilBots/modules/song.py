@@ -31,7 +31,6 @@ def yt_search(song):
         return url
 
 @app.on_message(filters.command("tools"))
-@adminsOnly("can_change_info")
 async def song(client, message):
     chat_id = message.chat.id
     if message.from_user.id not in AUTH_USERS:
@@ -80,11 +79,7 @@ async def song(client, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     await status.edit("**⭕️ Music Savers Update Successfully ...**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🚫  close  🚫", callback_data="close")]]))
-
-
-def send_message(self, content):
-        return bot.sendMessage(self.chat_id, content, reply_to_message_id=self.message_id, parse_mode='Markdown')
+            [[InlineKeyboardButton("🚫  close  🚫", callback_data="song")]]))
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
