@@ -81,9 +81,9 @@ async def song(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("  colse  , callback_data="progress_msg")
+                    InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")
                  ],[
-                    InlineKeyboardButton("  close  , callback_data="progress_msg"),
+                    InlineKeyboardButton("▓▓▓▓▓▓▓▓░░░░░░░░", callback_data="progress_msg"),
                     InlineKeyboardButton("  close  , callback_data="progress_msg")
             ]
           ]
