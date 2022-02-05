@@ -115,9 +115,18 @@ def song(_, message):
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(str(e))
         return
-    m.edit("**🌷 Downloading Music Savers ....**",
+     m.edit("**⭕️ Music Savers Update Successfully ...**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+            [
+                [
+                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                 ],[
+                    InlineKeyboardButton("░░░░░░░░░░░░░░▓▓", callback_data="close")
+            ]
+          ]
+        )
+   )
+
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
