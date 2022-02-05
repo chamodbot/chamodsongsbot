@@ -2,11 +2,13 @@ from pyrogram import Client, filters
 from config import OWNER_ID
 from config import GROUP_ID
 import asyncio
+import time
 import os
 import requests
 import yt_dlp
 from funcs.download import Descargar
 from yt_dlp import YoutubeDL
+from mixpanel import Mixpanel
 from youtube_search import YoutubeSearch
 from pyrogram.errors.exceptions import MessageNotModified
 from pytube import YouTube, exceptions
@@ -18,7 +20,8 @@ from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
-GROUP_ID = set(int(x) for x in os.environ.get("GROUP_ID", "-1001615594988").split())
+MIXPANEL_TOKEN = set(int(x) for x in os.environ.get("MIXPANEL_TOKEN", "df25e802e5515ec5a943c5e654d3006c").split())
+
 
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
@@ -220,6 +223,57 @@ def song(_, message):
         os.remove(thumb_name)
     except Exception as e:
         print(e)
+
+MAX_DIMENSION = 640
+MAX_DURATION = 60
+MAX_SIZE = 8389000
+
+
+@app.message_handler(content_types=['video', 'document', 'animation'])
+def converting(message):
+    if message.content_type is 'video':
+        if check_size(message) and check_dimensions(message) and check_duration(message):
+            try:
+                action = bot.send_chat_action(message.chat.id, 'record_video_note')
+                videonote = bot.download_file(bot.get_file(message.video.file_id).wait().file_path).wait()
+                if message.video.height < MAX_DIMENSION:
+                    sent_note = bot.send_video_note(message.chat.id, videonote, length=message.video.width).wait()
+                else:
+                    sent_note = bot.send_video_note(message.chat.id, videonote).wait()
+                if sent_note.content_type != 'video_note':
+                    bot.send_message(message.chat.id, strings[lang(message)]['error']).wait()
+                    try:
+                        bot.delete_message(sent_note.chat.id, sent_note.message_id).wait()
+                    except:
+                        pass
+                else:
+                    kb = get_kb(message.from_user.id)
+                    if kb:
+                        bot.edit_message_reply_markup(chat_id=message.chat.id, message_id=sent_note.message_id,
+                                                      reply_markup=kb)
+                action.wait()
+                if MIXPANEL_TOKEN:
+                    mp.track(message.from_user.id, 'convert',
+                             properties={'language': message.from_user.language_code})
+            except Exception as e:
+                # bot.send_message(me, '`{}`'.format(e), parse_mode='Markdown').wait()
+                # bot.forward_message(me, message.chat.id, message.message_id).wait()  # some debug info
+                bot.send_message(message.chat.id, strings[lang(message)]['error']).wait()
+                if MIXPANEL_TOKEN:
+                    mp.track(message.from_user.id, 'error', properties={'error': str(e)})
+        return
+    elif (message.content_type is 'document' and (message.document.mime_type == 'image/gif' or
+                                                  message.document.mime_type == 'video/mp4')) or message.content_type is 'animation':
+        bot.send_message(message.chat.id, strings[lang(message)]['content_error'])
+        return
+
+    elif (message.content_type is 'document' and
+          message.document.mime_type == 'video/webm'):
+        bot.send_message(message.chat.id, strings[lang(message)]['webm'], parse_mode='HTML').wait()
+
+    else:
+        bot.send_message(message.chat.id, strings[lang(message)]['content_error']).wait()
+
 
 @app.on_inline_query()
 async def inline(client: Client, query: InlineQuery):
