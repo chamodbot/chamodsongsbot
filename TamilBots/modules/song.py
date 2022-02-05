@@ -87,7 +87,8 @@ async def song(client, message):
                     InlineKeyboardButton("▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")
             ]
           ]
-        ),
+        )
+   )
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
 def song(_, message):
