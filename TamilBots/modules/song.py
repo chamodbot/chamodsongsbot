@@ -20,7 +20,7 @@ from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
-MIXPANEL_TOKEN = set(int(x) for x in os.environ.get("MIXPANEL_TOKEN", "df25e802e5515ec5a943c5e654d3006c").split())
+MIXPANEL_TOKEN = os.environ.get('df25e802e5515ec5a943c5e654d3006c')
 
 
 def yt_search(song):
