@@ -94,9 +94,17 @@ def song(_, message):
     chat_id = message.chat.id
     query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
-    m = message.reply("**🎵 Searching Music Savers ....**",
+    m = message.reply("**🎵 Searching Music Savers ...**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+            [
+                [
+                    InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="tools")
+                 ],[
+                    InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="close")
+            ]
+          ]
+        )
+   )
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -115,13 +123,13 @@ def song(_, message):
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(str(e))
         return
-    m.edit("**⭕️ Music Savers Update Successfully ...**",
+    m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
                  ],[
-                    InlineKeyboardButton("░░░░░░░░░░░░░░▓▓", callback_data="close")
+                    InlineKeyboardButton("░░░░░░░░░░░on ©️", callback_data="close")
             ]
           ]
         )
@@ -129,10 +137,26 @@ def song(_, message):
 
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
+            [
+                [
+                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                 ],[
+                    InlineKeyboardButton("░░░░░░░░░░░tion ©️", callback_data="close")
+            ]
+          ]
+        )
+   )
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="progress_msg")]]))
+            [
+                [
+                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                 ],[
+                    InlineKeyboardButton("░░░░░░░░ Coration ©️", callback_data="close")
+            ]
+          ]
+        )
+   )
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -145,13 +169,37 @@ def song(_, message):
             secmul *= 60
         m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="progress_msg")]]))
+            [
+                [
+                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                 ],[
+                    InlineKeyboardButton("░░░░░mited 🍀 Corporation ©️", callback_data="close")
+            ]
+          ]
+        )
+   )
         m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░", callback_data="progress_msg")]]))
+            [
+                [
+                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                 ],[
+                    InlineKeyboardButton("░░unlimited 🍀 Corporation ©️", callback_data="close")
+            ]
+          ]
+        )
+   )
         m.edit("**🌺 Uploading To Telegram ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
+            [
+                [
+                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
+                 ],[
+                    InlineKeyboardButton("🍀 zoneunlimited 🍀 Corporation ©️", callback_data="close")
+            ]
+          ]
+        )
+   )
         message.reply_audio(
             audio_file,
             caption=rep,
