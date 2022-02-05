@@ -21,7 +21,7 @@ from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
 MIXPANEL_TOKEN = os.environ.get('df25e802e5515ec5a943c5e654d3006c')
-
+MUSIC_CHATS = set(int(x) for x in os.environ.get("MUSIC_CHATS", "1901997764 1474804964").split())
 
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
