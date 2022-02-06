@@ -84,7 +84,7 @@ async def song(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="tools")
+                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="close")
                  ],[
                     InlineKeyboardButton("🚫   close   🚫", callback_data="close")
             ]
