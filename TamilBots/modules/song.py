@@ -33,7 +33,9 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-@app.on_message(filters.command("update"))
+text_filter = (update)
+
+@app.on_message(text_filter))
 async def tools(Client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷")
@@ -86,7 +88,7 @@ async def tools(Client, message):
         )
    )
 
-@app.on_message(filters.private & filters.text  )
+@app.on_message(filters.command("song"))
 def song(_, message):
     chat_id = message.chat.id
     query = " ".join(message.text[1:])
