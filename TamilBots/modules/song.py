@@ -33,17 +33,12 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("tools"))
-async def song(client, message):
-    chat_id = message.chat.id
+@app.on_message(filters.command("tools"))
+async def tools(client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷")
         return ""
-    add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "song"
-    if args.startswith(" "):
-        await message.reply("**🧐 My owner is not admin this group or chanle !! ..**")
-        return ""
+    insert(int(message.chat.id))
     status = await message.reply("**🌷 Updating Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
