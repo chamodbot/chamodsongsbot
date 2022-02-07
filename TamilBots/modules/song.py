@@ -33,9 +33,10 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-text_filter = (song)
 
-@app.on_message(text_filter)
+zone_ms = """ **🍀 zoneunlimited 🍀Corporation ©️** """
+
+@app.on_message(filters.command("update"))
 async def update(Client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷")
@@ -80,7 +81,7 @@ async def update(Client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="")
+                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="zone_ms")
                  ],[
                     InlineKeyboardButton("🚫   close   🚫", callback_data="close")
             ]
