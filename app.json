@@ -1,6 +1,6 @@
 {
-    "name": "nikonemusicbot",
-    "logo": "https://te.legra.ph/file/453af118d32c146f19ac9.jpg",
+    "name": "SongPlayRoBot",
+    "logo": "https://telegra.ph/file/cb7b0aead06c96955323e.jpg",
     "description": "Grabs song from yt and sends it to telegram by @TamilBots",
     "env": {
         "API_ID": {
@@ -17,14 +17,6 @@
         },
         "OWNER_ID": {
             "description": "Your telegram user id.",
-            "required": true
-       },
-       "AUTH_USERS": {
-            "description":
-            "required": true
-       },
-      "MUST_JOIN": {
-            "description": "Add username/id of a channel/group",
             "required": true
         }
     },
