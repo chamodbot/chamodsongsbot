@@ -33,7 +33,7 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-@app.on_message(filters.command("tools"))
+@app.on_message(filters.text("tools"))
 async def tools(client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷")
