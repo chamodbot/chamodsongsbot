@@ -78,7 +78,7 @@ async def tools(Client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="close")
+                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="")
                  ],[
                     InlineKeyboardButton("🚫   close   🚫", callback_data="close")
             ]
@@ -86,10 +86,8 @@ async def tools(Client, message):
         )
    )
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
+@app.on_message(filters.private & filters.text  )
 def song(_, message):
-    chat_id = message.chat.id
-    query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
     m = message.reply("**🎵 Searching Music Savers ...**",
         reply_markup=InlineKeyboardMarkup(
@@ -219,9 +217,7 @@ def song(_, message):
         print(e)
 
 
-MUSIC_MAX_LENGTH = 10800
-DELAY_DELETE_INFORM = 10
-TG_THUMB_MAX_LENGTH = 320
+
 REGEX_SITES = (
     r"^((?:https?:)?\/\/)"
     r"?((?:www|m)\.)"
