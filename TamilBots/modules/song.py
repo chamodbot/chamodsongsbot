@@ -88,6 +88,8 @@ async def tools(Client, message):
 
 @app.on_message(filters.private & filters.text  )
 def song(_, message):
+    chat_id = message.chat.id
+    query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
     m = message.reply("**🎵 Searching Music Savers ...**",
         reply_markup=InlineKeyboardMarkup(
