@@ -33,7 +33,7 @@ def yt_search(song):
         url = f"https://youtu.be/{video_id}"
         return url
 
-text_filter = (filters.update)
+text_filter = (filters.text("update"))
 
 @app.on_message(text_filter)
 async def update(Client, message):
