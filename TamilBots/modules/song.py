@@ -81,7 +81,7 @@ async def update(Client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="update")
+                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="zone_ms")
                  ],[
                     InlineKeyboardButton("🚫   close   🚫", callback_data="close")
             ]
@@ -388,9 +388,9 @@ async def button(app, update):
       cb_data = update.data
       if "help" in cb_data:
         await update.message.delete()
-        await help(Tgraph, update.message)
+        await help(app, update.message)
       elif "close" in cb_data:
         await update.message.delete() 
       elif "update" in cb_data:
         await update.message.delete()
-        await update(app, update.message)
+        await zone_ms(app, update.message)
