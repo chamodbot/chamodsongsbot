@@ -393,4 +393,4 @@ async def button(app, update):
         await update.message.delete() 
       elif "update" in cb_data:
         await update.message.delete()
-        await home(app, update.message)
+        await update(app, update.message)
