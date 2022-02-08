@@ -391,6 +391,6 @@ async def button(app, update):
         await help(app, update.message)
       elif "close" in cb_data:
         await update.message.delete() 
-      elif "update" in cb_data:
+      elif "zone_ms" in cb_data:
         await update.message.delete()
         await zone_ms(app, update.message)
