@@ -81,7 +81,7 @@ async def update(Client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="progress_msg")
+                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="update")
                  ],[
                     InlineKeyboardButton("🚫   close   🚫", callback_data="close")
             ]
@@ -381,3 +381,16 @@ async def inline(client: Client, query: InlineQuery):
                 switch_pm_text="😶 Oops Not Found ...",
                 switch_pm_parameter="",
             )
+
+
+@app.on_callback_query()
+async def button(app, update):
+      cb_data = update.data
+      if "help" in cb_data:
+        await update.message.delete()
+        await help(Tgraph, update.message)
+      elif "close" in cb_data:
+        await update.message.delete() 
+      elif "update" in cb_data:
+        await update.message.delete()
+        await home(app, update.message)
