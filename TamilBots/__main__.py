@@ -147,6 +147,10 @@ async def start(client, message):
                 ]
             ]
         )
+    else:
+        btn = None
+    await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    add_chat_to_db(str(chat_id))
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def help(client, message):
