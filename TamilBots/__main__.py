@@ -154,8 +154,7 @@ async def start(client, message:
                 ]
                 
            ]
-        ),
-    )
+        )
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def help(client, message):
