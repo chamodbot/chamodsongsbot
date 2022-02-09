@@ -121,40 +121,40 @@ async def start(client, message):
 🔥 [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited) Corporation ©️
 **""",
     reply_markup=InlineKeyboardMarkup(
+           [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/The_song_finder_bot?startgroup=true"),
+            
+            ],
             [
-                [
-                    InlineKeyboardButton(
-                        "➕ ❰ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ❱ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+             InlineKeyboardButton(text="🍀 zoneunlimited 🍀", url="http://t.me/zoneunlimited")
+
+            ],
+            [InlineKeyboardButton(text="🍀 zoneunlimited chat 🍀", url="http://t.me/zoneunlimitedchat")
+            
+            ],
+            [InlineKeyboardButton(text="🧿YOU  Tech🧿", url="https://t.me/YouTech_VPN_HUB")
+            
+            ],
+            [InlineKeyboardButton(text="🎃 Subzero Ehi Team 🎃", url="https://t.me/subzeroehiteam")
+        
+            ],
+            [InlineKeyboardButton(text="🌷 Developer 🌷", url="http://t.me/chamod_deshan")
+            
+            ],
+            [InlineKeyboardButton(text=
+                       "◇────────🔍 Search Again 🔎───────◇", switch_inline_query_current_chat=""
+               
                     )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🔥   zoneunlimited  🔥", url=f"https://t.me/zoneunlimited"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🍀 zoneunlimited chat 🍀", url="https://t.me/nikone_Developers"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🌷 Bot Developer 🌷", url=f"https://t.me/chamod_deshan"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🧿  You Tech  🧿", url=f"https://t.me/YouTech_VPN_HUB"
-                    )
-                ],
-                [
-                   InlineKeyboardButton(text=
-                       "◇────────🔍 Search Again 🔎───────◇", switch_inline_query_current_chat="")
-                    
                 ]
-                
-           ]
+            ]
         )
+
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
+async def help(client, message):
+    if message.from_user["id"] == OWNER_ID:
+        await message.reply(owner_help)
+        return ""
+    text = "send you song name... 🔥🚀\n /song (song name) 🥳"
+    await message.reply(text)
 
 OWNER_ID.append(1901997764)
 app.start()
