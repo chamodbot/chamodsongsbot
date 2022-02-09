@@ -94,7 +94,7 @@ def song(_, message):
     chat_id = message.chat.id
     query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
-    m = message.reply("**🎵 Searching Music Savers ...**",reply_to_message_id = message.message_id
+    m = message.reply("**🎵 Searching Music Savers ...**",reply_to_message_id = message.message_id, reply_markup =
         reply_markup=InlineKeyboardMarkup(
             [
                 [
