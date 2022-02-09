@@ -91,7 +91,7 @@ async def start(client, message):
     add_chat_to_db(str(chat_id))
 
 @app.on_message(filters.command("start"))
-async def start(client: client, message: message):
+async def start(client, message:
     await message.reply_photo(
         photo=f"https://telegra.ph/file/740f6f319246b5e175bdb.jpg",
         caption=f"""🍀 hello There,
