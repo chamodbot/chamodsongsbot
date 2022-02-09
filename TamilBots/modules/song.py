@@ -93,7 +93,7 @@ async def update(Client, message):
 
     await gift.delete()
 
-@app.on_message(filters.private & filters.text)
+@app.on_message(filters.command("song"))
 def song(_, message):
     chat_id = message.chat.id
     query = " ".join(message.text[1:])
@@ -127,6 +127,7 @@ def song(_, message):
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(str(e))
+           return 
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [
