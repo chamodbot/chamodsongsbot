@@ -41,7 +41,7 @@ async def update(Client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷")
         return ""
-    status = await message.reply("**🌷 Updating Music Savers ....**",reply_to_message_id = message.message_id
+    status = await message.reply("**🌷 Updating Music Savers ....**",reply_to_message_id = message.message_id, reply_markup =
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
     await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
