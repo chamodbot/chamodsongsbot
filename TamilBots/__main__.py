@@ -57,9 +57,6 @@ async def start(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
-    await message.reply_photo(
-        photo=f"https://telegra.ph/file/740f6f319246b5e175bdb.jpg",
-        caption=f"""** hi **"""
         btn = InlineKeyboardMarkup(
            [[InlineKeyboardButton(text="➕    ADD TO GROUP     ➕ ", url="http://t.me/The_song_finder_bot?startgroup=true"),
             
@@ -92,7 +89,6 @@ async def start(client, message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/740f6f319246b5e175bdb.jpg",
         caption=f"""** hi **""", reply_markup=btn)
-    add_chat_to_db(str(chat_id))
 
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
