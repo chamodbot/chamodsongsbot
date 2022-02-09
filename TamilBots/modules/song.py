@@ -39,9 +39,10 @@ zone_ms = """ **🍀 zoneunlimited 🍀Corporation ©️** """
 @app.on_message(filters.command("update"))
 async def update(Client, message):
     if message.from_user.id not in AUTH_USERS:
-        await message.reply_sticker(sticker = "CAACAgIAAxkBAAIDNGIDo_iC2LcWiAn6QHC4J4iG4o6VAAKfAQACFkJrCmWMf9oXSSAlIwQ")
+        await message.reply_sticker(sticker = "CAACAgEAAxkBAAIDNmIDqZZp9tt7v_vN7NeM_00OvGN9AAJiAQACCR5QRTD5_wABmjtUNyME")
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷", reply_to_message_id = message.message_id)
         return ""
+    gift = await message.reply("https://telegra.ph/file/e0ecb2d8683f60693da1d.mp4")
     status = await message.reply("**🌷 Updating Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
@@ -89,6 +90,8 @@ async def update(Client, message):
           ]
         )
    )
+
+    gift.delete()
 
 @app.on_message(filters.command("song"))
 def song(_, message):
