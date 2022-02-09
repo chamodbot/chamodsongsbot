@@ -134,7 +134,6 @@ if filetype.mime_type.startswith("song/"):
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
         print(str(e))
-        return ""
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [
