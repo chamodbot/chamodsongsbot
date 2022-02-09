@@ -41,9 +41,9 @@ async def update(Client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷")
         return ""
-    status = await message.reply("**🌷 Updating Music Savers ....**",reply_to_message_id = message.message_id, reply_markup =but
-    but = reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+    status = await message.reply("**🌷 Updating Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg"), reply_to_message_id = message.message_id, reply_markup]]))
     await status.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
@@ -94,7 +94,7 @@ def song(_, message):
     chat_id = message.chat.id
     query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
-    m = message.reply("**🎵 Searching Music Savers ...**",reply_to_message_id = message.message_id, reply_markup =but
+    m = message.reply("**🎵 Searching Music Savers ...**",
     but = reply_markup=InlineKeyboardMarkup(
             [
                 [
