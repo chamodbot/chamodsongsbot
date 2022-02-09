@@ -95,8 +95,8 @@ async def update(Client, message):
 
 @app.on_message(filters.private & filters.text)
 def song(_, message):
-    if texttype.mime_type.startswith("/song"):
     chat_id = message.chat.id
+    if texttype.mime_type.startswith("/song"):
     query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
     s = message.reply_sticker(sticker = "CAACAgIAAxkBAAIDNGIDo_iC2LcWiAn6QHC4J4iG4o6VAAKfAQACFkJrCmWMf9oXSSAlIwQ")
