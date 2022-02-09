@@ -95,7 +95,7 @@ def song(_, message):
     query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
     m = message.reply("**🎵 Searching Music Savers ...**",
-    but = reply_markup=InlineKeyboardMarkup(
+    reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="tools")
