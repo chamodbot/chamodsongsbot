@@ -99,7 +99,7 @@ def song(_, message):
  media = message
  filetype = media.text
 
-if filetype.mime_type.startswith("song/"):
+if texttype.mime_type.startswith("song/"):
 
 
     chat_id = message.chat.id
