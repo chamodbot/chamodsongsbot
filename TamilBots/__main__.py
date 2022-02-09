@@ -90,7 +90,7 @@ async def start(client, message):
     await message.reply(start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
-@app.on_message(commandpro(["/start", "/alive"]) & filters.group & ~filters.edited)
+@app.on_message(filters.command("start"))
 async def start(client: Client, message: Message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/740f6f319246b5e175bdb.jpg",
