@@ -39,7 +39,7 @@ zone_ms = """ **🍀 zoneunlimited 🍀Corporation ©️** """
 @app.on_message(filters.command("update"))
 async def update(Client, message):
     if message.from_user.id not in AUTH_USERS:
-        await message.reply_sticker(sticker = "CAACAgUAAxkBAAIwXWGdFtkdePc40RAEHg5-aq3ZTjEcAAJUAwAC8IUpVKjvFkIdnX6EIgQ")
+        await message.reply_sticker(sticker = "CAACAgIAAxkBAAIDNGIDo_iC2LcWiAn6QHC4J4iG4o6VAAKfAQACFkJrCmWMf9oXSSAlIwQ")
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷", reply_to_message_id = message.message_id)
         return ""
     status = await message.reply("**🌷 Updating Music Savers ....**",
@@ -95,7 +95,7 @@ def song(_, message):
     chat_id = message.chat.id
     query = " ".join(message.text[1:])
     m = message.reply_chat_action("record_audio")
-    m = message.reply_sticker(sticker = "CAACAgUAAxkBAAIwXWGdFtkdePc40RAEHg5-aq3ZTjEcAAJUAwAC8IUpVKjvFkIdnX6EIgQ")
+    s = message.reply_sticker(sticker = "CAACAgIAAxkBAAIDNGIDo_iC2LcWiAn6QHC4J4iG4o6VAAKfAQACFkJrCmWMf9oXSSAlIwQ")
     m = message.reply("**🎵 Searching Music Savers ...**",
     reply_markup=InlineKeyboardMarkup(
             [
@@ -211,6 +211,7 @@ def song(_, message):
             duration=dur,
         )
         m.delete()
+        s.delete()
     except Exception as e:
         m.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
