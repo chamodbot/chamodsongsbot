@@ -52,7 +52,7 @@ owner_help = """
 
 start_img = f"https://telegra.ph/file/2e2ebb76cd753600b5bef.jpg"
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("starthjw"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
