@@ -52,7 +52,7 @@ owner_help = """
 
 start_img = f"https://telegra.ph/file/2e2ebb76cd753600b5bef.jpg"
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("starthjw"))
 async def start(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
@@ -89,6 +89,73 @@ async def start(client, message):
         btn = None
     await message.reply(start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
+
+@app.on_message(commandpro(["/start", "/alive"]) & filters.group & ~filters.edited)
+async def start(client: Client, message: Message):
+    await message.reply_photo(
+        photo=f"https://telegra.ph/file/740f6f319246b5e175bdb.jpg",
+        caption=f"""🍀 hello There,
+     
+                 🎧 MUSIC FINDER BOT 🎧
+
+🔥 This bot most advanced nikone music finder bot,keyword search & also voice search sport 🔥
+
+🍀 FRO MUSIC LOVERS ⚡️
+
+◇───────────────◇
+
+✅ Voice music search supported 🎤
+🏵 keyword music search 🎸
+🏆 Automatically lyrics Finder (all lang.)
+🚀 inbox supported
+📡 sported fro group 
+🧿 more Fast download
+📥 stock Every Download Music
+🔗 24 Hour activet 
+
+◇───────────────◇
+
+🍀 Developer @chamod_deshan
+
+
+🔥 [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited) Corporation ©️
+**""",
+    reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "➕ ❰ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ❱ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔥   zoneunlimited  🔥", url=f"https://t.me/zoneunlimited"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🍀 zoneunlimited chat 🍀", url="https://t.me/nikone_Developers"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🌷 Bot Developer 🌷", url=f"https://t.me/chamod_deshan"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🧿  You Tech  🧿", url=f"https://t.me/YouTech_VPN_HUB"
+                    )
+                ],
+                [
+                   InlineKeyboardButton(text=
+                       "◇────────🔍 Search Again 🔎───────◇", switch_inline_query_current_chat="")
+                    
+                ]
+                
+           ]
+        ),
+    )
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def help(client, message):
