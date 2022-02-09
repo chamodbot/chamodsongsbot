@@ -126,8 +126,7 @@ def song(_, message):
         m.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
-        print(str(e))
-           return 
+        print(str(e)) 
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [
