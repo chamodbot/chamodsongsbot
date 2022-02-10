@@ -41,6 +41,7 @@ zone_ms = """ **🍀 zoneunlimited 🍀Corporation ©️** """
 @app.on_message(filters.command("update"))
 async def update(Client, message):
     if message.from_user.id not in AUTH_USERS:
+        await message.reply_chat_action("typing")
         await message.reply_sticker(sticker = "CAACAgEAAxkBAAIDNmIDqZZp9tt7v_vN7NeM_00OvGN9AAJiAQACCR5QRTD5_wABmjtUNyME")
         await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷", reply_to_message_id = message.message_id)
         return ""
@@ -99,6 +100,7 @@ async def update(Client, message):
 
 @app.on_message(filters.command(["video"]))
 async def vsong(pbot, message):
+    await message.reply_chat_action("typing")
     ydl_opts = {
         'format':'best',
         'keepvideo':True,
@@ -158,7 +160,7 @@ async def vsong(pbot, message):
         
 @app.on_message(filters.command(["song"]))
 async def song(__, message):
-    await reply_chat_action("typing")
+    await message.reply_chat_action("typing")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     query = " ".join(message.command[1:])
     try:
