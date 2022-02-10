@@ -214,9 +214,8 @@ async def vsong(pbot, message):
         duration=int(ytdl_data["duration"]),
         thumb=preview,
         caption=rep,
-        reply_markup= button,
-    )
-    msg.delete()
+        reply_markup= button)
+        m.delete()
     except Exception as e:
         m.edit('❌ some error')
         print(e)
