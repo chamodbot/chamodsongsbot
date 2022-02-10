@@ -152,7 +152,7 @@ async def vsong(pbot, message):
         reply_markup= button)
     try:
         os.remove(file_name)
-        msg.delete()
+        await msg.delete()
     except Exception as e:
         print(e)
         
@@ -211,7 +211,7 @@ async def song(__, message):
         reply_markup= button)
     try:
         os.remove(file_name)
-        msg.delete()
+        await msg.delete()
     except Exception as e:
         print(e)
 
