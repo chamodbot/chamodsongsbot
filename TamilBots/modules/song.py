@@ -218,12 +218,11 @@ async def vsong(pbot, message):
     )
     msg.delete()
     except Exception as e:
-        m.edit("**😶 Oops Not Found !! ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
+        m.edit('❌ some error')
         print(e)
+
     try:
-       os.remove(file_name)
+        os.remove(file_name)
     except Exception as e:
         print(e)
         
