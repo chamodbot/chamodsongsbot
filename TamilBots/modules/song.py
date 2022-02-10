@@ -7,6 +7,7 @@ import time
 import wget
 import os
 import requests
+import youtube_dl
 import yt_dlp
 from funcs.download import Descargar
 from yt_dlp import YoutubeDL
