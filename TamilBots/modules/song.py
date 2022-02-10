@@ -202,7 +202,7 @@ async def vsong(pbot, message):
     try:
         msg = await message.reply("📥 **downloading video...**")
         with YoutubeDL(ydl_opts) as ytdl:
-            rep = f' **Video name**: [{title[:35]}]({link})\n⏱️ **Video Duration**: `{duration}`\n👁‍🗨 **Video Views**: `{views}`\n**🎧 Requested by:** {message.from_user.mention}\n 🤟Downloaded By : @szsongbot '
+            rep = f'🏷 **Video name**: [{title[:35]}]({link})\n⏱️ **Video Duration**: `{duration}`\n👁‍🗨 **Video Views**: `{views}`\n**🎧 Requested by:** {message.from_user.mention}\n 🤟Downloaded By : @szsongbot '
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
@@ -215,13 +215,9 @@ async def vsong(pbot, message):
         thumb=preview,
         caption=rep,
         reply_markup= button)
-        m.delete()
-    except Exception as e:
-        m.edit('❌ some error')
-        print(e)
-
     try:
         os.remove(file_name)
+        msg.delete()
     except Exception as e:
         print(e)
         
