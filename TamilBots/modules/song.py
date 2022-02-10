@@ -198,7 +198,7 @@ async def song(__, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         await message.reply_chat_action("record_audio")
         with YoutubeDL(ydl_opts) as ytdl:
-            rep = f'**[{title[:35]}]**\n\n✅ Successfully Downloaded to MP3 🎵\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
+            rep = f'**{title[:35]}**\n\n**✅ Successfully Downloaded to MP3 🎵**\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
             ytdl_data = ytdl.extract_info(link, download=True)
             audio_file = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
@@ -217,7 +217,7 @@ async def song(__, message):
         duration=int(ytdl_data["duration"]),
         thumb=preview,
         caption=rep,
-        reply_markup= button)
+        reply_markup= button, reply_to_message_id = message.message_id)
     try:
         os.remove(audio_file)
         await msg.delete()
