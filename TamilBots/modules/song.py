@@ -134,11 +134,7 @@ def song(_, message):
     ]
     
     )
-    except Exception as e:
-        m.edit("**😶 Oops Not Found !! ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
-        print(str(e)) 
+    
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [
