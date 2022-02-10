@@ -190,17 +190,27 @@ async def song(__, message):
     except Exception as e:
         print(e)
     try:
-        msg = await message.reply("📥 **downloading audio...**")
+        msg = await message.reply("**🎵 Searching Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
+        await msg.edit("**🌷 Downloading Music Savers ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         await message.reply_chat_action("record_audio")
         with YoutubeDL(ydl_opts) as ytdl:
             rep = f'[{title[:35]}]({link})\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ ✅ Successfully Downloaded to MP3 🎵\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
             ytdl_data = ytdl.extract_info(link, download=True)
             audio_file = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
-        return await msg.edit(f"❌**YouTube Download Error !*** {str(e)}\n\n Go support chat👉 @slbotzone")
+        return await msg.edit("**😶 Oops Not Found !! ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
+    await msg.edit_sticker(sticker = "CAACAgEAAxkBAAIDNmIDqZZp9tt7v_vN7NeM_00OvGN9AAJiAQACCR5QRTD5_wABmjtUNyME")
     preview = wget.download(thumbnail)
+    await msg.edit("**🍀 Uploading To Telegram ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     await message.reply_chat_action("upload_audio")
-    await msg.edit("📤 **uploading audio...**")
     await message.reply_audio(
         audio_file,
         duration=int(ytdl_data["duration"]),
