@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from config import OWNER_ID
-from bot.helpers.fsub import ForceSub
+from TamilBots.helpers.fsub import ForceSub
 import asyncio
 import time
 import wget
