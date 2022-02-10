@@ -123,18 +123,7 @@ def song(_, message):
         open(thumb_name, "wb").write(thumb.content)
         duration = results[0]["duration"]
         views = results[0]["views"]
-        button = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton("Watch On Youtube🎬", url=f"{link}")
-        ],
-        [
-            InlineKeyboardButton("Search here 🔎", switch_inline_query_current_chat="")
-        ]
-    ]
-    
-    )
-)
+      
     m.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [
