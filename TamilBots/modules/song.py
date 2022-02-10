@@ -94,128 +94,66 @@ async def update(Client, message):
 
     await gift.delete()
 
-@app.on_message(filters.command("song"))
-def song(_, message):
-    chat_id = message.chat.id
-    message.from_user.mention
-    query = " ".join(message.text[1:])
-    m = message.reply_chat_action("record_audio")
-    s = message.reply_sticker(sticker = "CAACAgIAAxkBAAIDNGIDo_iC2LcWiAn6QHC4J4iG4o6VAAKfAQACFkJrCmWMf9oXSSAlIwQ")
-    m = message.reply("**🎵 Searching Music Savers ...**",
-    reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="tools")
-                 ],[
-                    InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="close")
-            ]
-          ]
-        )
-   )
-    ydl_ops = {"format": "bestaudio[ext=m4a]"}
+@app.on_message(filters.command(['song']))
+async def song(_, message: Message):
+    FSub = await ForceSub(client, message)
+    if FSub == 400:
+        return
+    user_id = message.from_user.id 
+    user_name = message.from_user.first_name 
+    rpk = "["+user_name+"](tg://user?id="+str(user_id)+")"
+    query = ''
+    for i in message.command[1:]:
+        query += ' ' + str(i)
+    print(query)
+    
+    m = message.reply('🔎 Searching your song...')
+    ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
-        title = results[0]["title"][:40]
+        #print(results)
+        title = results[0]["title"][:40]       
         thumbnail = results[0]["thumbnails"][0]
-        thumb_name = f"{title}.jpg"
+        thumb_name = f'thumb{title}.jpg'
         thumb = requests.get(thumbnail, allow_redirects=True)
-        open(thumb_name, "wb").write(thumb.content)
+        open(thumb_name, 'wb').write(thumb.content)
+        button = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("listen On Youtube🎬", url=f"{link}")
+        ],
+        [
+            InlineKeyboardButton("Support Chat 🔥️", url=f"https://t.me/slbotzone")
+        ]
+    ]
+    
+    )
         duration = results[0]["duration"]
+        url_suffix = results[0]["url_suffix"]
         views = results[0]["views"]
-      
-    m.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("▓▓░░░░░░░░░░░░░░", callback_data="tools")
-                 ],[
-                    InlineKeyboardButton("░░░░░░░░░░░on ©️", callback_data="close")
-            ]
-          ]
-        )
-   )
 
-    m.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("▓▓▓▓░░░░░░░░░░░░", callback_data="tools")
-                 ],[
-                    InlineKeyboardButton("░░░░░░░░░░░tion ©️", callback_data="close")
-            ]
-          ]
+    except Exception as e:
+        m.edit(
+            "❌ Found Nothing. Sorry.\n\nTry another keywork or maybe spell it properly."
         )
-   )
-    m.edit("**🌷 Downloading Music Savers ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("▓▓▓▓▓▓▓░░░░░░░░░░", callback_data="tools")
-                 ],[
-                    InlineKeyboardButton("░░░░░░░░ Coration ©️", callback_data="close")
-            ]
-          ]
-        )
-   )
+        print(str(e))
+        return
+    m.edit("Downloading Song... Please wait ⏱️")
     try:
-        with yt_dlp.YoutubeDL(ydl_ops) as ydl:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"[{title[:35]}]({link})\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : `{duration}`\n\n┣★ Views : {views}\n\n┣★ **✅ Successfully Downloaded to MP3 🎵**\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n__"
-        secmul, dur, dur_arr = 1, 0, duration.split(":")
-        for i in range(len(dur_arr) - 1, -1, -1):
-            dur += int(float(dur_arr[i])) * secmul
+        rep = f'🎙 **Title**: [{title[:35]}]({link})\n🎬 **Source**: `YouTube`\n⏱️ **Duration**: `{duration}`\n👁‍🗨 **Views**: `{views}`\n**🎧 Requested by:** {message.from_user.username}\n\n 🤟Downloaded By : @szsongbot '
+        secmul, dur, dur_arr = 1, 0, duration.split(':')
+        for i in range(len(dur_arr)-1, -1, -1):
+            dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        m.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░", callback_data="tools")
-                 ],[
-                    InlineKeyboardButton("░░░░░mited 🍀 Corporation ©️", callback_data="close")
-            ]
-          ]
-        )
-   )
-        m.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░", callback_data="tools")
-                 ],[
-                    InlineKeyboardButton("░░unlimited 🍀 Corporation ©️", callback_data="close")
-            ]
-          ]
-        )
-   )
-        m.edit("**🌺 Uploading To Telegram ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="tools")
-                 ],[
-                    InlineKeyboardButton("🍀 zoneunlimited 🍀 Corporation ©️", callback_data="close")
-            ]
-          ]
-        )
-   )
-        message.reply_audio(
-            audio_file,
-            caption=rep,
-            thumb=thumb_name,
-            parse_mode="md",
-            title=title,
-            duration=dur,
-            reply_markup= button,
-        )
+        message.reply_audio(audio_file, caption=rep,reply_markup= button,thumb=thumb_name, parse_mode='md', title=title)
         m.delete()
-        s.delete()
     except Exception as e:
-        m.edit("**😶 Oops Not Found !! ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
+        m.edit('❌ some error')
         print(e)
 
     try:
