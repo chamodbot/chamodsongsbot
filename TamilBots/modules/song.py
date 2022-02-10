@@ -3,6 +3,7 @@ from config import OWNER_ID
 from config import GROUP_ID
 import asyncio
 import time
+import wget
 import os
 import requests
 import yt_dlp
