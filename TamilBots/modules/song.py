@@ -123,10 +123,10 @@ async def vsong(pbot, message):
         button = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Watch On Youtube🎬", url=f"{link}")
+            InlineKeyboardButton("🌺 Watch On Youtube 🌺", url=f"{link}")
         ],
         [
-            InlineKeyboardButton("Search here 🔎", switch_inline_query_current_chat="")
+            InlineKeyboardButton("🔍◇─◇Search Again◇─◇🔎", switch_inline_query_current_chat="")
         ]
     ]
     
@@ -178,7 +178,7 @@ async def song(__, message):
             InlineKeyboardButton("🌺 Watch On Youtube 🌺", url=f"{link}")
         ],
         [
-            InlineKeyboardButton("🔍◇────────◇ Search Again◇───────◇🔎", switch_inline_query_current_chat="")
+            InlineKeyboardButton("🔍◇─◇Search Again◇─◇🔎", switch_inline_query_current_chat="")
         ]
     ]
     
@@ -189,7 +189,7 @@ async def song(__, message):
     try:
         msg = await message.reply("📥 **downloading audio...**")
         with YoutubeDL(ydl_opts) as ytdl:
-            rep = f'🏷 **audio name**: [{title[:35]}]({link})\n⏱️ **audio Duration**: `{duration}`\n👁‍🗨 **audio Views**: `{views}`\n**🎧 Requested by:** {message.from_user.mention}\n 🤟Downloaded By : @The_song_finder_bot '
+            rep = f"**[{title[:35]}]({link})**\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ ✅ Successfully Downloaded to MP3 🎵\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
             ytdl_data = ytdl.extract_info(link, download=True)
             audio_file = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
