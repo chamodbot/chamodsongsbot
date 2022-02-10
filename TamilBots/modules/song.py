@@ -292,10 +292,16 @@ async def vsong(pbot, message):
         duration=int(ytdl_data["duration"]),
         thumb=preview,
         caption=rep,
-        reply_markup= button)
-    try:
-        os.remove(file_name)
+        reply_markup= button,
+    )
         msg.delete()
+    except Exception as e:
+        m.edit("**😶 Oops Not Found !! ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("☬༒༺༄༆☬༻༄༆༒☬", callback_data="progress_msg")]])) 
+        print(e)
+    try:
+       os.remove(file_name)
     except Exception as e:
         print(e)
         
