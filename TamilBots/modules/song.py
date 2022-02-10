@@ -95,71 +95,7 @@ async def update(Client, message):
 
     await gift.delete()
 
-@app.on_message(filters.command(['song']))
-async def song(_, message: Message):
-    FSub = await ForceSub(Client, message)
-    if FSub == 400:
-        return
-    user_id = message.from_user.id 
-    user_name = message.from_user.first_name 
-    rpk = "["+user_name+"](tg://user?id="+str(user_id)+")"
-    query = ''
-    for i in message.command[1:]:
-        query += ' ' + str(i)
-    print(query)
-    
-    status = await message.reply("**🌷 Updating Music Savers ....**")
-    ydl_opts = {"format": "bestaudio[ext=m4a]"}
-    try:
-        results = YoutubeSearch(query, max_results=1).to_dict()
-        link = f"https://youtube.com{results[0]['url_suffix']}"
-        #print(results)
-        title = results[0]["title"][:40]       
-        thumbnail = results[0]["thumbnails"][0]
-        thumb_name = f'thumb{title}.jpg'
-        thumb = requests.get(thumbnail, allow_redirects=True)
-        open(thumb_name, 'wb').write(thumb.content)
-        button = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton("listen On Youtube🎬", url=f"{link}")
-        ],
-        [
-            InlineKeyboardButton("Support Chat 🔥️", url=f"https://t.me/slbotzone")
-        ]
-    ]
-    
-    )
-        duration = results[0]["duration"]
-        url_suffix = results[0]["url_suffix"]
-        views = results[0]["views"]
 
-    except Exception as e:
-        await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com**")
-        print(str(e))
-        return
-    await status.edit("**🎶 Updating Music Savers ....\n www.deezer.com**")
-    try:
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            info_dict = ydl.extract_info(link, download=False)
-            audio_file = ydl.prepare_filename(info_dict)
-            ydl.process_info(info_dict)
-        rep = f'🎙 **Title**: [{title[:35]}]({link})\n🎬 **Source**: `YouTube`\n⏱️ **Duration**: `{duration}`\n👁‍🗨 **Views**: `{views}`\n**🎧 Requested by:** {message.from_user.username}\n\n 🤟Downloaded By : @szsongbot '
-        secmul, dur, dur_arr = 1, 0, duration.split(':')
-        for i in range(len(dur_arr)-1, -1, -1):
-            dur += (int(dur_arr[i]) * secmul)
-            secmul *= 60
-        message.reply_audio(audio_file, caption=rep,reply_markup= button,thumb=thumb_name, parse_mode='md', title=title)
-        m.delete()
-    except Exception as e:
-        await status.edit("**🌺 Updating Music Savers ....\n www.deezer.com**")
-        print(e)
-
-    try:
-        os.remove(audio_file)
-        os.remove(thumb_name)
-    except Exception as e:
-        print(e)
 
 @app.on_message(filters.command(["video"]))
 async def vsong(pbot, message):
@@ -220,6 +156,65 @@ async def vsong(pbot, message):
     except Exception as e:
         print(e)
         
+@app.on_message(filters.command(["song"]))
+async def song(__, message):
+    ydl_opts = {
+        'format':'best',
+        'keepaudio':True,
+        'prefer_ffmpeg':False,
+        'geo_bypass':True,
+        'outtmpl':'%(title)s.%(ext)s',
+        'quite':True
+    }
+    query = " ".join(message.command[1:])
+    try:
+        results = YoutubeSearch(query, max_results=1).to_dict()
+        link = f"https://youtube.com{results[0]['url_suffix']}"
+        title = results[0]["title"][:40]
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f"thumb{title}.jpg"
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, "wb").write(thumb.content)
+        duration = results[0]["duration"]
+        views = results[0]["views"]
+        results[0]["url_suffix"]
+        results[0]["views"]
+        button = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("Watch On Youtube🎬", url=f"{link}")
+        ],
+        [
+            InlineKeyboardButton("Search here 🔎", switch_inline_query_current_chat="")
+        ]
+    ]
+    
+    )
+        rby = message.from_user.mention
+    except Exception as e:
+        print(e)
+    try:
+        msg = await message.reply("📥 **downloading audio...**")
+        with YoutubeDL(ydl_opts) as ytdl:
+            rep = f'🏷 **audio name**: [{title[:35]}]({link})\n⏱️ **audio Duration**: `{duration}`\n👁‍🗨 **audio Views**: `{views}`\n**🎧 Requested by:** {message.from_user.mention}\n 🤟Downloaded By : @The_song_finder_bot '
+            ytdl_data = ytdl.extract_info(link, download=True)
+            file_name = ytdl.prepare_filename(ytdl_data)
+    except Exception as e:
+        return await msg.edit(f"❌**YouTube Download Error !*** {str(e)}\n\n Go support chat👉 @slbotzone")
+    preview = wget.download(thumbnail)
+    await msg.edit("📤 **uploading video...**")
+    await message.reply_audio(
+        file_name,
+        duration=int(ytdl_data["duration"]),
+        thumb=preview,
+        caption=rep,
+        reply_markup= button)
+    try:
+        os.remove(file_name)
+        msg.delete()
+    except Exception as e:
+        print(e)
+
 
 @app.on_inline_query()
 async def inline(client: Client, query: InlineQuery):
