@@ -158,14 +158,7 @@ async def vsong(pbot, message):
         
 @app.on_message(filters.command(["song"]))
 async def song(__, message):
-    ydl_opts = {
-        'format':'best',
-        'keepaudio':True,
-        'prefer_ffmpeg':False,
-        'geo_bypass':True,
-        'outtmpl':'%(title)s.%(ext)s',
-        'quite':True
-    }
+    ydl_opts = {"format": "bestaudio[ext=m4a]"}
     query = " ".join(message.command[1:])
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -182,10 +175,10 @@ async def song(__, message):
         button = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Watch On Youtube🎬", url=f"{link}")
+            InlineKeyboardButton("🌺 Watch On Youtube 🌺", url=f"{link}")
         ],
         [
-            InlineKeyboardButton("Search here 🔎", switch_inline_query_current_chat="")
+            InlineKeyboardButton("🔍◇────────◇ Search Again◇───────◇🔎", switch_inline_query_current_chat="")
         ]
     ]
     
@@ -202,7 +195,7 @@ async def song(__, message):
     except Exception as e:
         return await msg.edit(f"❌**YouTube Download Error !*** {str(e)}\n\n Go support chat👉 @slbotzone")
     preview = wget.download(thumbnail)
-    await msg.edit("📤 **uploading video...**")
+    await msg.edit("📤 **uploading audio...**")
     await message.reply_audio(
         audio_file,
         duration=int(ytdl_data["duration"]),
