@@ -122,6 +122,17 @@ def song(_, message):
         open(thumb_name, "wb").write(thumb.content)
         duration = results[0]["duration"]
         views = results[0]["views"]
+        button = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("Watch On Youtube🎬", url=f"{link}")
+        ],
+        [
+            InlineKeyboardButton("Search here 🔎", switch_inline_query_current_chat="")
+        ]
+    ]
+    
+    )
 
     except Exception as e:
         m.edit("**😶 Oops Not Found !! ....**",
@@ -167,7 +178,7 @@ def song(_, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"[{title[:35]}]({link})\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : `{duration}`\n\n┣★ Views : {views}\n\n┣★ **✅ Successfully Downloaded to MP3 🎵**\n\n┣★ 🌺 Requestor : {message.from_user.first_name } \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n__"
+        rep = f"[{title[:35]}]({link})\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : `{duration}`\n\n┣★ Views : {views}\n\n┣★ **✅ Successfully Downloaded to MP3 🎵**\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n__"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
@@ -212,6 +223,7 @@ def song(_, message):
             parse_mode="md",
             title=title,
             duration=dur,
+            reply_markup= button,
         )
         m.delete()
         s.delete()
@@ -268,7 +280,7 @@ async def vsong(pbot, message):
     try:
         msg = await message.reply("📥 **downloading video...**")
         with YoutubeDL(ydl_opts) as ytdl:
-            rep = f'🏷 **Video name**: [{title[:35]}]({link})\n⏱️ **Video Duration**: `{duration}`\n👁‍🗨 **Video Views**: `{views}`\n**🎧 Requested by:** {message.from_user.mention}\n 🤟Downloaded By : @szsongbot '
+            rep = f' **Video name**: [{title[:35]}]({link})\n⏱️ **Video Duration**: `{duration}`\n👁‍🗨 **Video Views**: `{views}`\n**🎧 Requested by:** {message.from_user.mention}\n 🤟Downloaded By : @szsongbot '
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
