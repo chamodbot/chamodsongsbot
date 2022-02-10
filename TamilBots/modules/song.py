@@ -158,6 +158,7 @@ async def vsong(pbot, message):
         
 @app.on_message(filters.command(["song"]))
 async def song(__, message):
+    await reply_chat_action("typing")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     query = " ".join(message.command[1:])
     try:
