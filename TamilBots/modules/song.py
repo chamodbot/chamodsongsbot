@@ -134,6 +134,7 @@ def song(_, message):
     
     )
 
+    rby = message.from_user.mention
     except Exception as e:
         m.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
@@ -294,7 +295,7 @@ async def vsong(pbot, message):
         caption=rep,
         reply_markup= button,
     )
-        msg.delete()
+    msg.delete()
     except Exception as e:
         m.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
