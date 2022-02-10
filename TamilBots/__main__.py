@@ -1,5 +1,4 @@
 from config import OWNER_ID
-from config import MUST_JOIN
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from TamilBots.modules import *
 from pyrogram import idle, filters
