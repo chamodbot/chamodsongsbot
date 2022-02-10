@@ -137,7 +137,7 @@ async def song(_, message: Message):
         await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com**")
         print(str(e))
         return
-    await status.edit("**🌷 Updating Music Savers ....\n www.deezer.com**")
+    await status.edit("**🎶 Updating Music Savers ....\n www.deezer.com**")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -151,7 +151,7 @@ async def song(_, message: Message):
         message.reply_audio(audio_file, caption=rep,reply_markup= button,thumb=thumb_name, parse_mode='md', title=title)
         m.delete()
     except Exception as e:
-        m.edit('❌ some error')
+        await status.edit("**🌺 Updating Music Savers ....\n www.deezer.com**")
         print(e)
 
     try:
