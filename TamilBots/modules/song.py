@@ -192,7 +192,7 @@ async def song(__, message):
     try:
         msg = await message.reply("**🎵 Searching Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
         await msg.edit("**🌷 Downloading Music Savers ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
