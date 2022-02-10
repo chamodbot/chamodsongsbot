@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from config import OWNER_ID
-from config import GROUP_ID
+from bot.helpers.fsub import ForceSub
 import asyncio
 import time
 import wget
@@ -9,7 +9,6 @@ import requests
 import yt_dlp
 from funcs.download import Descargar
 from yt_dlp import YoutubeDL
-from mixpanel import Mixpanel
 from youtube_search import YoutubeSearch
 from pyrogram.errors.exceptions import MessageNotModified
 from pytube import YouTube, exceptions
