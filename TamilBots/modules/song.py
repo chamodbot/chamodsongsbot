@@ -198,19 +198,19 @@ async def song(__, message):
         with YoutubeDL(ydl_opts) as ytdl:
             rep = f'🏷 **audio name**: [{title[:35]}]({link})\n⏱️ **audio Duration**: `{duration}`\n👁‍🗨 **audio Views**: `{views}`\n**🎧 Requested by:** {message.from_user.mention}\n 🤟Downloaded By : @The_song_finder_bot '
             ytdl_data = ytdl.extract_info(link, download=True)
-            file_name = ytdl.prepare_filename(ytdl_data)
+            audio_file = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
         return await msg.edit(f"❌**YouTube Download Error !*** {str(e)}\n\n Go support chat👉 @slbotzone")
     preview = wget.download(thumbnail)
     await msg.edit("📤 **uploading video...**")
     await message.reply_audio(
-        file_name,
+        audio_file,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
         caption=rep,
         reply_markup= button)
     try:
-        os.remove(file_name)
+        os.remove(audio_file)
         await msg.delete()
     except Exception as e:
         print(e)
