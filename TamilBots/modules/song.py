@@ -43,7 +43,7 @@ async def update(Client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply_chat_action("typing")
         await message.reply_sticker(sticker = "CAACAgEAAxkBAAIDNmIDqZZp9tt7v_vN7NeM_00OvGN9AAJiAQACCR5QRTD5_wABmjtUNyME", reply_to_message_id = message.message_id)
-        await message.reply("await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷**",
+        await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("🍀 Join Now Zoneunlimited 🍀", url="https://t.me/zoneunlimited")]]), reply_to_message_id = message.message_id)
         return ""
