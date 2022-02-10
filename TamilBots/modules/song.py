@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from config import OWNER_ID
+from pyrogram import Client
 from TamilBots.helpers.fsub import ForceSub
 import asyncio
 import time
@@ -95,7 +96,7 @@ async def update(Client, message):
 
 @app.on_message(filters.command(['song']))
 async def song(_, message: Message):
-    FSub = await ForceSub(client, message)
+    FSub = await ForceSub(Client, message)
     if FSub == 400:
         return
     user_id = message.from_user.id 
