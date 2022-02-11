@@ -392,7 +392,7 @@ async def shazamm(client, message):
 🎧 Requested by: {message.from_user.mention}
 🤟 Identified Song: @szsongbot 
 """
-    await client.send_photo(message.chat.id, image, messageo, reply_markup=button, parse_mode="HTML")
+    await client.send_photo(message.chat.id, image, messageo, parse_mode="HTML")
     os.remove(downloaded_file_name)
     await sz.delete()
 
