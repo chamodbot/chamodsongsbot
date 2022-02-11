@@ -197,7 +197,7 @@ async def vsong(pbot, message):
 @app.on_message(filters.command(["song"]))
 async def song(__, message):
     try:
-        await message.reply_chat_action("typing")
+        await message.reply_chat_action("import_history")
         await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
