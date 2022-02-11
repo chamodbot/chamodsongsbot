@@ -349,7 +349,7 @@ async def edit_or_reply(message, text, parse_mode="md"):
 @app.on_message(filters.command("find"))
 async def shazamm(client, message):
     try:
-        await message._client.get_chat_member(int("-1001325914694"), message.from_user.id)
+        await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
         text=JOIN_ASAP, disable_web_page_preview=True, reply_markup=FSUBB
