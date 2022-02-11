@@ -354,7 +354,7 @@ async def fetch_audio(client, message):
         await runcmd(stark_cmd)
         final_warner = "friday.mp3"
     elif warner_stark.audio:
-        lel = await edit_or_reply(message, "")
+        lel = await message.reply_sticker(sticker = "CAACAgEAAxkBAAIDNmIDqZZp9tt7v_vN7NeM_00OvGN9AAJiAQACCR5QRTD5_wABmjtUNyME", reply_to_message_id = message.message_id)
         final_warner = await message.reply_to_message.download()
     await lel.delete()
     return final_warner
@@ -381,9 +381,9 @@ async def shazamm(client, message):
     )
         return
     await message.reply_chat_action("record_audio")
-    sz = await message.reply("**🌷 Updating Music Savers ....**",
+    sz = await message.reply("**🎵 Sεαяcнıпɢ AυÐเO Ƒιℓє  ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("░░░░░░░░░░░░░░░░", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
     if not message.reply_to_message:
         await sz.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
