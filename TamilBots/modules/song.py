@@ -435,6 +435,7 @@ async def shazamm(client, message):
     title = zzz.get("title")
     messageo = f"""<b>✅ Successfully Download To Mp3 Ditels ..</b>
 ┏━━━━━━━━━━━━━━━━━┓
+
 ┣★ 🎵  Song Name : {title}
 
 ┣★ 🍀 Song By : {by}
@@ -442,10 +443,11 @@ async def shazamm(client, message):
 ┣★ 🎧 Requested by: {message.from_user.mention}
 
 ┣★ 🍀 @zoneunlimited 🍀 Corporation ©️ 
+
 ┗━━━━━━━━━━━━━━━━━┛
 """
     await message.reply_chat_action("upload_photo")
-    await client.send_photo(message.chat.id, image, messageo, parse_mode="HTML")
+    await client.send_photo(message.chat.id, image, messageo, reply_markup=button, parse_mode="HTML")
     os.remove(downloaded_file_name)
     await sz.delete()
 
