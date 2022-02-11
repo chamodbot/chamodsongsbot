@@ -139,10 +139,10 @@ async def vsong(pbot, message):
     except Exception as e:
         print(e)
     try:
-        msg = await message.reply("**🎵 Searching Music Savers ....**",
+        msg = await message.reply("**🎵 Sεαяcнıпɢ Mυƨıc Sανεяƨ ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
-        await msg.edit("**🌷 Downloading Music Savers ....**",
+        await msg.edit("**🌷 ƊօωղƖօąɗíղɠ Mυƨıc Sανεяƨ ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         await message.reply_chat_action("record_video_note")
@@ -156,7 +156,7 @@ async def vsong(pbot, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     preview = wget.download(thumbnail)
     await message.reply_chat_action("upload_audio")
-    await msg.edit("**🍀 Uploading To Telegram ....**",
+    await msg.edit("**🍀 ᑌᑭᒪOᗩᗪIᑎG ᏆᎾ TᒪᕮGᖇᗩᗰ ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     await message.reply_chat_action("upload_video_note")
@@ -204,10 +204,10 @@ async def song(__, message):
     except Exception as e:
         print(e)
     try:
-        msg = await message.reply("**🎵 Searching Music Savers ....**",
+        msg = await message.reply("**🎵 Sεαяcнıпɢ Mυƨıc Sανεяƨ ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
-        await msg.edit("**🌷 Downloading Music Savers ....**",
+        await msg.edit("**🌷 ƊօωղƖօąɗíղɠ Mυƨıc Sανεяƨ ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         await message.reply_chat_action("record_audio")
@@ -222,7 +222,7 @@ async def song(__, message):
    
     preview = wget.download(thumbnail)
     await message.reply_chat_action("upload_audio")
-    await msg.edit("**🍀 Uploading To Telegram ....**",
+    await msg.edit("**🍀 ᑌᑭᒪOᗩᗪIᑎG ᏆᎾ TᒪᕮGᖇᗩᗰ ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
     await message.reply_chat_action("upload_audio")
