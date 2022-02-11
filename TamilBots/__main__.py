@@ -51,8 +51,22 @@ owner_help = """
 
 start_img = f"https://telegra.ph/file/2e2ebb76cd753600b5bef.jpg"
 
+FSUBB = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton(text="🍀  zoneunlimited  🍀", url=f"https://t.me/zoneunlimited") 
+        ]]      
+    )
+
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
+    try:
+        await message.reply_chat_action("typing")
+        await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
+    except UserNotParticipant:
+        await message.reply_text(
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
+    )
+        return
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
@@ -92,6 +106,14 @@ async def start(client, message):
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def help(client, message):
+    try:
+        await message.reply_chat_action("typing")
+        await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
+    except UserNotParticipant:
+        await message.reply_text(
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
+    )
+        return
     if message.from_user["id"] == OWNER_ID:
         await message.reply(owner_help)
         return ""
