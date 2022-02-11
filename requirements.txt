@@ -2,6 +2,7 @@ pyrogram
 tgcrypto
 requests
 wget
+shlex
 yt_dlp
 pytube
 sqlalchemy==1.3.20
