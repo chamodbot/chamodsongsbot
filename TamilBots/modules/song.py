@@ -104,9 +104,25 @@ async def update(Client, message):
     await gift.delete()
 
 
+JOIN_ASAP = "**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝"
+
+FSUBB = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton(text="🍀  zoneunlimited  🍀", url=f"https://t.me/zoneunlimited") 
+        ]]      
+    )
+
 
 @app.on_message(filters.command(["video"]))
 async def vsong(pbot, message):
+    try:
+        await message.reply_chat_action("typing")
+        await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
+    except UserNotParticipant:
+        await message.reply_text(
+        text=JOIN_ASAP, disable_web_page_preview=True, reply_markup=FSUBB
+    )
+        return
     await message.reply_chat_action("typing")
     ydl_opts = {
         'format':'best',
@@ -359,7 +375,7 @@ async def shazamm(client, message):
     await message.reply_chat_action("record_audio")
     sz = await edit_or_reply(message, "**🎵 Sεαяcнıпɢ AυÐเO Ƒιℓє ....**",
          reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)")
+            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
     if not message.reply_to_message:
         await sz.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
