@@ -38,7 +38,7 @@ start_text = """
 **🍀 Developer :** @chamod_deshan
 
 
-🔥 **🍀 @zoneunlimited 🍀 Corporation ©️**"""
+🔥 ** @Zu_Project  🇱🇰   Corporation ©️**"""
 
 owner_help = """
 /blacklist user_id
@@ -53,7 +53,7 @@ start_img = f"https://telegra.ph/file/2e2ebb76cd753600b5bef.jpg"
 
 FSUBB = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton(text="🍀  zoneunlimited  🍀", url=f"https://t.me/zoneunlimited") 
+        InlineKeyboardButton(text="  Zu Project  🇱🇰  ", url=f"https://t.me/Zu_Project") 
         ]]      
     )
 
@@ -64,7 +64,7 @@ async def start(client, message):
         await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @Zu_Project  🇱🇰   Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     chat_id = message.chat.id
@@ -76,10 +76,10 @@ async def start(client, message):
             
             ],
             [
-             InlineKeyboardButton(text="🍀 zoneunlimited 🍀", url="http://t.me/zoneunlimited")
+             InlineKeyboardButton(text="  Zu Project  🇱🇰  ", url="http://t.me/Zu_Project")
 
             ],
-            [InlineKeyboardButton(text="🍀 zoneunlimited chat 🍀", url="http://t.me/zoneunlimitedchat")
+            [InlineKeyboardButton(text="🍀 zoneunlimited  🍀", url="http://t.me/zoneunlimited")
             
             ],
             [InlineKeyboardButton(text="🧿YOU  Tech🧿", url="https://t.me/YouTech_VPN_HUB")
@@ -111,7 +111,7 @@ async def help(client, message):
         await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @Zu_Project Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     if message.from_user["id"] == OWNER_ID:
