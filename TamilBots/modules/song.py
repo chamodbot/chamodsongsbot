@@ -14,6 +14,8 @@ from funcs.download import Descargar
 from yt_dlp import YoutubeDL
 from youtube_search import YoutubeSearch
 from pyrogram.errors.exceptions import MessageNotModified
+from pyrogram.errors import UserAlreadyParticipant
+from pyrogram.errors import UserNotParticipant, ChatAdminRequired, UsernameNotOccupied
 from pytube import YouTube, exceptions
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
 from pyrogram.types import InlineKeyboardButton
