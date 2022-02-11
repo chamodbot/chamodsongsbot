@@ -344,7 +344,7 @@ async def edit_or_reply(message, text, parse_mode="md"):
         return await message.reply_text(text, parse_mode=parse_mode)
     return await message.edit(text, parse_mode=parse_mode)
 
-@app.on_message(filters.command(["find", f"find@{The_song_finder_bot}"]))
+@app.on_message(filters.command("find"))
 async def shazamm(client, message):
     try:
         await message._client.get_chat_member(int("-1001325914694"), message.from_user.id)
