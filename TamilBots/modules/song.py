@@ -377,16 +377,7 @@ async def shazamm(client, message):
         await sz.edit("❌ Found Nothing.\n\nTry another keywork or maybe spell it properly.")
         os.remove(downloaded_file_name)
         return
-    button = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton("Requested by🎧", url=f"https://t.me/{message.from_user.mention}")
-        ],
-        [
-            InlineKeyboardButton("Support Chat 🔥️", url=f"https://t.me/slbotzone")
-        ]
-    ]
-)   
+    
     xoo = xo.get("response")
     zz = xoo[1]
     zzz = zz.get("track")
