@@ -49,9 +49,9 @@ async def update(Client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply_chat_action("typing")
         await message.reply_sticker(sticker = "CAACAgEAAxkBAAIDNmIDqZZp9tt7v_vN7NeM_00OvGN9AAJiAQACCR5QRTD5_wABmjtUNyME", reply_to_message_id = message.message_id)
-        await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @zoneunlimited to Access **This Service** 🌷**",
+        await message.reply("**⛔️ Access Denied ⛔️**\n\n**Please Contact** @chamod_deshan to **Get Access** or Join @Zu_Project to Access **This Service** 🌷**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🍀 Join Now Zoneunlimited 🍀", url="https://t.me/zoneunlimited")]]), reply_to_message_id = message.message_id)
+            [[InlineKeyboardButton(" Join Now Zu Project 🇱🇰 ", url="https://t.me/Zu_Project")]]), reply_to_message_id = message.message_id)
         return ""
     gift = await message.reply_sticker(sticker = "CAACAgIAAxkBAAIDOmIDuTomMEzGzYgtoiiQj73c-8BrAAK6AAMw1J0RhNfEiMRQZ1YjBA", reply_to_message_id = message.message_id)
     status = await message.reply("**🌷 Updating Music Savers ....**",
@@ -105,11 +105,11 @@ async def update(Client, message):
     await gift.delete()
 
 
-JOIN_ASAP = "**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝"
+JOIN_ASAP = "**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @Zu_Project Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝"
 
 FSUBB = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton(text="🍀  zoneunlimited  🍀", url=f"https://t.me/zoneunlimited") 
+        InlineKeyboardButton(text="  Zu Project  🇱🇰  ", url=f"https://t.me/Zu_Project") 
         ]]      
     )
 
@@ -118,10 +118,10 @@ FSUBB = InlineKeyboardMarkup(
 async def vsong(pbot, message):
     try:
         await message.reply_chat_action("typing")
-        await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
+        await message._client.get_chat_member(int("-1001563603672"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @Zu_Project Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     await message.reply_chat_action("typing")
@@ -169,7 +169,7 @@ async def vsong(pbot, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         await message.reply_chat_action("record_video_note")
         with YoutubeDL(ydl_opts) as ytdl:
-            rep = f'**{title[:35]}\n\n**✅ Successfully Downloaded to MP4 🎥\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
+            rep = f'**{title[:35]}\n\n**✅ Successfully Downloaded to MP4 🎥\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [  Zu Project  🇱🇰  ](https://t.me/Zu_Project)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
@@ -198,10 +198,10 @@ async def vsong(pbot, message):
 async def song(__, message):
     try:
         await message.reply_chat_action("import_history")
-        await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
+        await message._client.get_chat_member(int("-1001563603672"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @Zu_Project Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     await message.reply_chat_action("typing")
@@ -242,7 +242,7 @@ async def song(__, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         await message.reply_chat_action("record_audio")
         with YoutubeDL(ydl_opts) as ytdl:
-            rep = f'**{title[:35]}**\n\n✅ Successfully Downloaded to MP3 🎵\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
+            rep = f'**{title[:35]}**\n\n✅ Successfully Downloaded to MP3 🎵\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [  Zu Project  🇱🇰  ](https://t.me/Zu_Project)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
             ytdl_data = ytdl.extract_info(link, download=True)
             audio_file = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
@@ -315,11 +315,11 @@ async def inline(client: Client, query: InlineQuery):
                 switch_pm_parameter="",
             )
 
-JOIN_ASAP = "**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝"
+JOIN_ASAP = "**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @Zu_Project Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝"
 
 FSUBB = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton(text="🍀  zoneunlimited  🍀", url=f"https://t.me/zoneunlimited") 
+        InlineKeyboardButton(text="  Zu Project  🇱🇰  ", url=f"https://t.me/Zu_Project") 
         ]]      
     )
 
@@ -375,10 +375,10 @@ async def edit_or_reply(message, text, parse_mode="md"):
 async def shazamm(client, message):
     try:
         await message.reply_chat_action("typing")
-        await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
+        await message._client.get_chat_member(int("-1001563603672"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @Zu_Project Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     await message.reply_chat_action("record_audio")
@@ -417,7 +417,7 @@ async def shazamm(client, message):
     button = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("🍀 zoneunlimited 🍀 ", url=f"https://t.me/zoneunlimited")
+            InlineKeyboardButton("  Zu Project  🇱🇰  ", url=f"https://t.me/Zu_Project")
         ],
         [
             InlineKeyboardButton("🔍◇─◇Search Again◇─◇🔎", switch_inline_query_current_chat="")
@@ -443,7 +443,7 @@ async def shazamm(client, message):
 
 ┣★ 🚀 Requestor :<b> {message.from_user.mention} </b>
 
-┣★ 🍀 @zoneunlimited 🍀<b> Corporation ©️ </b>
+┣★ 🍀 @Zu_Project 🇱🇰  <b> Corporation ©️ </b>
 
 ┗━━━━━━━━━━━━━━━━━┛
 """
