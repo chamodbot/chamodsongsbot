@@ -290,12 +290,11 @@ async def inline(client: Client, query: InlineQuery):
                 switch_pm_parameter="",
             )
 
-
-JOIN_ASAP = " **You cant use me untill subscribe our updates channel** ☹️\n\n So Please join our updates channel by the following button and hit on the ` /find ` command again 😊"
+JOIN_ASAP = "**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝"
 
 FSUBB = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton(text="Join our update Channel 🗣", url=f"https://t.me/szteambots") 
+        InlineKeyboardButton(text="🍀  zoneunlimited  🍀", url=f"https://t.me/zoneunlimited") 
         ]]      
     )
 
@@ -359,7 +358,7 @@ async def shazamm(client, message):
         return
     await message.reply_chat_action("record_audio")
     sz = await edit_or_reply(message, "**🎵 Sεαяcнıпɢ AυÐเO Ƒιℓє ....**",
-        reply_markup=InlineKeyboardMarkup(
+         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)")
     if not message.reply_to_message:
         await sz.edit("**😶 Oops Not Found !! ....**",
