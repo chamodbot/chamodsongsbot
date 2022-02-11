@@ -354,7 +354,7 @@ async def fetch_audio(client, message):
         await runcmd(stark_cmd)
         final_warner = "friday.mp3"
     elif warner_stark.audio:
-        lel = await message.reply_sticker(sticker = "CAACAgEAAxkBAAIDNmIDqZZp9tt7v_vN7NeM_00OvGN9AAJiAQACCR5QRTD5_wABmjtUNyME", reply_to_message_id = message.message_id)
+        lel = await message.reply_sticker(sticker = "CAACAgIAAxkBAAIDOmIDuTomMEzGzYgtoiiQj73c-8BrAAK6AAMw1J0RhNfEiMRQZ1YjBA", reply_to_message_id = message.message_id)
         final_warner = await message.reply_to_message.download()
     await lel.delete()
     return final_warner
@@ -422,7 +422,7 @@ async def shazamm(client, message):
     image = nt.get("coverarthq")
     by = zzz.get("subtitle")
     title = zzz.get("title")
-    messageo = f"""<b>Found your song.</b>
+    messageo = f"""<b>✅ Successfully Download To Mp3 Ditels ..</b>
 ┏━━━━━━━━━━━━━━━━━┓
 ┣★ 🎵  Song Name : {title}
 
@@ -430,7 +430,7 @@ async def shazamm(client, message):
 
 ┣★ 🎧 Requested by: {message.from_user.mention}
 
-┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited) Corporation ©️ 
+┣★ 🍀 @zoneunlimited 🍀 Corporation ©️ 
 ┗━━━━━━━━━━━━━━━━━┛
 """
     await message.reply_chat_action("upload_photo")
