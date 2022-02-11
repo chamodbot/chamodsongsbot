@@ -120,7 +120,7 @@ async def vsong(pbot, message):
         await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     await message.reply_chat_action("typing")
@@ -200,7 +200,7 @@ async def song(__, message):
         await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     await message.reply_chat_action("typing")
@@ -377,13 +377,13 @@ async def shazamm(client, message):
         await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** ,{message.from_user.mention} You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     await message.reply_chat_action("record_audio")
-    sz = await edit_or_reply(message, "**🎵 Sεαяcнıпɢ AυÐเO Ƒιℓє ....**",
-         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
+    sz = await edit_or_reply("**🎵 Sεαяcнıпɢ AυÐเO Ƒιℓє ....**",
+    reply_markup=InlineKeyboardMarkup(
+        [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
     if not message.reply_to_message:
         await sz.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
