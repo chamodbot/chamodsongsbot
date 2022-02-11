@@ -397,6 +397,55 @@ async def shazamm(client, message):
     await sz.delete()
 
 
+@app.on_message(filters.private & (filters.document | filters.video | filters.voice))
+async def shazamm(client, message):
+    try:
+        await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
+    except UserNotParticipant:
+        await message.reply_text(
+        text=JOIN_ASAP, disable_web_page_preview=True, reply_markup=FSUBB
+    )
+        return
+    sz = await edit_or_reply(message, "**🔎 Searching your audio...**")
+    if not message.reply_to_message:
+        await sz.edit(f"👤Please **Reply To an Audio File** to find \nsong or use this format to find songs\n\n `/find alone` \n\n Need any Help [join updates channel](https://t.me/szteambots) or [supprt group](https://t.me/slbotzone) ")
+        return
+    if os.path.exists("friday.mp3"):
+        os.remove("friday.mp3")
+    kkk = await fetch_audio(client, message)
+    downloaded_file_name = kkk
+    f = {"file": (downloaded_file_name, open(downloaded_file_name, "rb"))}
+    await sz.edit("**Downloading Song... Please wait ⏰**")
+    r = requests.post("https://starkapi.herokuapp.com/shazam/", files=f)
+    try:
+        xo = r.json()
+    except JSONDecodeError:
+        await sz.edit("`Seems Like Our Server Has Some Issues, Please Try Again Later!`")
+        return
+    if xo.get("success") is False:
+        await sz.edit("❌ Found Nothing.\n\nTry another keywork or maybe spell it properly.")
+        os.remove(downloaded_file_name)
+        return
+    
+    xoo = xo.get("response")
+    zz = xoo[1]
+    zzz = zz.get("track")
+    zzz.get("sections")[3]
+    nt = zzz.get("images")
+    image = nt.get("coverarthq")
+    by = zzz.get("subtitle")
+    title = zzz.get("title")
+    messageo = f"""<b>Found your song.</b>
+🏷  Song Name : {title}
+👁‍🗨 Song By : {by}
+🎧 Requested by: {message.from_user.mention}
+🤟 Identified Song: @szsongbot 
+"""
+    await client.send_photo(message.chat.id, image, messageo, parse_mode="HTML")
+    os.remove(downloaded_file_name)
+    await sz.delete()
+
+
 @app.on_callback_query()
 async def button(app, update):
       cb_data = update.data
