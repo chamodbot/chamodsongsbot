@@ -413,6 +413,17 @@ async def shazamm(client, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         os.remove(downloaded_file_name)
         return
+    button = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("🍀 zoneunlimited 🍀 ", url=f"https://t.me/zoneunlimited")
+        ],
+        [
+            InlineKeyboardButton("🔍◇─◇Search Again◇─◇🔎", switch_inline_query_current_chat="")
+        ]
+    ]
+    
+    )
     
     xoo = xo.get("response")
     zz = xoo[1]
