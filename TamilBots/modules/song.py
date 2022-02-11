@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from config import OWNER_ID
 from pyrogram import Client
 from TamilBots.helpers.fsub import ForceSub
+from typing import Tuple
 import asyncio
 import time
 import wget
