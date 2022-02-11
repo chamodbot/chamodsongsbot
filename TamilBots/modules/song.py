@@ -412,7 +412,7 @@ async def shazamm(client, message):
         return
     if os.path.exists("friday.mp3"):
         os.remove("friday.mp3")
-    kkk = await fetch_audio(client, message)
+    kkk = await fetch_voice(client, message)
     downloaded_file_name = kkk
     f = {"file": (downloaded_file_name, open(downloaded_file_name, "rb"))}
     await sz.edit("**Downloading Song... Please wait ⏰**")
