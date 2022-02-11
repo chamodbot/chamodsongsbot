@@ -436,13 +436,13 @@ async def shazamm(client, message):
     messageo = f"""<b>✅ Successfully Download To Mp3 Ditels ..</b>
 ┏━━━━━━━━━━━━━━━━━┓
 
-┣★ 🎵  Song Name : {title}
+┣★ 🎵  Song Name :<b> {title} </b>
 
-┣★ 🍀 Song By : {by}
+┣★ 🌷 Channel Name :<b> {by} </b>
 
-┣★ 🎧 Requested by: {message.from_user.mention}
+┣★ 🚀 Requestor :<b> {message.from_user.mention} </b>
 
-┣★ 🍀 @zoneunlimited 🍀 Corporation ©️ 
+┣★ 🍀 @zoneunlimited 🍀<b> Corporation ©️ </b>
 
 ┗━━━━━━━━━━━━━━━━━┛
 """
