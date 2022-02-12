@@ -5,7 +5,7 @@ import shlex
 import requests
 from typing import Tuple
 from json import JSONDecodeError
-from pyrogram import Client
+from pyrogram import Client, filters
 from TamilBots import app, LOGGER
 from pyrogram.errors import UserAlreadyParticipant
 from pyrogram.errors import UserNotParticipant, ChatAdminRequired, UsernameNotOccupied
