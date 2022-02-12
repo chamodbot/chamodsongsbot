@@ -30,9 +30,9 @@ async def start_(client: Client, message: Message):
         text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited  Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
+    await message.reply_sticker(sticker = "CAACAgIAAxkBAAIDTGIH_M97rDk5mOb2z2fa1mCHDeHVAAK4AAMw1J0R92WGDc8M6xUjBA")
     await message.reply_photo(
         photo=f"https://telegra.ph/file/c14ff832c44a277759bd4.jpg",
-        sticker=f"CAACAgIAAxkBAAIDTGIH_M97rDk5mOb2z2fa1mCHDeHVAAK4AAMw1J0R92WGDc8M6xUjBA",
         caption = """
 🍀 Hello There 
 
