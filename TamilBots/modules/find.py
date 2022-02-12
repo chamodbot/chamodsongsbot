@@ -69,7 +69,7 @@ async def shazamm(client, message):
         await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @Zu_Project Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     await message.reply_chat_action("record_audio")
@@ -134,7 +134,7 @@ async def shazamm(client, message):
 
 ┣★ 🚀 Requestor :<b> {message.from_user.mention} </b>
 
-┣★ 🍀 @Zu_Project 🇱🇰  <b> Corporation ©️ </b>
+┣★ 🍀 @zoneunlimited 🍀 <b> Corporation ©️ </b>
 
 ┗━━━━━━━━━━━━━━━━━┛
 """
