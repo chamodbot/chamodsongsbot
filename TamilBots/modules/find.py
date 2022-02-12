@@ -4,7 +4,6 @@ import time
 import shlex
 import requests
 from typing import Tuple
-from bot import bot as app
 from json import JSONDecodeError
 from pyrogram import Client
 from pyrogram.errors import UserAlreadyParticipant
