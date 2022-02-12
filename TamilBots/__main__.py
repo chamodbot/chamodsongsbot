@@ -10,8 +10,6 @@ from TamilBots.sql.chat_sql import add_chat_to_db
 from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForbidden
 
 
-start_photo = "https://telegra.ph/file/e8bf37370b03bc9f3118f.jpg"
-
 start_text = """
 **👋 hello There,** [{}](tg://user?id={})
      
