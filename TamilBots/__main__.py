@@ -31,7 +31,8 @@ async def start_(client: Client, message: Message):
     )
         return
     await message.reply_photo(
-        photo=f"https://telegra.ph/file/cb3197525ac4c26881214.jpg",
+        photo=f"https://telegra.ph/file/c14ff832c44a277759bd4.jpg",
+        sticker=f"CAACAgIAAxkBAAIDTGIH_M97rDk5mOb2z2fa1mCHDeHVAAK4AAMw1J0R92WGDc8M6xUjBA",
         caption = """
 🍀 Hello There 
 
