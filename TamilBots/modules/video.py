@@ -4,6 +4,7 @@ import requests
 from yt_dlp import YoutubeDL
 from TamilBots import app, LOGGER
 from pyrogram import Client, filters
+from pyrogram.errors import UserNotParticipant, ChatAdminRequired, UsernameNotOccupied
 from pyrogram.types import  InlineKeyboardMarkup, InlineKeyboardButton
 from youtube_search import YoutubeSearch
 
