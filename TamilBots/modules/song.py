@@ -2,7 +2,6 @@ from pyrogram import Client, filters
 from config import OWNER_ID
 from pyrogram import Client
 from requests import get
-from TamilBots.helpers.fsub import ForceSub
 from typing import Tuple
 from json import JSONDecodeError
 import asyncio
@@ -13,13 +12,9 @@ import os
 import requests
 import youtube_dl
 import yt_dlp
-from funcs.download import Descargar
 from yt_dlp import YoutubeDL
 from youtube_search import YoutubeSearch
-from pyrogram.errors.exceptions import MessageNotModified
-from pyrogram.errors import UserAlreadyParticipant
 from pyrogram.errors import UserNotParticipant, ChatAdminRequired, UsernameNotOccupied
-from pytube import YouTube, exceptions
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
 from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
@@ -28,21 +23,7 @@ from TamilBots.TamilBots import ignore_blacklisted_users, get_arg
 from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
-MIXPANEL_TOKEN = os.environ.get('df25e802e5515ec5a943c5e654d3006c')
-MUSIC_CHATS = set(int(x) for x in os.environ.get("MUSIC_CHATS", "1901997764 1474804964").split())
 
-def yt_search(song):
-    videosSearch = VideosSearch(song, limit=1)
-    result = videosSearch.result()
-    if not result:
-        return False
-    else:
-        video_id = result["result"][0]["id"]
-        url = f"https://youtu.be/{video_id}"
-        return url
-
-
-zone_ms = """ **🍀 zoneunlimited 🍀Corporation ©️** """
 
 @app.on_message(filters.command("update"))
 async def update(Client, message):
