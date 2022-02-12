@@ -22,7 +22,7 @@ async def vsong(pbot, message):
         await message._client.get_chat_member(int("-1001110021950"), message.from_user.id)
     except UserNotParticipant:
         await message.reply_text(
-        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @Zu_Project Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
+        text=f"**⛔️ Access Denied ⛔️**\n\n🙋‍♂️ **Hey There** {message.from_user.mention}, You Must **Join** @zoneunlimited Telegram **Channel** To Use This BOT. So, **Please Join** it & Try Again🤗. **Thank** You 🤝", disable_web_page_preview=True, reply_markup=FSUBB, reply_to_message_id = message.message_id
     )
         return
     await message.reply_chat_action("typing")
@@ -70,7 +70,7 @@ async def vsong(pbot, message):
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
         await message.reply_chat_action("record_video_note")
         with YoutubeDL(ydl_opts) as ytdl:
-            rep = f'**{title[:35]}\n\n**✅ Successfully Downloaded to MP4 🎥\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [  Zu Project  🇱🇰  ](https://t.me/Zu_Project)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
+            rep = f'**{title[:35]}\n\n**✅ Successfully Downloaded to MP4 🎥\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
