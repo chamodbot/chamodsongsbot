@@ -79,7 +79,7 @@ async def start_(client: Client, message: Message):
         )
     )
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
+@app.on_message(filters.command("help"))
 async def help(client, message):
     try:
         await message.reply_chat_action("typing")
