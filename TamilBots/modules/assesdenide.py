@@ -66,3 +66,16 @@ async def update(Client, message):
    )
 
     await gift.delete()
+
+
+@app.on_callback_query()
+async def button(app, update):
+      cb_data = update.data
+      if "help" in cb_data:
+        await update.message.delete()
+        await help(app, update.message)
+      elif "close" in cb_data:
+        await update.message.delete() 
+      elif "zone_ms" in cb_data:
+        await update.message.delete()
+        await zone_ms(app, update.message)
