@@ -1,4 +1,5 @@
 from pyrogram import filters, types
+from pyrogram import Client
 from TamilBots import app, LOGGER
 from pyrogram.types import (
     InlineKeyboardButton,
