@@ -7,6 +7,7 @@ from json import JSONDecodeError
 import asyncio
 import shlex
 import time
+import wget
 import os
 import requests
 import youtube_dl
