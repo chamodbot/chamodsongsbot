@@ -54,7 +54,7 @@ async def start_(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ ❰ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ❱ ➕", url=f"https://t.me/The_song_finder_bot?startgroup=true"
+                        "➕ ❰ ᴀᴅᴅ ᴍᴇ ᴛᴏ ɢʀᴏᴜᴘ ❱ ➕", url=f"https://t.me/The_song_finder_bot?startgroup=true"
                     )
                 ],
                 [
@@ -74,7 +74,7 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(text=
-                       "◇────────🔍 Search Here 🔎───────◇", switch_inline_query_current_chat=""
+                       "◇─────🔍 Search Here 🔎─────◇", switch_inline_query_current_chat="new song 2022"
                     )
                 ]
            ]
