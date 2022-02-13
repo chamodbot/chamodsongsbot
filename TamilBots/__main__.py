@@ -46,6 +46,14 @@ async def start_(client: Client, message: Message):
 🌺 Group Supported
 🎯 24 horse active
 
+🔥 Bot Commands 🔥
+
+/song
+/video
+/find
+/help
+/about
+
 🌿 Developer : @chamod_deshan
 
 🔥 [🍀  zoneunlimited  🍀](https://t.me/Zu_Project) Corporation ©️
