@@ -39,7 +39,7 @@ async def ytsearch(_, message: Message):
             [[InlineKeyboardButton("███████░░░░░", callback_data="progress_msg")]]))
         await m.edit("**🎵 Searching In YouTube ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("████████████", callback_data="progress_msg")]])
+            [[InlineKeyboardButton("████████████", callback_data="progress_msg")]]))
         results = YoutubeSearch(query, max_results=5).to_dict()
         i = 0
         text = ""
