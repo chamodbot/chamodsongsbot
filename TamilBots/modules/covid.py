@@ -1,5 +1,5 @@
 import requests, json
-from program import types
+from pyrogram import Client, filters
 from os import getenv
 from TamilBots import app, LOGGER
 
@@ -44,20 +44,6 @@ gcovidinfo = f"""
 • මුළු මරණ සංඛ්‍යාව ⚰ - {global_deaths}
 """
 
-@app.message_handler(commands=["covid"])
+@app.on_message(filters.command("covid"))
 def send_covid(message):
     bot.send_message(message.chat.id, covidinfo)
-
-@app.callback_query_handler(func=lambda call: True)
-def query_handler(call):
-    bot.answer_callback_query(callback_query_id=call.id)
-    if call.data == '1':
-        answer = covidinfo
-    bot.send_message(call.message.chat.id, answer)           
-
-# Inline Mode             
-@app.inline_handler(lambda query: query.query == 'covid')
-def query_text(inline_query):
-        in1 = types.InlineQueryResultArticle('1', "ශ්‍රී ලංකාවේ කොරෝනා තත්වය. 🇱🇰", types.InputTextMessageContent(covidinfo))
-        in2 = types.InlineQueryResultArticle('2', "සමස්ත ලෝකයේ කොරෝනා තත්වය. 🌎", types.InputTextMessageContent(gcovidinfo))
-        bot.answer_inline_query(inline_query.id, [in1, in2])
