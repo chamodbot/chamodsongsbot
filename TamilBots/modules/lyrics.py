@@ -1,6 +1,7 @@
 import os
 import requests
 from pyrogram import Client, filters
+from TamilBots import app, LOGGER
 
 @app.on_message(filters.command(["lyrics"]))
 async def lirik(_, message):
