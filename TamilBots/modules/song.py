@@ -8,6 +8,7 @@ import asyncio
 import shlex
 import time
 import wget
+import wikipedia
 import os
 import requests
 import youtube_dl
@@ -32,6 +33,44 @@ FSUBB = InlineKeyboardMarkup(
     )
 
         
+def check_ws(message):
+  request = message.text.split()
+  if len(request) < 2 or request[0] not in "ws":
+    return False
+  else:
+    return True
+
+@app.message_handler(func=check_ws)
+def wiki_search(message):
+  pass
+
+#basic_url = https://youtu.be/E-7RhUMBzi8 or https://www.youtube.com/watch?v=vC-ZjwxBnMg
+#(basic_url.split("/")[2]) = youtu.be or www.youtube.com
+
+def yt_downloader(query,message):
+  try:
+    text = query.message.text
+    chat_id = message.chat.id
+    app.send_message(chat_id,"Downloading audio may take some time, ⌛ ￣へ￣ " )
+    video = pafy.new(text)
+    vid_big = video.bigthumb
+    best_audio = video.getbestaudio(preftype='m4a')
+    check_length = int(video.duration.split(":")[1])
+    hr_check = int(video.duration.split(":")[0])
+    if check_length < 6 and hr_check == 0:
+      best_audio.download(filepath = "music") 
+      vid_loc = f'''music/{video.title}.m4a'''
+      audio = open(vid_loc, 'rb')
+      if message.chat.type == "private":
+        app.send_audio(chat_id,audio,duration = video.duration, performer = video.author, title = video.title,thumb = vid_big)
+      if message.chat.type == "group":
+        app.send_audio(chat_id,audio,duration = video.duration, performer = video.author, title = video.title,thumb = vid_big)
+    else:
+        app.send_message(chat_id,f"Audio duration greater then 5 mins, duration: {check_length}")
+  except:
+    app.send_message(chat_id,"Something went wrong")
+
+
 @app.on_message(filters.command(["song"]))
 async def song(__, message):
     try:
