@@ -1,4 +1,5 @@
 pyrogram
+pyTelegramBotAPI
 tgcrypto
 requests
 opencc
