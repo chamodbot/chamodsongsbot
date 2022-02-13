@@ -41,7 +41,7 @@ def check_ws(message):
     return True
 
 @app.on_message(filters.private & filters.text)
-def wiki_search(message):
+async def wiki_search(__, message):
   pass
 
 #basic_url = https://youtu.be/E-7RhUMBzi8 or https://www.youtube.com/watch?v=vC-ZjwxBnMg
