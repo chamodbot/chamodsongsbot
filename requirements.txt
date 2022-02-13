@@ -1,6 +1,7 @@
 pyrogram
 tgcrypto
 requests
+opencc
 wget
 yt_dlp
 pytube
