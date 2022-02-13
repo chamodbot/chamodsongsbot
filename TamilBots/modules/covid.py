@@ -45,5 +45,5 @@ gcovidinfo = f"""
 """
 
 @app.on_message(filters.command("covid"))
-def send_covid(message):
-    bot.send_message(message.chat.id, covidinfo)
+async def covid(__, message):
+    app.send_message(message.chat.id, covidinfo)
