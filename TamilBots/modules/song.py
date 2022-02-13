@@ -58,9 +58,6 @@ def handle(msg):
     	elif text.lower().startswith('video'):
     		flag_VIDEO = 1
 
-    if flag_URL == 0:
-    	bot.sendMessage(chat_id, 'Please enter a video link to download.')
-
     else:
         video = pafy.new(url)
         best = video.getbest()
