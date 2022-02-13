@@ -64,10 +64,10 @@ async def vsong(pbot, message):
     try:
         msg = await message.reply("**🎵 Sεαяcнıпɢ Mυƨıc Sανεяƨ ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
+            [[InlineKeyboardButton("███████████████", callback_data="progress_msg")]]), reply_to_message_id = message.message_id)
         await msg.edit("**🌷 ƊօωղƖօąɗíղɠ Mυƨıc Sανεяƨ ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
+            [[InlineKeyboardButton("███████████████", callback_data="progress_msg")]]))
         await message.reply_chat_action("record_video_note")
         with YoutubeDL(ydl_opts) as ytdl:
             rep = f'**{title[:35]}\n\n**✅ Successfully Downloaded to MP4 🎥\n\n┏━━━━━━━━━━━━━━━━━┓\n\n┣★ Duration : {duration}\n\n┣★ Views : {views}\n\n┣★ 🌺 Requestor : {message.from_user.mention} \n\n┣★ 🌷 Downloaded by : [MUSIC FINDER BOT 🎵](https://t.me/The_song_finder_bot)\n\n┣★ [🍀 zoneunlimited 🍀](https://t.me/zoneunlimited)Corporation ©️\n\n┗━━━━━━━━━━━━━━━━━┛\n\n '
@@ -76,12 +76,12 @@ async def vsong(pbot, message):
     except Exception as e:
         return await msg.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
+            [[InlineKeyboardButton("███████████████", callback_data="progress_msg")]]))
     preview = wget.download(thumbnail)
     await message.reply_chat_action("upload_video_note")
     await msg.edit("**🍀 ᑌᑭᒪOᗩᗪIᑎG ᏆᎾ TᒪᕮGᖇᗩᗰ ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
+            [[InlineKeyboardButton("███████████████", callback_data="progress_msg")]]))
     await message.reply_chat_action("upload_video_note")
     await message.reply_video(
         file_name,
