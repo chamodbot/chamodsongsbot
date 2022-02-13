@@ -74,7 +74,7 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(text=
-                       "◇─────🔍 Search Here 🔎─────◇", switch_inline_query_current_chat="new song 2022"
+                       "◇─────🔍 Search Here Song 🔎─────◇", switch_inline_query_current_chat="new sinhala Dj song"
                     )
                 ]
            ]
