@@ -19,7 +19,7 @@ async def voice_handler(_, message):
         )
         return
     file = await message.download(f'{app.rnd_id()}.mp3')
-    r = (await app.recognize(file)).get('track', None)
+    r = (await app.message(file)).get('track', None)
     os.remove(file)
     if r is None:
         await message.reply_text(
