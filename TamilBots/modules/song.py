@@ -94,7 +94,7 @@ async def song(__, message):
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("███████████████", callback_data="progress_msg")]]))
     await message.reply_chat_action("upload_audio")
-    await msg.edit(
+    await message.reply_audio(
         audio_file,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
