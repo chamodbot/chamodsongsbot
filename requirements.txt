@@ -1,5 +1,5 @@
 pyrogram
-import wikipedia
+wikipedia
 pyTelegramBotAPI
 tgcrypto
 requests
