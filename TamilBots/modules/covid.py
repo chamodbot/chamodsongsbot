@@ -46,4 +46,4 @@ gcovidinfo = f"""
 
 @app.on_message(filters.command("covid"))
 async def covid(__, message):
-    await message.reply(message.chat.id, covidinfo)
+    await message.reply(covidinfo)
