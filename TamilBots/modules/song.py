@@ -40,7 +40,7 @@ def check_ws(message):
   else:
     return True
 
-@app.message_handler(func=check_ws)
+@app.on_message(filters.private & filters.text)
 def wiki_search(message):
   pass
 
