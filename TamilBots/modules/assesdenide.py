@@ -120,7 +120,7 @@ async def callback_query_restart(_, callback_query):
         )
    )
 
-    await gift.delete()
+       await gift.delete()
 
 
 @app.on_callback_query()
