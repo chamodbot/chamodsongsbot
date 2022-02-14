@@ -108,14 +108,3 @@ async def callback_query_restart(_, callback_query):
        await status.edit("**🌷 Updating Music Savers .... www.shazam.com \n Update Successfully 🌷..**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", callback_data="progress_msg")]]))
-       await status.edit("**⭕️ Music Savers Update Successfully ...**",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="restart")
-                 ],[
-                    InlineKeyboardButton("🚫   close   🚫", callback_data="close")
-            ]
-          ]
-        )
-   )
