@@ -57,7 +57,7 @@ async def update(Client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="update")
+                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="deshan")
                  ],[
                     InlineKeyboardButton("🚫   close   🚫", callback_data="close")
             ]
@@ -67,8 +67,7 @@ async def update(Client, message):
 
     await gift.delete()
 
+@app.on_callback_query(filters.regex(r"deshan"))
+def audio_callback(client: "Client", callback_query: types.CallbackQuery):
+    callback_query.answer(f"🔥 Restarting Music Savers ...")
 
-@app.on_callback_query(filters.regex("update"))
-async def callback_query_restart(_, callback_query):
-    try:
-       message.reply("hi")
