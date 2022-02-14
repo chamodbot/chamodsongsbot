@@ -110,7 +110,7 @@ async def song(__, message):
 
 @app.on_callback_query(filters.regex(r"convert"))
 def audio_callback(client: "Client", callback_query: types.CallbackQuery):
-    callback_query.answer(f"Converting to audio...please wait patiently")
+    callback_query.answer(f"🍀 zoneunlimited 🍀 Corporation ©️")
 
 @app.on_callback_query()
 async def button(app, update):
