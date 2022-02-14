@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from pyrogram import Client, filters, types
 from config import OWNER_ID
 from pyrogram import Client
 from requests import get
