@@ -122,7 +122,6 @@ async def callback_query_restart(_, callback_query):
 
        await gift.delete()
 
-
 @app.on_callback_query()
 async def button(app, update):
       cb_data = update.data
