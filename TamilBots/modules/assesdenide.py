@@ -4,7 +4,7 @@ import requests
 from TamilBots import app, LOGGER
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
 from pyrogram.types import InlineKeyboardButton
-from pyrogram import Client, filters
+from pyrogram import Client, filters, types
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
 
 @app.on_message(filters.command("update"))
