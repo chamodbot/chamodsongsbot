@@ -70,7 +70,7 @@ async def callback_query_ytdl_audio(_, callback_query):
     await callback_query.message.delete()
 
 
-if Config.AUDIO_THUMBNAIL == "No":
+if AUDIO_THUMBNAIL == "No":
    async def send_audio(message: Message, info_dict, audio_file):
        basename = audio_file.rsplit(".", 1)[-2]
        # .webm -> .weba
@@ -103,7 +103,7 @@ else:
            os.rename(audio_file, audio_file_weba)
            audio_file = audio_file_weba
        # thumbnail
-       lol = Config.AUDIO_THUMBNAIL
+       lol = AUDIO_THUMBNAIL
        thumbnail_file = wget.download(lol)
        # info (s2tw)
        webpage_url = info_dict['webpage_url']
