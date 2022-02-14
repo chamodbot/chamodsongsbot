@@ -75,11 +75,11 @@ async def shazamm(client, message):
     await message.reply_chat_action("record_audio")
     sz = await message.reply("**🎵 Sεαяcнıпɢ AυÐเO Ƒιℓє  ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("███████████████", callback_data="convert")]]), reply_to_message_id = message.message_id)
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]), reply_to_message_id = message.message_id)
     if not message.reply_to_message:
         await sz.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("███████████████", callback_data="convert")]]))
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
         return
     if os.path.exists("friday.mp3"):
         os.remove("friday.mp3")
@@ -89,10 +89,10 @@ async def shazamm(client, message):
     await message.reply_chat_action("record_audio")
     await sz.edit("**🌷 ƊօωղƖօąɗíղɠ AυÐเO Ƒιℓє ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("███████████████", callback_data="convert")]]))
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
     await sz.edit("**🍀 ᑌᑭᒪOᗩᗪIᑎG ᏆᎾ TᒪᕮGᖇᗩᗰ ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("███████████████", callback_data="convert")]]))
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
     r = requests.post("https://starkapi.herokuapp.com/shazam/", files=f)
     try:
         xo = r.json()
@@ -102,7 +102,7 @@ async def shazamm(client, message):
     if xo.get("success") is False:
         await sz.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("███████████████", callback_data="convert")]]))
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
         os.remove(downloaded_file_name)
         return
     button = InlineKeyboardMarkup(
