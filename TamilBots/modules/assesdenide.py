@@ -119,4 +119,3 @@ async def callback_query_restart(_, callback_query):
           ]
         )
    )
-      await gift.delete()
