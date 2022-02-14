@@ -57,7 +57,7 @@ async def update(Client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="restart")
+                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="update")
                  ],[
                     InlineKeyboardButton("🚫   close   🚫", callback_data="close")
             ]
@@ -68,7 +68,7 @@ async def update(Client, message):
     await gift.delete()
 
 
-@app.on_callback_query(filters.regex("restart"))
+@app.on_callback_query(filters.regex("update"))
 async def callback_query_restart(_, callback_query):
     try:
        gift = await message.reply_sticker(sticker = "CAACAgIAAxkBAAIDOmIDuTomMEzGzYgtoiiQj73c-8BrAAK6AAMw1J0RhNfEiMRQZ1YjBA", reply_to_message_id = message.message_id)
@@ -119,5 +119,4 @@ async def callback_query_restart(_, callback_query):
           ]
         )
    )
-
-       await gift.delete()
+      await gift.delete()
