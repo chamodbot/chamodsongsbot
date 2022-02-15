@@ -10,6 +10,8 @@ from pyrogram.types import (
 )
 import os
 
+downloads = './downloads/{}/'
+
 DL_BUTTONS=[
     [
         InlineKeyboardButton('No Watermark', callback_data='nowm'),
