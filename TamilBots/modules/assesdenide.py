@@ -57,7 +57,7 @@ async def update(Client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="deshan")
+                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="cdeshan")
                  ],[
                     InlineKeyboardButton("🚫   close   🚫", callback_data="close")
             ]
@@ -66,6 +66,22 @@ async def update(Client, message):
    )
 
     await gift.delete()
+
+@app.on_callback_query()
+async def cdata(c, q):
+
+    data = q.data
+    # userid = q.from_user.id
+    pwait = Tr.WAIT
+    if data == "cdeshan":
+        await q.answer(pwait)
+        await q.message.edit("**🌷 Updating Music Savers ....\n m.youtube.com**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓░░░░░░░░░░░░░", callback_data="progress_msg")]]))
+        await q.message.edit("**🌷 Updating Music Savers ....\n m.youtube.com\n Update Successfully 🌷..**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("▓▓▓▓░░░░░░░░░░░░", callback_data="progress_msg")]]))
+
 
 @app.on_callback_query(filters.regex(r"deshan"))
 def audio_callback(client: "Client", callback_query: types.CallbackQuery):
