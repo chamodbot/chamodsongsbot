@@ -8,7 +8,7 @@ from pyrogram import Client, filters, types
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
 
 @app.on_message(filters.command("restart"))
-async def update(Client, message):
+async def restart(Client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply_chat_action("typing")
         await message.reply_sticker(sticker = "CAACAgEAAxkBAAIDNmIDqZZp9tt7v_vN7NeM_00OvGN9AAJiAQACCR5QRTD5_wABmjtUNyME", reply_to_message_id = message.message_id)
