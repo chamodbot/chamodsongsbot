@@ -7,7 +7,7 @@ from pyrogram.types import InlineKeyboardButton
 from pyrogram import Client, filters, types
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1901997764 1474804964").split())
 
-@app.on_message(filters.command("update"))
+@app.on_message(filters.command("restart"))
 async def update(Client, message):
     if message.from_user.id not in AUTH_USERS:
         await message.reply_chat_action("typing")
@@ -57,7 +57,7 @@ async def update(Client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="deshan")
+                    InlineKeyboardButton("🌐 Update Now Music Savers 🎶", callback_data="restart")
                  ],[
                     InlineKeyboardButton("🚫   close   🚫", callback_data="close")
             ]
@@ -66,6 +66,19 @@ async def update(Client, message):
    )
 
     await gift.delete()
+
+@app.on_callback_query()
+async def button(bot, update):
+      cb_data = update.data
+      if "restart" in cb_data:
+        await update.message.delete()
+        await restart(bot, update.message)
+      elif "about" in cb_data:
+        await update.message.delete()
+        await about(bot, update.message)
+      elif "start" in cb_data:
+        await update.message.delete()
+        await start(bot, update.message)
 
 
 @app.on_callback_query(filters.regex(r"deshan"))
