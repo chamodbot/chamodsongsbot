@@ -150,11 +150,10 @@ async def song(client, message):
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
         await message.reply_chat_action("record_audio")
-        await message.reply_chat_action("upload_audio")
         await status.edit("**🍀 ᑌᑭᒪOᗩᗪIᑎG ᏆᎾ TᒪᕮGᖇᗩᗰ ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
-    await message.reply_chat_action("upload_audio")
+        await message.reply_chat_action("upload_audio")
     video_link = yt_search(args)
     if not video_link:
         await status.edit("**😶 Oops Not Found !! ....**",
