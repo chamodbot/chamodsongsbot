@@ -107,6 +107,16 @@ async def song(__, message):
     except Exception as e:
         print(e)
 
+def yt_search(song):
+    videosSearch = VideosSearch(song, limit=1)
+    result = videosSearch.result()
+    if not result:
+        return False
+    else:
+        video_id = result["result"][0]["id"]
+        url = f"https://youtu.be/{video_id}"
+        return url
+
 
 @app.on_message(filters.command("song"))
 async def song(client, message):
