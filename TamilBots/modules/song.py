@@ -107,6 +107,83 @@ async def song(__, message):
         print(e)
 
 
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
+async def song(client, message):
+    chat_id = message.chat.id
+    user_id = message.from_user["id"]
+    add_chat_to_db(str(chat_id))
+    args = get_arg(message) + " " + "song"
+    if args.startswith(" "):
+        await message.reply("Enter a song name. Check /help")
+        return ""
+    try:
+        results = YoutubeSearch(query, max_results=1).to_dict()
+        link = f"https://youtube.com{results[0]['url_suffix']}"
+        title = results[0]["title"][:40]
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f"thumb{title}.jpg"
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, "wb").write(thumb.content)
+        duration = results[0]["duration"]
+        views = results[0]["views"]
+        results[0]["url_suffix"]
+        results[0]["views"]
+        button = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("🌺 Watch On Youtube 🌺", url=f"{link}")
+        ],
+        [
+            InlineKeyboardButton("🔍◇─◇Search Again◇─◇🔎", switch_inline_query_current_chat="")
+        ]
+    ]
+    
+    )
+        rby = message.from_user.mention
+    except Exception as e:
+        print(e)
+    try:
+    status = await message.reply("**🎵 Sεαяcнıпɢ Mυƨıc Sανεяƨ ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]), reply_to_message_id = message.message_id)
+        await status.edit("**🌷 ƊօωղƖօąɗíղɠ Mυƨıc Sανεяƨ ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
+        await message.reply_chat_action("record_audio")
+        await message.reply_chat_action("upload_audio")
+        await status.edit("**🍀 ᑌᑭᒪOᗩᗪIᑎG ᏆᎾ TᒪᕮGᖇᗩᗰ ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
+    await message.reply_chat_action("upload_audio")
+    video_link = yt_search(args)
+    if not video_link:
+        await status.edit("**😶 Oops Not Found !! ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
+        return ""
+    yt = YouTube(video_link)
+    audio = yt.streams.filter(only_audio=True).first()
+    try:
+        download = audio.download(filename=f"{str(user_id)}")
+    except Exception as ex:
+        await status.edit("**😶 Oops Not Found !! ....**",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
+        LOGGER.error(ex)
+        return ""
+    rename = os.rename(download, f"{str(user_id)}.mp3")
+    await app.send_chat_action(message.chat.id, "upload_audio")
+    await app.send_audio(
+        chat_id=message.chat.id,
+        audio=f"{str(user_id)}.mp3",
+        duration=int(yt.length),
+        title=str(yt.title),
+        performer=str(yt.author),
+        reply_to_message_id=message.message_id,
+    )
+    await status.delete()
+    os.remove(f"{str(user_id)}.mp3")
+
 @app.on_callback_query(filters.regex(r"chamod"))
 def audio_callback(client: "Client", callback_query: types.CallbackQuery):
     callback_query.answer(f"🍀 zoneunlimited 🍀 Corporation ©️")
