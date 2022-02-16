@@ -12,6 +12,7 @@ import os
 import requests
 import youtube_dl
 import yt_dlp
+from pytube import YouTube
 from yt_dlp import YoutubeDL
 from youtube_search import YoutubeSearch
 from pyrogram.errors import UserNotParticipant, ChatAdminRequired, UsernameNotOccupied
@@ -154,34 +155,34 @@ async def song(client, message):
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
         await message.reply_chat_action("upload_audio")
-    video_link = yt_search(args)
-    if not video_link:
-        await status.edit("**😶 Oops Not Found !! ....**",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
+        video_link = yt_search(args)
+        if not video_link:
+            await status.edit("**😶 Oops Not Found !! ....**",
+            reply_markup=InlineKeyboardMarkup(
+                 [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
         return ""
-    yt = YouTube(video_link)
-    audio = yt.streams.filter(only_audio=True).first()
-    try:
-        download = audio.download(filename=f"{str(user_id)}")
+        yt = YouTube(video_link)
+        audio = yt.streams.filter(only_audio=True).first()
+        try:
+           download = audio.download(filename=f"{str(user_id)}")
     except Exception as ex:
         await status.edit("**😶 Oops Not Found !! ....**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("███████████████", callback_data="chamod")]]))
         LOGGER.error(ex)
         return ""
-    rename = os.rename(download, f"{str(user_id)}.mp3")
-    await app.send_chat_action(message.chat.id, "upload_audio")
-    await app.send_audio(
-        chat_id=message.chat.id,
-        audio=f"{str(user_id)}.mp3",
-        duration=int(yt.length),
-        title=str(yt.title),
-        performer=str(yt.author),
-        reply_to_message_id=message.message_id,
-    )
-    await status.delete()
-    os.remove(f"{str(user_id)}.mp3")
+        rename = os.rename(download, f"{str(user_id)}.mp3")
+        await app.send_chat_action(message.chat.id, "upload_audio")
+        await app.send_audio(
+            chat_id=message.chat.id,
+            audio=f"{str(user_id)}.mp3",
+            duration=int(yt.length),
+            title=str(yt.title),
+            performer=str(yt.author),
+            reply_to_message_id=message.message_id)
+
+        await status.delete()
+        os.remove(f"{str(user_id)}.mp3")
 
 @app.on_callback_query(filters.regex(r"chamod"))
 def audio_callback(client: "Client", callback_query: types.CallbackQuery):
